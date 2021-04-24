@@ -5,8 +5,7 @@ using namespace view;
 
 int main (int argc, char ** argv)
 {
-    char* letters = "gasrtyi";
-
+    string letters[] = {"d", "e", "f", "a", "u", "l", "t"};
     TextTwistWindow window(540, 375, "Test", letters);
     window.show();
 

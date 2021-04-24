@@ -2,11 +2,11 @@
 namespace view
 {
 
-TextTwistWindow::TextTwistWindow(int width, int height, const char* title, char* letters) : Fl_Window(width, height, title)
+TextTwistWindow::TextTwistWindow(int width, int height, const char* title, string* letters) : Fl_Window(width, height, title)
 {
     begin();
     this->letters = letters;
-    this->initializeLetters();
+    this->initializeLetterButtons();
     end();
 }
 
@@ -23,14 +23,17 @@ TextTwistWindow::~TextTwistWindow()
     }
 }
 
-void TextTwistWindow::initializeLetters()
+void TextTwistWindow::initializeLetterButtons()
 {
     int accumulator = 0;
     for (int i = 0; i < this->MAX_LETTER_LENGTH; i++) {
-        char c[] = {this->letters[i]};
-        this->letterButtons[i] =  new Fl_Button(25 + accumulator, 25,this->SIDE_LENGTH_OF_BUTTON, this->SIDE_LENGTH_OF_BUTTON, c);
+        this->letterButtons[i] =  new Fl_Button(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS,this->SIDE_LENGTH_OF_BUTTON, this->SIDE_LENGTH_OF_BUTTON, this->letters[i].c_str());
         accumulator += this->SIDE_LENGTH_OF_BUTTON + 5;
     }
+}
+void TextTwistWindow::initializeLetterFields()
+{
+
 }
 }
 

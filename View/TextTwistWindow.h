@@ -19,7 +19,7 @@ namespace view
 class TextTwistWindow : public Fl_Window
 {
     public:
-        TextTwistWindow(int width, int height, const char* title, char* letters);
+        TextTwistWindow(int width, int height, const char* title, string* letters);
         virtual ~TextTwistWindow();
         void placeLetters(char* letters);
 
@@ -28,11 +28,14 @@ class TextTwistWindow : public Fl_Window
     private:
         static const int MAX_LETTER_LENGTH = 7;
         static const int SIDE_LENGTH_OF_BUTTON = 45;
+        static const int LETTERS_X_POS = 95;
+        static const int LETTERS_Y_POS = 250;
 
         Fl_Button* letterButtons[MAX_LETTER_LENGTH];
-        char* letters;
+        string* letters;
 
-        void initializeLetters();
+        void initializeLetterButtons();
+        void initializeLetterFields();
 
 };
 }
