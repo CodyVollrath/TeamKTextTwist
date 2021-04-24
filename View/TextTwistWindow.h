@@ -9,6 +9,7 @@
 
 #include <string>
 #include <iostream>
+#include <stack>
 using namespace std;
 
 namespace view
@@ -30,12 +31,19 @@ class TextTwistWindow : public Fl_Window
 
         Fl_Button* letterButtons[MAX_LETTER_LENGTH];
         Fl_Input* letterFields[MAX_LETTER_LENGTH];
-        string* letters;
+        Fl_Button* undoButton;
+        Fl_Button* twistButton;
 
+        stack<Fl_Button*>* letterButtonsUsed;
+        stack<Fl_Input*>* letterFieldsUsed;
+
+        string* letters;
         void initializeBoardElements();
         void establishCallBacks();
         void placeLetterToNextEmptyField(const char* letter);
-        static void sendLetterToField(Fl_Widget* widget, void* data);
+
+        static void cbSendLetterToField(Fl_Widget* widget, void* data);
+        static void cbUndo(Fl_Widget* widget, void* data);
 };
 }
 #endif // TEXTTWISTWINDOW_H

@@ -7,10 +7,10 @@
 
 1619219628 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
 
-1619284840 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
+1619289586 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619289322 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
+1619290583 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -18,4 +18,5 @@
 	<FL/Fl_Input.H>
 	<string>
 	<iostream>
+	<stack>
 
