@@ -3,12 +3,9 @@
 
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
-#include <FL/Fl_Group.H>
-#include <FL/Fl_Round_Button.H>
-#include <FL/Fl_Output.H>
-#include <FL/Fl_Text_Buffer.H>
-#include <FL/Fl_Text_Display.H>
 #include <FL/Fl_Button.H>
+#include <FL/Enumerations.H>
+#include <FL/Fl_Input.H>
 
 #include <string>
 #include <iostream>
@@ -32,12 +29,13 @@ class TextTwistWindow : public Fl_Window
         static const int LETTERS_Y_POS = 250;
 
         Fl_Button* letterButtons[MAX_LETTER_LENGTH];
+        Fl_Input* letterFields[MAX_LETTER_LENGTH];
         string* letters;
 
-        void initializeLetterButtons();
-        void initializeLetterFields();
-
+        void initializeBoardElements();
+        void establishCallBacks();
+        void placeLetterToNextEmptyField(const char* letter);
+        static void sendLetterToField(Fl_Widget* widget, void* data);
 };
 }
-
 #endif // TEXTTWISTWINDOW_H
