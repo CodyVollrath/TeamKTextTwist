@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1619238384 source:/home/cvollra1/Documents/TeamKTextTwist/main.cpp
+	"TextTwistWindow.h"
+
+1619219628 source:/home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.cpp
+	"ResourceData.h"
+
+1619219628 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
+
+1619237772 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
+	"TextTwistWindow.h"
+
+1619238376 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Round_Button.H>
+	<FL/Fl_Output.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
+	<FL/Fl_Button.H>
+	<string>
+	<iostream>
+
