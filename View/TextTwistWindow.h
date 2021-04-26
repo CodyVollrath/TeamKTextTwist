@@ -44,6 +44,7 @@ class TextTwistWindow : public Fl_Window
 
         static void cbSendLetterToField(Fl_Widget* widget, void* data);
         static void cbUndo(Fl_Widget* widget, void* data);
+        static void cbTwist(Fl_Widget* widget, void* data);
 };
 }
 #endif // TEXTTWISTWINDOW_H

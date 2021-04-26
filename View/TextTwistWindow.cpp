@@ -8,6 +8,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title, strin
     this->letters = letters;
     this->initializeBoardElements();
     this->undoButton = new Fl_Button(25, 25, 100,30, "Undo");
+    this->twistButton = new Fl_Button(25, 60, 100, 30, "Twist");
     this->undoButton->callback(this->cbUndo, this);
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->letterFieldsUsed = new stack<Fl_Input*>();
@@ -16,12 +17,15 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title, strin
 
 TextTwistWindow::~TextTwistWindow()
 {
-    this->letters = 0;
+
     for (int i = 0; i < this->MAX_LETTER_LENGTH; i++) {
-        if (this->letterButtons[i]) {
-            delete this->letterButtons[i];
-        }
+        delete this->letterButtons[i];
+        delete this->letterFields[i];
     }
+    delete this->undoButton;
+    delete this->letterButtonsUsed;
+    delete this->letterFieldsUsed;
+    delete this->letters;
 }
 
 void TextTwistWindow::initializeBoardElements()
@@ -68,6 +72,11 @@ void TextTwistWindow::cbUndo(Fl_Widget* widget, void* data)
         window->letterButtonsUsed->pop();
         window->letterFieldsUsed->pop();
     }
+}
+
+void TextTwistWindow::cbTwist(Fl_Widget, void* data)
+{
+    //ADD CONTROLLER LOGIC HERE
 }
 }
 
