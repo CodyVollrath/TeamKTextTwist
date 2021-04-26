@@ -13,6 +13,9 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="View" />
+					<Add directory="Resources" />
+					<Add directory="Controller" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -22,6 +25,12 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="Controller/TextTwistController.cpp" />
+		<Unit filename="Controller/TextTwistController.h" />
+		<Unit filename="Resources/ResourceData.cpp" />
+		<Unit filename="Resources/ResourceData.h" />
+		<Unit filename="View/TextTwistWindow.cpp" />
+		<Unit filename="View/TextTwistWindow.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

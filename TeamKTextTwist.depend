@@ -20,3 +20,34 @@
 	<iostream>
 	<stack>
 
+1619459847 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Resources/ResourceData.cpp
+	"ResourceData.h"
+
+1619459847 /home/csuser/Desktop/pc_2/TeamKTextTwist/Resources/ResourceData.h
+
+1619469815 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/main.cpp
+	"TextTwistWindow.h"
+
+1619470072 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Button.H>
+	<FL/Enumerations.H>
+	<FL/Fl_Input.H>
+	<string>
+	<iostream>
+	<stack>
+	"TextTwistController.h"
+
+1619478519 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.cpp
+	"TextTwistController.h"
+
+1619478508 /home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.h
+	<iostream>
+	<vector>
+	<string>
+	<algorithm>
+
+1619477849 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
+	"TextTwistWindow.h"
+

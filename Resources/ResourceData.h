@@ -4,13 +4,13 @@
 
 class ResourceData
 {
-    public:
-        ResourceData();
-        virtual ~ResourceData();
+public:
+    ResourceData();
+    virtual ~ResourceData();
 
-    protected:
+protected:
 
-    private:
+private:
 };
 
 #endif // RESOURCEDATA_H
