@@ -48,7 +48,7 @@ char TextTwistController::getRandomLetter(vector<char> usedLetters)
 }
 
 
-void TextTwistController::twist()
+void TextTwistController::generate()
 {
     vector<char> usedLetters;
     for (int i = 0; i < TextTwistController::MAX_LETTER_LENGTH; i++)
@@ -57,11 +57,14 @@ void TextTwistController::twist()
         usedLetters.push_back(letter);
         this->letters[i] = string(1, letter);
     }
-
 }
+void TextTwistController::twist()
+{
+    random_shuffle(begin(this->letters), end(this->letters));
+}
+
 string* TextTwistController::getLetters()
 {
     return this->letters;
 }
-
 }

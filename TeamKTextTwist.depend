@@ -1,16 +1,16 @@
 # depslib dependency file v1.0
-1619240842 source:/home/cvollra1/Documents/TeamKTextTwist/main.cpp
+1619486064 source:/home/cvollra1/Documents/TeamKTextTwist/main.cpp
 	"TextTwistWindow.h"
 
 1619219628 source:/home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.cpp
 	"ResourceData.h"
 
-1619219628 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
+1619486064 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
 
-1619291907 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
+1619487816 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619290583 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
+1619487282 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -19,6 +19,7 @@
 	<string>
 	<iostream>
 	<stack>
+	"TextTwistController.h"
 
 1619459847 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Resources/ResourceData.cpp
 	"ResourceData.h"
@@ -50,4 +51,13 @@
 
 1619477849 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
+
+1619487223 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
+	<iostream>
+	<vector>
+	<string>
+	<algorithm>
+
+1619488115 source:/home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.cpp
+	"TextTwistController.h"
 

@@ -20,6 +20,7 @@ public:
 
     TextTwistController();
     virtual ~TextTwistController();
+    void generate();
     void twist();
     string* getLetters();
 

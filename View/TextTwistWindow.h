@@ -35,8 +35,10 @@ class TextTwistWindow : public Fl_Window
 
         Fl_Button* letterButtons[TextTwistController::MAX_LETTER_LENGTH];
         Fl_Input* letterFields[TextTwistController::MAX_LETTER_LENGTH];
+
         Fl_Button* undoButton;
         Fl_Button* twistButton;
+        Fl_Button* generateButton;
 
         stack<Fl_Button*>* letterButtonsUsed;
         stack<Fl_Input*>* letterFieldsUsed;
@@ -48,6 +50,7 @@ class TextTwistWindow : public Fl_Window
 
         static void cbSendLetterToField(Fl_Widget* widget, void* data);
         static void cbUndo(Fl_Widget* widget, void* data);
+        static void cbGenerate(Fl_Widget* widget, void* data);
         static void cbTwist(Fl_Widget* widget, void* data);
 };
 }

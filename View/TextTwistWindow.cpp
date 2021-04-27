@@ -8,10 +8,15 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     begin();
     this->controller = new TextTwistController();
     this->initializeBoardElements();
+
     this->undoButton = new Fl_Button(25, 25, 100,30, "Undo");
     this->twistButton = new Fl_Button(25, 60, 100, 30, "Twist");
+    this->generateButton = new Fl_Button(25,95, 100, 30, "Start");
+
     this->undoButton->callback(this->cbUndo, this);
     this->twistButton->callback(this->cbTwist, this);
+    this->generateButton->callback(this->cbGenerate, this);
+
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->letterFieldsUsed = new stack<Fl_Input*>();
 
@@ -28,6 +33,10 @@ TextTwistWindow::~TextTwistWindow()
         delete this->letterFields[i];
     }
     delete this->undoButton;
+    delete this->twistButton;
+    delete this->generateButton;
+
+    delete this->controller;
     delete this->letterButtonsUsed;
     delete this->letterFieldsUsed;
 }
@@ -102,6 +111,13 @@ void TextTwistWindow::cbTwist(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
     window->controller->twist();
+    window->resetBoard();
+}
+
+void TextTwistWindow::cbGenerate(Fl_Widget* widget, void* data)
+{
+    TextTwistWindow* window = (TextTwistWindow*)data;
+    window->controller->generate();
     window->resetBoard();
 }
 }
