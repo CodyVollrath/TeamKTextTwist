@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1619486064 source:/home/cvollra1/Documents/TeamKTextTwist/main.cpp
+1619831339 source:/home/cvollra1/Documents/TeamKTextTwist/main.cpp
 	"TextTwistWindow.h"
 
 1619219628 source:/home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.cpp
@@ -7,10 +7,10 @@
 
 1619486064 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
 
-1619826951 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
+1619837133 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619827067 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
+1619837276 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -21,6 +21,7 @@
 	<iostream>
 	<stack>
 	"TextTwistController.h"
+	"DictionaryLoader.h"
 
 1619459847 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Resources/ResourceData.cpp
 	"ResourceData.h"
@@ -61,4 +62,13 @@
 
 1619488115 source:/home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.cpp
 	"TextTwistController.h"
+
+1619836686 /home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.h
+	<iostream>
+	<fstream>
+	<string>
+	<set>
+
+1619838321 source:/home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.cpp
+	"DictionaryLoader.h"
 

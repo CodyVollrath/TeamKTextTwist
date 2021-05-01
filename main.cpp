@@ -4,8 +4,9 @@ using namespace view;
 
 int main (int argc, char ** argv)
 {
-
-    TextTwistWindow window(540, 375, "Test");
+    const int WIDTH = 540;
+    const int HEIGHT = 375;
+    TextTwistWindow window(WIDTH, HEIGHT, "Test");
     window.show();
 
     int exitCode = Fl::run();

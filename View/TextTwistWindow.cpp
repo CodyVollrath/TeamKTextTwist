@@ -7,19 +7,22 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 {
     begin();
     this->controller = new TextTwistController();
+    const int GENERATE_BUTTON_POS_ADDER = 2 * this->Y_POS_DIF;
 
+    this->undoButton = new Fl_Button(this->LEFT_BUTTON_POS, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Undo");
+    this->twistButton = new Fl_Button(this->LEFT_BUTTON_POS, this->LEFT_BUTTON_POS + this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Twist");
+    this->generateButton = new Fl_Button(this->LEFT_BUTTON_POS,this->LEFT_BUTTON_POS + GENERATE_BUTTON_POS_ADDER, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Start");
 
-    this->undoButton = new Fl_Button(25, 25, 100,30, "Undo");
-    this->twistButton = new Fl_Button(25, 60, 100, 30, "Twist");
-    this->generateButton = new Fl_Button(25,95, 100, 30, "Start");
+    this->submitButton = new Fl_Button(220, 325, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Submit");
 
-    this->timerLabel = new Fl_Box(250, 25, 25, 40, "00:00:00");
+    this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
     this->undoButton->callback(this->cbUndo, this);
     this->twistButton->callback(this->cbTwist, this);
     this->generateButton->callback(this->cbGenerate, this);
 
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->letterFieldsUsed = new stack<Fl_Input*>();
+    this->dictLoader = new DictionaryLoader(this->DICT_NAME);
 
     this->initializeBoardElements();
     end();
@@ -36,6 +39,8 @@ TextTwistWindow::~TextTwistWindow()
     delete this->undoButton;
     delete this->twistButton;
     delete this->generateButton;
+    delete this->submitButton;
+    delete this->timerLabel;
 
     delete this->controller;
     delete this->letterButtonsUsed;
@@ -45,14 +50,16 @@ TextTwistWindow::~TextTwistWindow()
 void TextTwistWindow::initializeBoardElements()
 {
     int accumulator = 0;
+    const int Y_POS_DEC = 100;
+    const int SPACE_LENGTH = 5;
     for (int i = 0; i < TextTwistController::MAX_LETTER_LENGTH; i++)
     {
-        this->letterButtons[i] =  new Fl_Button(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS,this->SIDE_LENGTH_OF_BUTTON, this->SIDE_LENGTH_OF_BUTTON, "");
+        this->letterButtons[i] =  new Fl_Button(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS,this->SIDE_LENGTH_OF_LETTER_BUTTON, this->SIDE_LENGTH_OF_LETTER_BUTTON, "");
         this->letterButtons[i]->callback(this->cbSendLetterToField, this);
-        this->letterFields[i] = new Fl_Input(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS - 100, this->SIDE_LENGTH_OF_BUTTON, this->SIDE_LENGTH_OF_BUTTON, "");
+        this->letterFields[i] = new Fl_Input(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS - Y_POS_DEC, this->SIDE_LENGTH_OF_LETTER_BUTTON, this->SIDE_LENGTH_OF_LETTER_BUTTON, "");
         this->letterFields[i]->deactivate();
         this->letterButtons[i]->deactivate();
-        accumulator += this->SIDE_LENGTH_OF_BUTTON + 5;
+        accumulator += this->SIDE_LENGTH_OF_LETTER_BUTTON + SPACE_LENGTH;
     }
 }
 
@@ -70,6 +77,7 @@ void TextTwistWindow::resetBoard()
     delete this->letterFieldsUsed;
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->letterFieldsUsed = new stack<Fl_Input*>();
+    this->didGameStart = true;
 }
 
 void TextTwistWindow::cbSendLetterToField(Fl_Widget* widget, void* data)
@@ -113,7 +121,10 @@ void TextTwistWindow::cbTwist(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
     window->controller->twist();
-    window->resetBoard();
+    if (window->didGameStart) {
+        window->resetBoard();
+    }
+
 }
 
 void TextTwistWindow::cbGenerate(Fl_Widget* widget, void* data)

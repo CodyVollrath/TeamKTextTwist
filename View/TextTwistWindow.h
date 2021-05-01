@@ -16,6 +16,9 @@ using namespace std;
 #include "TextTwistController.h"
 using namespace controller;
 
+#include "DictionaryLoader.h"
+using namespace fileio;
+
 namespace view
 {
 
@@ -30,9 +33,23 @@ class TextTwistWindow : public Fl_Window
     protected:
 
     private:
-        static const int SIDE_LENGTH_OF_BUTTON = 45;
+        const string DICT_NAME = "dictionary.txt";
+        static const int BUTTON_WIDTH = 100;
+        static const int BUTTON_HIGHT = 30;
+
+        static const int Y_POS_DIF = 35;
+        static const int LEFT_BUTTON_POS = 25;
+
+        static const int SIDE_LENGTH_OF_LETTER_BUTTON = 45;
         static const int LETTERS_X_POS = 95;
         static const int LETTERS_Y_POS = 250;
+
+        static const int TIME_LABEL_X_POS = 250;
+        static const int TIME_LABEL_Y_POS = 25;
+        static const int TIME_LABEL_SIDE_LENGTH = 25;
+
+        bool didGameStart = false;
+
 
         Fl_Button* letterButtons[TextTwistController::MAX_LETTER_LENGTH];
         Fl_Input* letterFields[TextTwistController::MAX_LETTER_LENGTH];
@@ -40,13 +57,16 @@ class TextTwistWindow : public Fl_Window
         Fl_Button* undoButton;
         Fl_Button* twistButton;
         Fl_Button* generateButton;
+        Fl_Button* submitButton;
 
         Fl_Box* timerLabel;
+
 
         stack<Fl_Button*>* letterButtonsUsed;
         stack<Fl_Input*>* letterFieldsUsed;
 
         TextTwistController* controller;
+        DictionaryLoader* dictLoader;
 
         void initializeBoardElements();
         void establishCallBacks();
