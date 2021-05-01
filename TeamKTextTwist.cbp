@@ -16,6 +16,8 @@
 					<Add directory="View" />
 					<Add directory="Resources" />
 					<Add directory="Controller" />
+					<Add directory="FileIO" />
+					<Add directory="Model" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -27,8 +29,10 @@
 		</Linker>
 		<Unit filename="Controller/TextTwistController.cpp" />
 		<Unit filename="Controller/TextTwistController.h" />
-		<Unit filename="IO/DictionaryLoader.cpp" />
-		<Unit filename="IO/DictionaryLoader.h" />
+		<Unit filename="FileIO/DictionaryLoader.cpp" />
+		<Unit filename="FileIO/DictionaryLoader.h" />
+		<Unit filename="Model/TextTwistDictionary.cpp" />
+		<Unit filename="Model/TextTwistDictionary.h" />
 		<Unit filename="Model/TextTwister.cpp" />
 		<Unit filename="Model/TextTwister.h" />
 		<Unit filename="Resources/ResourceData.cpp" />
