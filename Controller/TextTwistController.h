@@ -7,6 +7,9 @@
 #include <algorithm>
 using namespace std;
 
+#include "TextTwistDictionary.h"
+using namespace model;
+
 namespace controller
 {
 
@@ -25,6 +28,7 @@ public:
     string* getLetters();
 
 private:
+    TextTwistDictionary* dictionary;
     string letters[MAX_LETTER_LENGTH];
     int letterBrackets[26];
     int maxBracket;

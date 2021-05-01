@@ -16,8 +16,6 @@ using namespace std;
 #include "TextTwistController.h"
 using namespace controller;
 
-#include "DictionaryLoader.h"
-using namespace fileio;
 
 namespace view
 {
@@ -33,7 +31,6 @@ class TextTwistWindow : public Fl_Window
     protected:
 
     private:
-        const string DICT_NAME = "dictionary.txt";
         static const int BUTTON_WIDTH = 100;
         static const int BUTTON_HIGHT = 30;
 
@@ -62,11 +59,13 @@ class TextTwistWindow : public Fl_Window
         Fl_Box* timerLabel;
 
 
+
+
         stack<Fl_Button*>* letterButtonsUsed;
         stack<Fl_Input*>* letterFieldsUsed;
 
         TextTwistController* controller;
-        DictionaryLoader* dictLoader;
+
 
         void initializeBoardElements();
         void establishCallBacks();

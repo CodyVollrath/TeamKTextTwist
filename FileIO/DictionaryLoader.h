@@ -12,14 +12,14 @@ namespace fileio
 class DictionaryLoader
 {
     public:
-        DictionaryLoader(const string& filename);
+        DictionaryLoader();
         virtual ~DictionaryLoader();
-        set<string> getDictionary() const;
+        set<string> getDictionary(const string& filename) const;
 
     protected:
 
     private:
-        set<string>* dictionary;
+
 };
 }
 

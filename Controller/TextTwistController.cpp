@@ -14,6 +14,7 @@ TextTwistController::TextTwistController()
         this->letterBrackets[i] = counter;
     }
     this->maxBracket = counter;
+    this->dictionary = new TextTwistDictionary();
 }
 TextTwistController::~TextTwistController()
 {

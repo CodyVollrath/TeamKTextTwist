@@ -22,7 +22,6 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->letterFieldsUsed = new stack<Fl_Input*>();
-    this->dictLoader = new DictionaryLoader(this->DICT_NAME);
 
     this->initializeBoardElements();
     end();
