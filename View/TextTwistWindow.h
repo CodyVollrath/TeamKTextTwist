@@ -5,6 +5,7 @@
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Button.H>
 #include <FL/Enumerations.H>
+#include <FL/Fl_Box.H>
 #include <FL/Fl_Input.H>
 
 #include <string>
@@ -40,10 +41,13 @@ class TextTwistWindow : public Fl_Window
         Fl_Button* twistButton;
         Fl_Button* generateButton;
 
+        Fl_Box* timerLabel;
+
         stack<Fl_Button*>* letterButtonsUsed;
         stack<Fl_Input*>* letterFieldsUsed;
 
         TextTwistController* controller;
+
         void initializeBoardElements();
         void establishCallBacks();
         void placeLetterToNextEmptyField(const char* letter);

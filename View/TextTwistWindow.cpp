@@ -7,12 +7,13 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 {
     begin();
     this->controller = new TextTwistController();
-    this->initializeBoardElements();
+
 
     this->undoButton = new Fl_Button(25, 25, 100,30, "Undo");
     this->twistButton = new Fl_Button(25, 60, 100, 30, "Twist");
     this->generateButton = new Fl_Button(25,95, 100, 30, "Start");
 
+    this->timerLabel = new Fl_Box(250, 25, 25, 40, "00:00:00");
     this->undoButton->callback(this->cbUndo, this);
     this->twistButton->callback(this->cbTwist, this);
     this->generateButton->callback(this->cbGenerate, this);
@@ -20,7 +21,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->letterFieldsUsed = new stack<Fl_Input*>();
 
-    this->resetBoard();
+    this->initializeBoardElements();
     end();
 }
 
@@ -50,6 +51,7 @@ void TextTwistWindow::initializeBoardElements()
         this->letterButtons[i]->callback(this->cbSendLetterToField, this);
         this->letterFields[i] = new Fl_Input(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS - 100, this->SIDE_LENGTH_OF_BUTTON, this->SIDE_LENGTH_OF_BUTTON, "");
         this->letterFields[i]->deactivate();
+        this->letterButtons[i]->deactivate();
         accumulator += this->SIDE_LENGTH_OF_BUTTON + 5;
     }
 }
