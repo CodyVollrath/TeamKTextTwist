@@ -27,6 +27,10 @@
 		</Linker>
 		<Unit filename="Controller/TextTwistController.cpp" />
 		<Unit filename="Controller/TextTwistController.h" />
+		<Unit filename="IO/DictionaryLoader.cpp" />
+		<Unit filename="IO/DictionaryLoader.h" />
+		<Unit filename="Model/TextTwister.cpp" />
+		<Unit filename="Model/TextTwister.h" />
 		<Unit filename="Resources/ResourceData.cpp" />
 		<Unit filename="Resources/ResourceData.h" />
 		<Unit filename="View/TextTwistWindow.cpp" />

@@ -32,7 +32,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 TextTwistWindow::~TextTwistWindow()
 {
 
-    for (int i = 0; i < TextTwistController::MAX_LETTER_LENGTH; i++)
+    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
     {
         delete this->letterButtons[i];
         delete this->letterFields[i];
@@ -53,7 +53,7 @@ void TextTwistWindow::initializeBoardElements()
     int accumulator = 0;
     const int Y_POS_DEC = 100;
     const int SPACE_LENGTH = 5;
-    for (int i = 0; i < TextTwistController::MAX_LETTER_LENGTH; i++)
+    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
     {
         this->letterButtons[i] =  new Fl_Button(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS,this->SIDE_LENGTH_OF_LETTER_BUTTON, this->SIDE_LENGTH_OF_LETTER_BUTTON, "");
         this->letterButtons[i]->callback(this->cbSendLetterToField, this);
@@ -67,7 +67,7 @@ void TextTwistWindow::initializeBoardElements()
 void TextTwistWindow::resetBoard()
 {
     string* letters = this->controller->getLetters();
-    for (int i = 0; i < TextTwistController::MAX_LETTER_LENGTH; i++)
+    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
     {
         Fl_Button* button = this->letterButtons[i];
         button->label(letters[i].c_str());
@@ -92,7 +92,7 @@ void TextTwistWindow::cbSendLetterToField(Fl_Widget* widget, void* data)
 
 void TextTwistWindow::placeLetterToNextEmptyField(const char* letter)
 {
-    for (int i = 0; i < TextTwistController::MAX_LETTER_LENGTH; i++)
+    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
     {
         string value = this->letterFields[i]->value();
         if (value == "")
