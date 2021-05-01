@@ -13,11 +13,13 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->twistButton = new Fl_Button(this->LEFT_BUTTON_POS, this->LEFT_BUTTON_POS + this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Twist");
     this->generateButton = new Fl_Button(this->LEFT_BUTTON_POS,this->LEFT_BUTTON_POS + GENERATE_BUTTON_POS_ADDER, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Start");
 
-    this->submitButton = new Fl_Button(220, 325, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Submit");
+    this->submitButton = new Fl_Button(this->SUBMIT_BUTTON_X_POS, this->SUBMIT_BUTTON_Y_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Submit");
 
-    this->settingsButton = new Fl_Button(400, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Settings");
+    this->settingsButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Settings");
+    this->settingsButton->callback(this->cbDisplaySettings, this);
 
     this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
+
     this->undoButton->callback(this->cbUndo, this);
     this->twistButton->callback(this->cbTwist, this);
     this->generateButton->callback(this->cbGenerate, this);
@@ -133,6 +135,17 @@ void TextTwistWindow::cbGenerate(Fl_Widget* widget, void* data)
     TextTwistWindow* window = (TextTwistWindow*)data;
     window->controller->generate();
     window->resetBoard();
+}
+
+void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
+{
+    TextTwistWindow* window = (TextTwistWindow*)data;
+    SettingsWindow settings;
+    settings.set_modal();
+    settings.show();
+    while (settings.shown()) {
+        Fl::wait();
+    }
 }
 }
 
