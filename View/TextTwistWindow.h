@@ -58,25 +58,25 @@ class TextTwistWindow : public Fl_Window
         Fl_Button* settingsButton;
 
         Fl_Box* timerLabel;
-
-
-
-
+        Fl_Box* scoreLabel;
 
         stack<Fl_Button*>* letterButtonsUsed;
         stack<Fl_Input*>* letterFieldsUsed;
 
         TextTwistController* controller;
 
-
         void initializeBoardElements();
         void establishCallBacks();
         void placeLetterToNextEmptyField(const char* letter);
+        void submit();
+        string* getSelectedLetters();
+        void updateScore();
 
         static void cbSendLetterToField(Fl_Widget* widget, void* data);
         static void cbUndo(Fl_Widget* widget, void* data);
         static void cbGenerate(Fl_Widget* widget, void* data);
         static void cbTwist(Fl_Widget* widget, void* data);
+        static void cbSubmit(Fl_Widget* widget, void* data);
 };
 }
 #endif // TEXT_TWIST_WINDOW_H

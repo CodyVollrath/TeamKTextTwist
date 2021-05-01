@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <set>
 using namespace std;
 
 #include "TextTwistDictionary.h"
@@ -24,6 +25,9 @@ class TextTwister
         void generate();
         void twist();
         string* getLetters();
+        void submit(string* letters);
+        int getScore();
+        void reset();
 
     private:
         TextTwistDictionary* dictionary;
@@ -32,6 +36,9 @@ class TextTwister
         int maxBracket;
         char getRandomLetter(vector<char> usedLetters);
         int getLetterIndex(int value);
+        int score;
+        set<string>* usedWords;
+
 };
 
 }

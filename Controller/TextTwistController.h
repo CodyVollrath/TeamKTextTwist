@@ -20,6 +20,8 @@ public:
     void generate();
     void twist();
     string* getLetters();
+    void submit(string* letters);
+    int getScore();
 
 private:
     TextTwister* twister;

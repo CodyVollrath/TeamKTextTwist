@@ -18,9 +18,12 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->settingsButton = new Fl_Button(400, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Settings");
 
     this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
+    this->scoreLabel = new Fl_Box(this->TIME_LABEL_X_POS - 50, this->TIME_LABEL_Y_POS + 50, 150, 50, "Score: 0");
+
     this->undoButton->callback(this->cbUndo, this);
     this->twistButton->callback(this->cbTwist, this);
     this->generateButton->callback(this->cbGenerate, this);
+    this->submitButton->callback(this->cbSubmit, this);
 
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->letterFieldsUsed = new stack<Fl_Input*>();
@@ -81,6 +84,35 @@ void TextTwistWindow::resetBoard()
     this->didGameStart = true;
 }
 
+
+string* TextTwistWindow::getSelectedLetters()
+{
+    string* letters = new string[TextTwister::MAX_LETTER_LENGTH];
+    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
+    {
+        Fl_Input* field = this->letterFields[i];
+        letters[i] = field->value();
+    }
+    return letters;
+}
+
+void TextTwistWindow::updateScore()
+{
+    int score = this->controller->getScore();
+    string formattedScore = "Score: " + to_string(score);
+    cout << formattedScore << endl;
+    this->scoreLabel->label(formattedScore.c_str());
+}
+
+void TextTwistWindow::submit()
+{
+    string* letters = this->getSelectedLetters();
+    this->controller->submit(letters);
+    delete[] letters;
+    this->updateScore();
+    this->resetBoard();
+}
+
 void TextTwistWindow::cbSendLetterToField(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
@@ -133,6 +165,11 @@ void TextTwistWindow::cbGenerate(Fl_Widget* widget, void* data)
     TextTwistWindow* window = (TextTwistWindow*)data;
     window->controller->generate();
     window->resetBoard();
+}
+
+void TextTwistWindow::cbSubmit(Fl_Widget* widget, void* data) {
+    TextTwistWindow* window = (TextTwistWindow*)data;
+    window->submit();
 }
 }
 

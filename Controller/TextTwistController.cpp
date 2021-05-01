@@ -24,4 +24,14 @@ string* TextTwistController::getLetters()
 {
     return this->twister->getLetters();
 }
+
+void TextTwistController::submit(string* letters) {
+    this->twister->submit(letters);
+}
+
+int TextTwistController::getScore()
+{
+    return this->twister->getScore();
+}
+
 }

@@ -30,7 +30,7 @@
 1619892600 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/main.cpp
 	"TextTwistWindow.h"
 
-1619898853 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
+1619905989 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -42,14 +42,14 @@
 	<stack>
 	"TextTwistController.h"
 
-1619898246 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.cpp
+1619903078 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.cpp
 	"TextTwistController.h"
 
-1619898794 /home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.h
+1619902909 /home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.h
 	<string>
 	"TextTwister.h"
 
-1619898891 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
+1619909748 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
 1619840820 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
@@ -86,19 +86,21 @@
 	<string>
 	<set>
 
-1619894806 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwistDictionary.cpp
+1619908911 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwistDictionary.cpp
 	"TextTwistDictionary.h"
 
-1619896940 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwistDictionary.h
+1619908891 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwistDictionary.h
+	<algorithm>
 	"DictionaryLoader.h"
 
-1619898770 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwister.h
+1619907990 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwister.h
 	<iostream>
 	<vector>
 	<string>
 	<algorithm>
+	<set>
 	"TextTwistDictionary.h"
 
-1619898840 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwister.cpp
+1619909856 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwister.cpp
 	"TextTwister.h"
 

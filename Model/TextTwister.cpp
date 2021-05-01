@@ -15,10 +15,13 @@ TextTwister::TextTwister()
     }
     this->maxBracket = counter;
     this->dictionary = new TextTwistDictionary();
+    this->score = 0;
+    this->usedWords = new set<string>();
 }
 TextTwister::~TextTwister()
 {
     delete this->dictionary;
+    delete this->usedWords;
 }
 
 int TextTwister::getLetterIndex(int value)
@@ -40,10 +43,10 @@ char TextTwister::getRandomLetter(vector<char> usedLetters)
         int randomValue = rand() % this->maxBracket;
         int letterIndex = this->getLetterIndex(randomValue);
         char randomCharacter = 'a' + letterIndex;
-        if (find(usedLetters.begin(), usedLetters.end(), randomCharacter) == usedLetters.end())
-        {
+        //if (find(usedLetters.begin(), usedLetters.end(), randomCharacter) == usedLetters.end())
+        //{
             return randomCharacter;
-        }
+        //}
     }
 }
 
@@ -57,6 +60,12 @@ void TextTwister::generate()
         this->letters[i] = string(1, letter);
     }
 }
+
+void TextTwister::reset()
+{
+    this->score = 0;
+}
+
 void TextTwister::twist()
 {
     random_shuffle(begin(this->letters), end(this->letters));
@@ -65,6 +74,31 @@ void TextTwister::twist()
 string* TextTwister::getLetters()
 {
     return this->letters;
+}
+
+void TextTwister::submit(string* letters) {
+    string word;
+    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
+    {
+        string letter = letters[i];
+        if (!letter.empty()) {
+            word += letter;
+        }
+    }
+    bool used = find(this->usedWords->begin(), this->usedWords->end(), word) == this->usedWords->end();
+    bool inDictionary = this->dictionary->contains(word);
+    if (inDictionary && !used) {
+        int letterCount = word.length();
+        this->score += (letterCount * letterCount * 10);  // update score
+        this->usedWords->insert(word);
+    } else if (!inDictionary) {
+        this->score -= 10;
+    }
+}
+
+int TextTwister::getScore()
+{
+    return this->score;
 }
 
 }
