@@ -18,10 +18,6 @@
 					<Add directory="Controller" />
 					<Add directory="FileIO" />
 					<Add directory="Model" />
-<<<<<<< HEAD
-					<Add directory="./" />
-=======
->>>>>>> 492058640c8e2906bb1be550fb6fd19a797185cf
 				</Compiler>
 			</Target>
 		</Build>
@@ -37,11 +33,8 @@
 		<Unit filename="FileIO/DictionaryLoader.h" />
 		<Unit filename="Model/TextTwistDictionary.cpp" />
 		<Unit filename="Model/TextTwistDictionary.h" />
-<<<<<<< HEAD
-=======
 		<Unit filename="Model/TextTwister.cpp" />
 		<Unit filename="Model/TextTwister.h" />
->>>>>>> 492058640c8e2906bb1be550fb6fd19a797185cf
 		<Unit filename="Resources/ResourceData.cpp" />
 		<Unit filename="Resources/ResourceData.h" />
 		<Unit filename="View/OkCancelWindow.cpp" />

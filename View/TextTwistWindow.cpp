@@ -171,6 +171,7 @@ void TextTwistWindow::cbGenerate(Fl_Widget* widget, void* data)
 void TextTwistWindow::cbSubmit(Fl_Widget* widget, void* data) {
     TextTwistWindow* window = (TextTwistWindow*)data;
     window->submit();
+}
 void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
