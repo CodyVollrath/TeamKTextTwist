@@ -54,8 +54,8 @@ class TextTwistWindow : public Fl_Window
         bool didGameStart = false;
 
 
-        Fl_Button* letterButtons[TextTwistController::MAX_LETTER_LENGTH];
-        Fl_Input* letterFields[TextTwistController::MAX_LETTER_LENGTH];
+        Fl_Button* letterButtons[TextTwister::MAX_LETTER_LENGTH];
+        Fl_Input* letterFields[TextTwister::MAX_LETTER_LENGTH];
 
         Fl_Button* undoButton;
         Fl_Button* twistButton;

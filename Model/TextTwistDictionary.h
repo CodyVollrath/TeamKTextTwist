@@ -11,7 +11,7 @@ class TextTwistDictionary
     public:
         TextTwistDictionary();
         virtual ~TextTwistDictionary();
-    protected:
+        set<string>* getDictionary();
 
     private:
         const string DICT_NAME = "dictionary.txt";
