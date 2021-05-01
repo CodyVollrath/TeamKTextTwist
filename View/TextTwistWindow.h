@@ -55,8 +55,10 @@ class TextTwistWindow : public Fl_Window
         Fl_Button* twistButton;
         Fl_Button* generateButton;
         Fl_Button* submitButton;
+        Fl_Button* settingsButton;
 
         Fl_Box* timerLabel;
+
 
 
 

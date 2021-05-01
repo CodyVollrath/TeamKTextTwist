@@ -15,6 +15,8 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 
     this->submitButton = new Fl_Button(220, 325, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Submit");
 
+    this->settingsButton = new Fl_Button(400, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Settings");
+
     this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
     this->undoButton->callback(this->cbUndo, this);
     this->twistButton->callback(this->cbTwist, this);

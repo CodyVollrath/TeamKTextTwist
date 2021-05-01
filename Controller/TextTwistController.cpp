@@ -18,7 +18,7 @@ TextTwistController::TextTwistController()
 }
 TextTwistController::~TextTwistController()
 {
-
+    delete this->dictionary;
 }
 
 int TextTwistController::getLetterIndex(int value)
