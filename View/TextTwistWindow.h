@@ -8,6 +8,8 @@
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Input.H>
 
+#include "SettingsWindow.h"
+
 #include <string>
 #include <iostream>
 #include <stack>
@@ -45,6 +47,10 @@ class TextTwistWindow : public Fl_Window
         static const int TIME_LABEL_Y_POS = 25;
         static const int TIME_LABEL_SIDE_LENGTH = 25;
 
+        static const int SUBMIT_BUTTON_X_POS = 220;
+        static const int SUBMIT_BUTTON_Y_POS = 325;
+        static const int SETTINGS_BUTTON_X_POS = 400;
+
         bool didGameStart = false;
 
 
@@ -56,7 +62,6 @@ class TextTwistWindow : public Fl_Window
         Fl_Button* generateButton;
         Fl_Button* submitButton;
         Fl_Button* settingsButton;
-
         Fl_Box* timerLabel;
         Fl_Box* scoreLabel;
 
@@ -77,6 +82,7 @@ class TextTwistWindow : public Fl_Window
         static void cbGenerate(Fl_Widget* widget, void* data);
         static void cbTwist(Fl_Widget* widget, void* data);
         static void cbSubmit(Fl_Widget* widget, void* data);
+        static void cbDisplaySettings(Fl_Widget* widget, void* data);
 };
 }
 #endif // TEXT_TWIST_WINDOW_H
