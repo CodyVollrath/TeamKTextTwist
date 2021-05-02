@@ -18,7 +18,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->settingsButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Settings");
     this->settingsButton->callback(this->cbDisplaySettings, this);
 
-    this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
+    this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH + 100, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
     this->scoreLabel = new Fl_Box(this->TIME_LABEL_X_POS - 50, this->TIME_LABEL_Y_POS + 50, 150, 50, "Score: 0");
     this->responseLabel = new Fl_Box(this->TIME_LABEL_X_POS - 200, this->TIME_LABEL_Y_POS + 165, 300, 50, "Response here!");
 
@@ -33,6 +33,8 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 
     this->initializeBoardElements();
     this->submitButton->deactivate();
+    this->controller->bindTimer(this->cbUpdateTimer, this);
+
     end();
 }
 
@@ -186,7 +188,7 @@ void TextTwistWindow::cbTwist(Fl_Widget* widget, void* data)
 void TextTwistWindow::cbGenerate(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
-    window->controller->generate();
+    window->controller->startGame();
     window->resetBoard();
     window->resetGame();
 }
@@ -213,5 +215,25 @@ void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
         Fl::wait();
     }
 }
+
+void TextTwistWindow::cbUpdateTimer(void* data, chrono::milliseconds remainingTime, bool timerRunning) {
+    TextTwistWindow* window = (TextTwistWindow*)data;
+    chrono::seconds secs = chrono::duration_cast<chrono::seconds>(remainingTime);
+    chrono::milliseconds ms = remainingTime - chrono::duration_cast<chrono::milliseconds>(secs);
+
+    chrono::minutes mins = chrono::duration_cast<chrono::minutes>(secs);
+    secs -= chrono::duration_cast<chrono::seconds>(mins);
+
+    chrono::hours hour = chrono::duration_cast<chrono::hours>(mins);
+    mins -= chrono::duration_cast<chrono::minutes>(hour);
+
+    stringstream ss;
+    ss <<  mins.count() << ":" << secs.count() << ":" << ms.count();
+    Fl::lock();
+    window->timerLabel->copy_label(ss.str().c_str());
+    Fl::unlock();
+    Fl::awake();
+}
+
 }
 

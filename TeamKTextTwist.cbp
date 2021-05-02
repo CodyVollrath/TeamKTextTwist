@@ -35,6 +35,8 @@
 		<Unit filename="Model/TextTwistDictionary.h" />
 		<Unit filename="Model/TextTwister.cpp" />
 		<Unit filename="Model/TextTwister.h" />
+		<Unit filename="Model/Timer.cpp" />
+		<Unit filename="Model/Timer.h" />
 		<Unit filename="Resources/ResourceData.cpp" />
 		<Unit filename="Resources/ResourceData.h" />
 		<Unit filename="View/OkCancelWindow.cpp" />

@@ -13,6 +13,8 @@
 #include <string>
 #include <iostream>
 #include <stack>
+#include <chrono>
+#include <sstream>
 using namespace std;
 
 #include "TextTwistController.h"
@@ -87,6 +89,7 @@ class TextTwistWindow : public Fl_Window
         static void cbTwist(Fl_Widget* widget, void* data);
         static void cbSubmit(Fl_Widget* widget, void* data);
         static void cbDisplaySettings(Fl_Widget* widget, void* data);
+        static void cbUpdateTimer(void* data, chrono::milliseconds elapsedTime, bool timerRunning);
 };
 }
 #endif // TEXT_TWIST_WINDOW_H

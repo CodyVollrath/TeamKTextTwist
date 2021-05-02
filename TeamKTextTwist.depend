@@ -31,7 +31,7 @@
 1619892600 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/main.cpp
 	"TextTwistWindow.h"
 
-1619933700 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
+1619978083 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -42,16 +42,19 @@
 	<string>
 	<iostream>
 	<stack>
+	<chrono>
+	<sstream>
 	"TextTwistController.h"
 
-1619933508 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.cpp
+1619978453 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.cpp
 	"TextTwistController.h"
 
-1619933496 /home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.h
+1619977952 /home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.h
 	<string>
 	"TextTwister.h"
+	"Timer.h"
 
-1619934715 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
+1619978351 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
 1619912876 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
@@ -161,4 +164,13 @@
 
 1619912876 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.cpp
 	"TextTwister.h"
+
+1619977873 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Timer.h
+	<iostream>
+	<thread>
+	<chrono>
+	<string>
+
+1619977934 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Timer.cpp
+	"Timer.h"
 
