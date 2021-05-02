@@ -83,5 +83,3 @@ void Timer::pause()
 }
 
 }
-
-

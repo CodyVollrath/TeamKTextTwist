@@ -6,6 +6,7 @@ using namespace std;
 
 #include "TextTwister.h"
 #include "Timer.h"
+#include "Settings.h"
 using namespace model;
 
 
@@ -27,10 +28,13 @@ public:
     void reset();
 
     void bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller);
+    void changeSettings(Settings* settings);
 
 private:
     TextTwister* twister;
     Timer* timer;
+    Settings* settings;
+    void applySettings();
 
 };
 

@@ -8,10 +8,10 @@
 1619979962 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
 	<unordered_map>
 
-1619981305 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
+1619997548 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619981332 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
+1619982827 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -22,6 +22,8 @@
 	<string>
 	<iostream>
 	<stack>
+	<chrono>
+	<sstream>
 	"TextTwistController.h"
 
 1619459847 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Resources/ResourceData.cpp
@@ -58,30 +60,33 @@
 1619978351 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619981418 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
+1619998115 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
 	<string>
 	"TextTwister.h"
+	"Timer.h"
+	"Settings.h"
 
-1619912876 source:/home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.cpp
+1619998194 source:/home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.cpp
 	"TextTwistController.h"
 
-1619838683 /home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.h
+1619981503 /home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.h
 	<iostream>
 	<fstream>
 	<string>
 	<set>
+	<algorithm>
 
-1619911064 source:/home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.cpp
+1619981503 source:/home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.cpp
 	"DictionaryLoader.h"
 
 1619912876 /home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.h
 	<algorithm>
 	"DictionaryLoader.h"
 
-1619912876 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.cpp
+1619981503 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.cpp
 	"TextTwistDictionary.h"
 
-1619840838 D
+1619912876 D
 
 1619891504 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistSettings.h
 	<FL/Fl.H>
@@ -96,10 +101,10 @@
 	<Fl/Fl_Window.H>
 	<Fl/Fl_Button.H>
 
-1619980837 source:/home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.cpp
+1619998405 source:/home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.cpp
 	"SettingsWindow.h"
 
-1619980641 /home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.h
+1619997483 /home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Choice.H>
 	<Fl/Fl_Input.H>
@@ -139,7 +144,7 @@
 
 1619898840 058640c8e2906bb1be550fb6fd19a797185cf
 
-1619912876 /home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.h
+1619981503 /home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.h
 	<iostream>
 	<vector>
 	<string>
@@ -164,16 +169,17 @@
 1619912007 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/SettingsWindow.cpp
 	"SettingsWindow.h"
 
-1619912876 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.cpp
+1619981503 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.cpp
 	"TextTwister.h"
 
-<<<<<<< HEAD
 1619980570 /home/cvollra1/Documents/TeamKTextTwist/Model/Settings.h
 	"ResourceData.h"
 
 1619977994 source:/home/cvollra1/Documents/TeamKTextTwist/Model/Settings.cpp
 	"Settings.h"
-=======
+
+1619977994 h"
+
 1619977873 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Timer.h
 	<iostream>
 	<thread>
@@ -182,5 +188,15 @@
 
 1619977934 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Timer.cpp
 	"Timer.h"
->>>>>>> de48cd97d1bfcb5417ef918ef0c0ab071cb09ac9
+
+1619977934 8cd97d1bfcb5417ef918ef0c0ab071cb09ac9
+
+1619983174 /home/cvollra1/Documents/TeamKTextTwist/Model/Timer.h
+	<iostream>
+	<thread>
+	<chrono>
+	<string>
+
+1619983151 source:/home/cvollra1/Documents/TeamKTextTwist/Model/Timer.cpp
+	"Timer.h"
 

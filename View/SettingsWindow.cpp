@@ -11,6 +11,7 @@ SettingsWindow::SettingsWindow() : OKCancelWindow(this->WINDOW_WIDTH, this->WIND
     this->allowReuse = new Fl_Check_Button(this->X_POS, this->Y_POS + 2 * this->Y_DIFF, this->WIDGET_WIDTH, this->WIDGET_HEIGHT, "Allow characters to be reused");
     this->setOKLocation(this->WINDOW_HEIGHT - 100, this->WINDOW_HEIGHT - 50);
     this->setCancelLocation(this->WINDOW_HEIGHT, this->WINDOW_HEIGHT - 50);
+    this->settings = 0;
     end();
 
 }
@@ -24,6 +25,9 @@ SettingsWindow::~SettingsWindow()
 
 void SettingsWindow::okHandler()
 {
+    if (this->settings) {
+        delete this->settings;
+    }
     int timeInMinutes = this->timerSettings->value() + 1;
     int sortOption = this->highScoreSort->value();
     bool isReusable = this->allowReuse->value();
@@ -36,6 +40,7 @@ void SettingsWindow::cancelHandler()
     if (this->settings) {
         delete this->settings;
     }
+    this->settings = 0;
     this->hide();
 }
 

@@ -54,14 +54,11 @@ TextTwistWindow::~TextTwistWindow()
     delete this->generateButton;
     delete this->submitButton;
     delete this->timerLabel;
-<<<<<<< HEAD
+
     delete this->clearButton;
-    delete this->scoreLabel;
-=======
     delete this->responseLabel;
     delete this->scoreLabel;
     delete this->settingsButton;
->>>>>>> de48cd97d1bfcb5417ef918ef0c0ab071cb09ac9
 
     delete this->controller;
     delete this->letterButtonsUsed;
@@ -225,7 +222,8 @@ void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
     }
 
     if (settingsWindow.getWindowResult() == OKCancelWindow::WindowResult::OK) {
-        settingsWindow.getSettings();
+        Settings* settings = settingsWindow.getSettings();
+        window->controller->changeSettings(settings);
     }
 }
 

@@ -6,11 +6,15 @@ TextTwistController::TextTwistController()
 {
     this->twister = new TextTwister();
     this->timer = new Timer(100);
+    //TODO Load settings from file
+    this->settings = new Settings(0, 0, false);
+    this->applySettings();
 }
 TextTwistController::~TextTwistController()
 {
     delete this->twister;
     delete this->timer;
+    delete this->settings;
 }
 
 void TextTwistController::startGame()
@@ -49,6 +53,21 @@ int TextTwistController::getScore()
 
 void TextTwistController::bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller) {
     this->timer->setCallback(callback, caller);
+}
+
+void TextTwistController::changeSettings(Settings* settings) {
+    this->settings->setTimeInMinutes(settings->getTimeInMinutes());
+    this->settings->setSortOption(settings->getSortOption());
+    this->settings->setReusableFlag(settings->getReusableFlag());
+    this->applySettings();
+}
+
+void TextTwistController::applySettings()
+{
+    //Put time in minutes into timer
+    //Put score sort in for the scoreboard object
+    //Change state for allowCharacterReuse
+    cout << this->settings->getTimeInMinutes() << "" << this->settings->getSortOption() << "" << this->settings->getReusableFlag()<< endl;
 }
 
 }
