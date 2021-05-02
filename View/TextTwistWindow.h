@@ -9,7 +9,6 @@
 #include <FL/Fl_Input.H>
 
 #include "SettingsWindow.h"
-
 #include <string>
 #include <iostream>
 #include <stack>
@@ -63,6 +62,8 @@ class TextTwistWindow : public Fl_Window
         Fl_Button* generateButton;
         Fl_Button* submitButton;
         Fl_Button* settingsButton;
+        Fl_Button* scoreBoardButton;
+
         Fl_Box* timerLabel;
         Fl_Box* scoreLabel;
 
@@ -85,6 +86,7 @@ class TextTwistWindow : public Fl_Window
         static void cbTwist(Fl_Widget* widget, void* data);
         static void cbSubmit(Fl_Widget* widget, void* data);
         static void cbDisplaySettings(Fl_Widget* widget, void* data);
+        static void cbDisplayScoreBoard(Fl_Widget* widget, void* data);
 };
 }
 #endif // TEXT_TWIST_WINDOW_H

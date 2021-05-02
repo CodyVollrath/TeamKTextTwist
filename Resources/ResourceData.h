@@ -1,16 +1,7 @@
 #ifndef RESOURCEDATA_H
 #define RESOURCEDATA_H
+#include <unordered_map>
+using namespace std;
 
-
-class ResourceData
-{
-public:
-    ResourceData();
-    virtual ~ResourceData();
-
-protected:
-
-private:
-};
 
 #endif // RESOURCEDATA_H

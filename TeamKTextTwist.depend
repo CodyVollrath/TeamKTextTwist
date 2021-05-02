@@ -2,15 +2,16 @@
 1619831339 source:/home/cvollra1/Documents/TeamKTextTwist/main.cpp
 	"TextTwistWindow.h"
 
-1619219628 source:/home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.cpp
+1619980082 source:/home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.cpp
 	"ResourceData.h"
 
-1619486064 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
+1619979962 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
+	<unordered_map>
 
-1619908913 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
+1619981305 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619920794 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
+1619981332 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -54,7 +55,7 @@
 1619909748 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619912876 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
+1619981418 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
 	<string>
 	"TextTwister.h"
 
@@ -92,15 +93,16 @@
 	<Fl/Fl_Window.H>
 	<Fl/Fl_Button.H>
 
-1619908831 source:/home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.cpp
+1619980837 source:/home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.cpp
 	"SettingsWindow.h"
 
-1619908661 /home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.h
+1619980641 /home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Choice.H>
 	<Fl/Fl_Input.H>
 	<Fl/Fl_Check_Button.H>
 	<iostream>
+	"Settings.h"
 
 1619908661 
 
@@ -160,4 +162,10 @@
 
 1619912876 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.cpp
 	"TextTwister.h"
+
+1619980570 /home/cvollra1/Documents/TeamKTextTwist/Model/Settings.h
+	"ResourceData.h"
+
+1619977994 source:/home/cvollra1/Documents/TeamKTextTwist/Model/Settings.cpp
+	"Settings.h"
 

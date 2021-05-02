@@ -11,12 +11,13 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->undoButton = new Fl_Button(this->LEFT_BUTTON_POS, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Undo");
     this->twistButton = new Fl_Button(this->LEFT_BUTTON_POS, this->LEFT_BUTTON_POS + this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Twist");
     this->generateButton = new Fl_Button(this->LEFT_BUTTON_POS,this->LEFT_BUTTON_POS + 2 * this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Start");
-    this->clearButton = new Fl_Button(this->LEFT_BUTTON_POS, this->LEFT_BUTTON_POS + 3*this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Clear");
 
     this->submitButton = new Fl_Button(this->SUBMIT_BUTTON_X_POS, this->SUBMIT_BUTTON_Y_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Submit");
 
     this->settingsButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Settings");
-    this->settingsButton->callback(this->cbDisplaySettings, this);
+    this->scoreBoardButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS + this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "High Scores");
+    this->clearButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS + 2 * this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Clear");
+
 
     this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
     this->scoreLabel = new Fl_Box(this->TIME_LABEL_X_POS - 50, this->TIME_LABEL_Y_POS + 50, 150, 50, "Score: 0");
@@ -26,6 +27,8 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->generateButton->callback(this->cbGenerate, this);
     this->clearButton->callback(this->cbClear, this);
     this->submitButton->callback(this->cbSubmit, this);
+    this->settingsButton->callback(this->cbDisplaySettings, this);
+
 
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->letterFieldsUsed = new stack<Fl_Input*>();
@@ -47,6 +50,8 @@ TextTwistWindow::~TextTwistWindow()
     delete this->generateButton;
     delete this->submitButton;
     delete this->timerLabel;
+    delete this->clearButton;
+    delete this->scoreLabel;
 
     delete this->controller;
     delete this->letterButtonsUsed;
@@ -184,12 +189,23 @@ void TextTwistWindow::cbSubmit(Fl_Widget* widget, void* data) {
 void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
-    SettingsWindow settings;
-    settings.set_modal();
-    settings.show();
-    while (settings.shown()) {
+    SettingsWindow settingsWindow;
+    settingsWindow.set_modal();
+    settingsWindow.show();
+
+    while (settingsWindow.shown()) {
         Fl::wait();
     }
+
+    if (settingsWindow.getWindowResult() == OKCancelWindow::WindowResult::OK) {
+        settingsWindow.getSettings();
+    }
+}
+
+void TextTwistWindow::cbDisplayScoreBoard(Fl_Widget* widget, void* data)
+{
+    TextTwistWindow* window = (TextTwistWindow*)data;
+    //TODO Show scoreboard and transfer data from main board between windows
 }
 }
 
