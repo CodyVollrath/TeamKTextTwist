@@ -21,12 +21,14 @@ public:
     virtual ~TextTwistController();
     void startGame();
     void pauseGame();
+    void resumeGame();
     void twist();
     string* getLetters();
     string submit(string* letters);
     int getScore();
     void reset();
 
+    void setDuration(int duration);
     void bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller);
     void changeSettings(Settings* settings);
 

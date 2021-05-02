@@ -14,6 +14,7 @@
 #include <stack>
 #include <chrono>
 #include <sstream>
+#include <iomanip>
 using namespace std;
 
 #include "TextTwistController.h"
@@ -82,6 +83,7 @@ class TextTwistWindow : public Fl_Window
         void updateScore();
         void resetGame();
         void resetBoard();
+        void updateTimer(chrono::milliseconds remainingTime);
 
         static void cbSendLetterToField(Fl_Widget* widget, void* data);
         static void cbUndo(Fl_Widget* widget, void* data);
