@@ -26,6 +26,7 @@ public:
     int getScore();
     void reset();
 
+    void setDuration(int duration);
     void bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller);
 
 private:

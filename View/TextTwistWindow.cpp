@@ -54,14 +54,12 @@ TextTwistWindow::~TextTwistWindow()
     delete this->generateButton;
     delete this->submitButton;
     delete this->timerLabel;
-<<<<<<< HEAD
     delete this->clearButton;
     delete this->scoreLabel;
-=======
+
     delete this->responseLabel;
     delete this->scoreLabel;
     delete this->settingsButton;
->>>>>>> de48cd97d1bfcb5417ef918ef0c0ab071cb09ac9
 
     delete this->controller;
     delete this->letterButtonsUsed;
@@ -225,7 +223,12 @@ void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
     }
 
     if (settingsWindow.getWindowResult() == OKCancelWindow::WindowResult::OK) {
-        settingsWindow.getSettings();
+        Settings* settings = settingsWindow.getSettings();
+        int minutes = settings->getTimeInMinutes();
+        window->controller->setDuration(minutes);
+        if (!window->didGameStart) {
+            window->updateTimer(chrono::milliseconds(minutes * 60 * 1000));
+        }
     }
 }
 
@@ -235,8 +238,8 @@ void TextTwistWindow::cbDisplayScoreBoard(Fl_Widget* widget, void* data)
     //TODO Show scoreboard and transfer data from main board between windows
 }
 
-void TextTwistWindow::cbUpdateTimer(void* data, chrono::milliseconds remainingTime, bool timerRunning) {
-    TextTwistWindow* window = (TextTwistWindow*)data;
+void TextTwistWindow::updateTimer(chrono::milliseconds remainingTime) {
+
     chrono::seconds secs = chrono::duration_cast<chrono::seconds>(remainingTime);
     chrono::milliseconds ms = remainingTime - chrono::duration_cast<chrono::milliseconds>(secs);
 
@@ -247,9 +250,21 @@ void TextTwistWindow::cbUpdateTimer(void* data, chrono::milliseconds remainingTi
     mins -= chrono::duration_cast<chrono::minutes>(hour);
 
     stringstream ss;
-    ss <<  mins.count() << ":" << secs.count() << ":" << ms.count();
+    ss <<  setw(1) << setfill('0') << mins.count();
+    ss << ":";
+    ss <<  setw(2) << setfill('0') << secs.count();
+    ss << ":";
+    ss <<  setw(3) << setfill('0') << ms.count();
+    this->timerLabel->copy_label(ss.str().c_str());
+}
+
+void TextTwistWindow::cbUpdateTimer(void* data, chrono::milliseconds remainingTime, bool timerRunning) {
+    TextTwistWindow* window = (TextTwistWindow*)data;
     Fl::lock();
-    window->timerLabel->copy_label(ss.str().c_str());
+    window->updateTimer(remainingTime);
+    if (!timerRunning) {
+        // Show win!
+    }
     Fl::unlock();
     Fl::awake();
 }

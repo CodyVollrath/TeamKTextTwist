@@ -24,6 +24,11 @@ void TextTwistController::pauseGame()
     this->timer->pause();
 }
 
+void TextTwistController::resumeGame()
+{
+    this->timer->resume();
+}
+
 void TextTwistController::twist()
 {
     this->twister->twist();
@@ -37,6 +42,12 @@ string* TextTwistController::getLetters()
 {
     return this->twister->getLetters();
 }
+
+void TextTwistController::setDuration(int duration)
+{
+    this->timer->setDuration(duration*60*1000);
+}
+
 
 string TextTwistController::submit(string* letters) {
     return this->twister->submit(letters);
