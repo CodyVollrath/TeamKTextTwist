@@ -7,11 +7,11 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 {
     begin();
     this->controller = new TextTwistController();
-    const int GENERATE_BUTTON_POS_ADDER = 2 * this->Y_POS_DIF;
 
     this->undoButton = new Fl_Button(this->LEFT_BUTTON_POS, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Undo");
     this->twistButton = new Fl_Button(this->LEFT_BUTTON_POS, this->LEFT_BUTTON_POS + this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Twist");
-    this->generateButton = new Fl_Button(this->LEFT_BUTTON_POS,this->LEFT_BUTTON_POS + GENERATE_BUTTON_POS_ADDER, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Start");
+    this->generateButton = new Fl_Button(this->LEFT_BUTTON_POS,this->LEFT_BUTTON_POS + 2 * this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Start");
+    this->clearButton = new Fl_Button(this->LEFT_BUTTON_POS, this->LEFT_BUTTON_POS + 3*this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Clear");
 
     this->submitButton = new Fl_Button(this->SUBMIT_BUTTON_X_POS, this->SUBMIT_BUTTON_Y_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Submit");
 
@@ -24,6 +24,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->undoButton->callback(this->cbUndo, this);
     this->twistButton->callback(this->cbTwist, this);
     this->generateButton->callback(this->cbGenerate, this);
+    this->clearButton->callback(this->cbClear, this);
     this->submitButton->callback(this->cbSubmit, this);
 
     this->letterButtonsUsed = new stack<Fl_Button*>();
@@ -166,6 +167,14 @@ void TextTwistWindow::cbGenerate(Fl_Widget* widget, void* data)
     TextTwistWindow* window = (TextTwistWindow*)data;
     window->controller->generate();
     window->resetBoard();
+}
+
+void TextTwistWindow::cbClear(Fl_Widget* widget, void* data)
+{
+    TextTwistWindow* window = (TextTwistWindow*)data;
+    if (window->didGameStart) {
+        window->resetBoard();
+    }
 }
 
 void TextTwistWindow::cbSubmit(Fl_Widget* widget, void* data) {

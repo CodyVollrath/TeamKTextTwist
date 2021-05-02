@@ -10,7 +10,7 @@
 1619908913 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619908913 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
+1619920794 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -54,11 +54,11 @@
 1619909748 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619908913 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
+1619912876 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
 	<string>
 	"TextTwister.h"
 
-1619908913 source:/home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.cpp
+1619912876 source:/home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.cpp
 	"TextTwistController.h"
 
 1619838683 /home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.h
@@ -67,13 +67,14 @@
 	<string>
 	<set>
 
-1619840538 source:/home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.cpp
+1619911064 source:/home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.cpp
 	"DictionaryLoader.h"
 
-1619908913 /home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.h
+1619912876 /home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.h
+	<algorithm>
 	"DictionaryLoader.h"
 
-1619908913 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.cpp
+1619912876 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.cpp
 	"TextTwistDictionary.h"
 
 1619840838 D
@@ -132,11 +133,12 @@
 
 1619898840 058640c8e2906bb1be550fb6fd19a797185cf
 
-1619908913 /home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.h
+1619912876 /home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.h
 	<iostream>
 	<vector>
 	<string>
 	<algorithm>
+	<set>
 	"TextTwistDictionary.h"
 
 1619911717 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/SettingsWindow.h
@@ -155,4 +157,7 @@
 
 1619911717 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/SettingsWindow.cpp
 	"SettingsWindow.h"
+
+1619912876 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.cpp
+	"TextTwister.h"
 
