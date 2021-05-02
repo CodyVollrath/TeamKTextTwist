@@ -12,6 +12,8 @@
 #include <string>
 #include <iostream>
 #include <stack>
+#include <chrono>
+#include <sstream>
 using namespace std;
 
 #include "TextTwistController.h"
@@ -27,7 +29,6 @@ class TextTwistWindow : public Fl_Window
     public:
         TextTwistWindow(int width, int height, const char* title);
         virtual ~TextTwistWindow();
-        void resetBoard();
 
     protected:
 
@@ -66,6 +67,7 @@ class TextTwistWindow : public Fl_Window
 
         Fl_Box* timerLabel;
         Fl_Box* scoreLabel;
+        Fl_Box* responseLabel;
 
         stack<Fl_Button*>* letterButtonsUsed;
         stack<Fl_Input*>* letterFieldsUsed;
@@ -78,6 +80,8 @@ class TextTwistWindow : public Fl_Window
         void submit();
         string* getSelectedLetters();
         void updateScore();
+        void resetGame();
+        void resetBoard();
 
         static void cbSendLetterToField(Fl_Widget* widget, void* data);
         static void cbUndo(Fl_Widget* widget, void* data);
@@ -86,7 +90,11 @@ class TextTwistWindow : public Fl_Window
         static void cbTwist(Fl_Widget* widget, void* data);
         static void cbSubmit(Fl_Widget* widget, void* data);
         static void cbDisplaySettings(Fl_Widget* widget, void* data);
+<<<<<<< HEAD
         static void cbDisplayScoreBoard(Fl_Widget* widget, void* data);
+=======
+        static void cbUpdateTimer(void* data, chrono::milliseconds elapsedTime, bool timerRunning);
+>>>>>>> de48cd97d1bfcb5417ef918ef0c0ab071cb09ac9
 };
 }
 #endif // TEXT_TWIST_WINDOW_H

@@ -31,6 +31,8 @@
 		<Unit filename="Controller/TextTwistController.h" />
 		<Unit filename="FileIO/DictionaryLoader.cpp" />
 		<Unit filename="FileIO/DictionaryLoader.h" />
+		<Unit filename="Model/Settings.cpp" />
+		<Unit filename="Model/Settings.h" />
 		<Unit filename="Model/TextTwistDictionary.cpp" />
 		<Unit filename="Model/TextTwistDictionary.h" />
 		<Unit filename="Model/TextTwister.cpp" />

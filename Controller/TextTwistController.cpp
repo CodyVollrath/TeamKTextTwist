@@ -5,19 +5,32 @@ namespace controller
 TextTwistController::TextTwistController()
 {
     this->twister = new TextTwister();
+    this->timer = new Timer(100);
 }
 TextTwistController::~TextTwistController()
 {
     delete this->twister;
+    delete this->timer;
 }
 
-void TextTwistController::generate()
+void TextTwistController::startGame()
 {
+    this->timer->start();
     this->twister->generate();
 }
+
+void TextTwistController::pauseGame()
+{
+    this->timer->pause();
+}
+
 void TextTwistController::twist()
 {
     this->twister->twist();
+}
+
+void TextTwistController::reset() {
+    this->twister->reset();
 }
 
 string* TextTwistController::getLetters()
@@ -25,13 +38,17 @@ string* TextTwistController::getLetters()
     return this->twister->getLetters();
 }
 
-void TextTwistController::submit(string* letters) {
-    this->twister->submit(letters);
+string TextTwistController::submit(string* letters) {
+    return this->twister->submit(letters);
 }
 
 int TextTwistController::getScore()
 {
     return this->twister->getScore();
+}
+
+void TextTwistController::bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller) {
+    this->timer->setCallback(callback, caller);
 }
 
 }

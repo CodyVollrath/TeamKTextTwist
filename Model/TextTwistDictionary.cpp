@@ -4,7 +4,7 @@ namespace model
 TextTwistDictionary::TextTwistDictionary()
 {
     DictionaryLoader loader;
-    this->dictionary = new set<string>(loader.getDictionary(this->DICT_NAME));
+    this->dictionary = loader.getDictionary(this->DICT_NAME);
 }
 
 TextTwistDictionary::~TextTwistDictionary()
@@ -13,7 +13,7 @@ TextTwistDictionary::~TextTwistDictionary()
 }
 
 bool TextTwistDictionary::contains(string& word) {
-    return find(this->dictionary->begin(), this->dictionary->end(), word) != this->dictionary->end();
+    return std::find(this->dictionary->begin(), this->dictionary->end(), word) != this->dictionary->end();
 }
 
 }

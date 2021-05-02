@@ -25,7 +25,7 @@ class TextTwister
         void generate();
         void twist();
         string* getLetters();
-        void submit(string* letters);
+        string submit(string* letters);
         int getScore();
         void reset();
 
@@ -34,7 +34,7 @@ class TextTwister
         string letters[MAX_LETTER_LENGTH];
         int letterBrackets[26];
         int maxBracket;
-        char getRandomLetter(vector<char> usedLetters);
+        char getRandomLetter();
         int getLetterIndex(int value);
         int score;
         set<string>* usedWords;

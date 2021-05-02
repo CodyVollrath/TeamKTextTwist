@@ -5,6 +5,7 @@
 using namespace std;
 
 #include "TextTwister.h"
+#include "Timer.h"
 using namespace model;
 
 
@@ -17,14 +18,19 @@ class TextTwistController
 public:
     TextTwistController();
     virtual ~TextTwistController();
-    void generate();
+    void startGame();
+    void pauseGame();
     void twist();
     string* getLetters();
-    void submit(string* letters);
+    string submit(string* letters);
     int getScore();
+    void reset();
+
+    void bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller);
 
 private:
     TextTwister* twister;
+    Timer* timer;
 
 };
 

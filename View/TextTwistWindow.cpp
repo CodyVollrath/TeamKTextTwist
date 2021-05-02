@@ -19,8 +19,9 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->clearButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS + 2 * this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Clear");
 
 
-    this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
+    this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH + 100, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
     this->scoreLabel = new Fl_Box(this->TIME_LABEL_X_POS - 50, this->TIME_LABEL_Y_POS + 50, 150, 50, "Score: 0");
+    this->responseLabel = new Fl_Box(this->TIME_LABEL_X_POS - 200, this->TIME_LABEL_Y_POS + 165, 300, 50, "Response here!");
 
     this->undoButton->callback(this->cbUndo, this);
     this->twistButton->callback(this->cbTwist, this);
@@ -34,6 +35,9 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->letterFieldsUsed = new stack<Fl_Input*>();
 
     this->initializeBoardElements();
+    this->submitButton->deactivate();
+    this->controller->bindTimer(this->cbUpdateTimer, this);
+
     end();
 }
 
@@ -50,8 +54,14 @@ TextTwistWindow::~TextTwistWindow()
     delete this->generateButton;
     delete this->submitButton;
     delete this->timerLabel;
+<<<<<<< HEAD
     delete this->clearButton;
     delete this->scoreLabel;
+=======
+    delete this->responseLabel;
+    delete this->scoreLabel;
+    delete this->settingsButton;
+>>>>>>> de48cd97d1bfcb5417ef918ef0c0ab071cb09ac9
 
     delete this->controller;
     delete this->letterButtonsUsed;
@@ -89,6 +99,12 @@ void TextTwistWindow::resetBoard()
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->letterFieldsUsed = new stack<Fl_Input*>();
     this->didGameStart = true;
+    this->submitButton->deactivate();
+}
+
+void TextTwistWindow::resetGame() {
+    this->controller->reset();
+    this->updateScore();
 }
 
 
@@ -108,16 +124,17 @@ void TextTwistWindow::updateScore()
     int score = this->controller->getScore();
     string formattedScore = "Score: " + to_string(score);
     cout << formattedScore << endl;
-    this->scoreLabel->label(formattedScore.c_str());
+    this->scoreLabel->copy_label(formattedScore.c_str());
 }
 
 void TextTwistWindow::submit()
 {
     string* letters = this->getSelectedLetters();
-    this->controller->submit(letters);
+    string response = this->controller->submit(letters);
+    this->responseLabel->copy_label(response.c_str());
     delete[] letters;
-    this->updateScore();
     this->resetBoard();
+    this->updateScore();
 }
 
 void TextTwistWindow::cbSendLetterToField(Fl_Widget* widget, void* data)
@@ -131,6 +148,8 @@ void TextTwistWindow::cbSendLetterToField(Fl_Widget* widget, void* data)
 
 void TextTwistWindow::placeLetterToNextEmptyField(const char* letter)
 {
+
+
     for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
     {
         string value = this->letterFields[i]->value();
@@ -140,6 +159,10 @@ void TextTwistWindow::placeLetterToNextEmptyField(const char* letter)
             this->letterFieldsUsed->push(this->letterFields[i]);
             break;
         }
+    }
+
+    if (this->letterFieldsUsed->size() >= 3) {
+        this->submitButton->activate();
     }
 }
 
@@ -154,6 +177,9 @@ void TextTwistWindow::cbUndo(Fl_Widget* widget, void* data)
         field->value("");
         window->letterButtonsUsed->pop();
         window->letterFieldsUsed->pop();
+    }
+    if (window->letterFieldsUsed->size() < 3) {
+        window->submitButton->deactivate();
     }
 }
 
@@ -170,8 +196,9 @@ void TextTwistWindow::cbTwist(Fl_Widget* widget, void* data)
 void TextTwistWindow::cbGenerate(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
-    window->controller->generate();
+    window->controller->startGame();
     window->resetBoard();
+    window->resetGame();
 }
 
 void TextTwistWindow::cbClear(Fl_Widget* widget, void* data)
@@ -207,5 +234,25 @@ void TextTwistWindow::cbDisplayScoreBoard(Fl_Widget* widget, void* data)
     TextTwistWindow* window = (TextTwistWindow*)data;
     //TODO Show scoreboard and transfer data from main board between windows
 }
+
+void TextTwistWindow::cbUpdateTimer(void* data, chrono::milliseconds remainingTime, bool timerRunning) {
+    TextTwistWindow* window = (TextTwistWindow*)data;
+    chrono::seconds secs = chrono::duration_cast<chrono::seconds>(remainingTime);
+    chrono::milliseconds ms = remainingTime - chrono::duration_cast<chrono::milliseconds>(secs);
+
+    chrono::minutes mins = chrono::duration_cast<chrono::minutes>(secs);
+    secs -= chrono::duration_cast<chrono::seconds>(mins);
+
+    chrono::hours hour = chrono::duration_cast<chrono::hours>(mins);
+    mins -= chrono::duration_cast<chrono::minutes>(hour);
+
+    stringstream ss;
+    ss <<  mins.count() << ":" << secs.count() << ":" << ms.count();
+    Fl::lock();
+    window->timerLabel->copy_label(ss.str().c_str());
+    Fl::unlock();
+    Fl::awake();
+}
+
 }
 
