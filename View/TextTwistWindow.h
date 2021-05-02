@@ -28,7 +28,6 @@ class TextTwistWindow : public Fl_Window
     public:
         TextTwistWindow(int width, int height, const char* title);
         virtual ~TextTwistWindow();
-        void resetBoard();
 
     protected:
 
@@ -65,6 +64,7 @@ class TextTwistWindow : public Fl_Window
         Fl_Button* settingsButton;
         Fl_Box* timerLabel;
         Fl_Box* scoreLabel;
+        Fl_Box* responseLabel;
 
         stack<Fl_Button*>* letterButtonsUsed;
         stack<Fl_Input*>* letterFieldsUsed;
@@ -77,6 +77,8 @@ class TextTwistWindow : public Fl_Window
         void submit();
         string* getSelectedLetters();
         void updateScore();
+        void resetGame();
+        void resetBoard();
 
         static void cbSendLetterToField(Fl_Widget* widget, void* data);
         static void cbUndo(Fl_Widget* widget, void* data);

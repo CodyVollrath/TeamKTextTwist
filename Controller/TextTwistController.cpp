@@ -20,13 +20,17 @@ void TextTwistController::twist()
     this->twister->twist();
 }
 
+void TextTwistController::reset() {
+    this->twister->reset();
+}
+
 string* TextTwistController::getLetters()
 {
     return this->twister->getLetters();
 }
 
-void TextTwistController::submit(string* letters) {
-    this->twister->submit(letters);
+string TextTwistController::submit(string* letters) {
+    return this->twister->submit(letters);
 }
 
 int TextTwistController::getScore()
