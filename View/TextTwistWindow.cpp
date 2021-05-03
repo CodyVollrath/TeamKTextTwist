@@ -223,7 +223,6 @@ void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
         Settings* settings = settingsWindow.getSettings();
         window->controller->changeSettings(settings);
 
-        int minutes = settings->getTimeInMinutes();
         if (!window->didGameStart) {
             window->updateTimer();
         }
