@@ -83,6 +83,7 @@ class TextTwistWindow : public Fl_Window
         void updateScore();
         void resetGame();
         void resetBoard();
+        void updateTimer();
         void updateTimer(chrono::milliseconds remainingTime);
 
         static void cbSendLetterToField(Fl_Widget* widget, void* data);

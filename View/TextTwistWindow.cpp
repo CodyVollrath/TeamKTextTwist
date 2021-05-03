@@ -18,8 +18,8 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->scoreBoardButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS + this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "High Scores");
     this->clearButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS + 2 * this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Clear");
 
-
     this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH + 100, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
+    this->updateTimer();
     this->scoreLabel = new Fl_Box(this->TIME_LABEL_X_POS - 50, this->TIME_LABEL_Y_POS + 50, 150, 50, "Score: 0");
     this->responseLabel = new Fl_Box(this->TIME_LABEL_X_POS - 200, this->TIME_LABEL_Y_POS + 165, 300, 50, "Response here!");
 
@@ -37,7 +37,6 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->initializeBoardElements();
     this->submitButton->deactivate();
     this->controller->bindTimer(this->cbUpdateTimer, this);
-
     end();
 }
 
@@ -223,10 +222,10 @@ void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
     if (settingsWindow.getWindowResult() == OKCancelWindow::WindowResult::OK) {
         Settings* settings = settingsWindow.getSettings();
         window->controller->changeSettings(settings);
+
         int minutes = settings->getTimeInMinutes();
-        window->controller->setDuration(minutes);
         if (!window->didGameStart) {
-            window->updateTimer(chrono::milliseconds(minutes * 60 * 1000));
+            window->updateTimer();
         }
     }
 }
@@ -237,24 +236,14 @@ void TextTwistWindow::cbDisplayScoreBoard(Fl_Widget* widget, void* data)
     //TODO Show scoreboard and transfer data from main board between windows
 }
 
+void TextTwistWindow::updateTimer() {
+
+    this->timerLabel->copy_label(this->controller->getTime());
+}
+
 void TextTwistWindow::updateTimer(chrono::milliseconds remainingTime) {
 
-    chrono::seconds secs = chrono::duration_cast<chrono::seconds>(remainingTime);
-    chrono::milliseconds ms = remainingTime - chrono::duration_cast<chrono::milliseconds>(secs);
-
-    chrono::minutes mins = chrono::duration_cast<chrono::minutes>(secs);
-    secs -= chrono::duration_cast<chrono::seconds>(mins);
-
-    chrono::hours hour = chrono::duration_cast<chrono::hours>(mins);
-    mins -= chrono::duration_cast<chrono::minutes>(hour);
-
-    stringstream ss;
-    ss <<  setw(1) << setfill('0') << mins.count();
-    ss << ":";
-    ss <<  setw(2) << setfill('0') << secs.count();
-    ss << ":";
-    ss <<  setw(3) << setfill('0') << ms.count();
-    this->timerLabel->copy_label(ss.str().c_str());
+    this->timerLabel->copy_label(this->controller->getTime(remainingTime));
 }
 
 void TextTwistWindow::cbUpdateTimer(void* data, chrono::milliseconds remainingTime, bool timerRunning) {

@@ -8,10 +8,10 @@
 1619979962 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
 	<unordered_map>
 
-1619998862 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
+1620007446 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619998595 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
+1620011325 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -63,13 +63,16 @@
 1619990421 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1619998959 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
+1620011203 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
 	<string>
+	<chrono>
+	<sstream>
+	<iomanip>
 	"TextTwister.h"
 	"Timer.h"
 	"Settings.h"
 
-1619998194 source:/home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.cpp
+1620011273 source:/home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.cpp
 	"TextTwistController.h"
 
 1619981503 /home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.h
@@ -104,7 +107,7 @@
 	<Fl/Fl_Window.H>
 	<Fl/Fl_Button.H>
 
-1619998405 source:/home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.cpp
+1620008488 source:/home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.cpp
 	"SettingsWindow.h"
 
 1619997483 /home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.h
@@ -176,10 +179,12 @@
 1619981503 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.cpp
 	"TextTwister.h"
 
-1619980570 /home/cvollra1/Documents/TeamKTextTwist/Model/Settings.h
+1620008513 /home/cvollra1/Documents/TeamKTextTwist/Model/Settings.h
 	"ResourceData.h"
+	<string>
+	"SettingsFileHandler.h"
 
-1619977994 source:/home/cvollra1/Documents/TeamKTextTwist/Model/Settings.cpp
+1620008708 source:/home/cvollra1/Documents/TeamKTextTwist/Model/Settings.cpp
 	"Settings.h"
 
 1619977994 h"
@@ -211,4 +216,10 @@
 	"Settings.h"
 
 1619987925 26efd33a0fd1d8da11f7050303a692594c2be
+
+1620008761 source:/home/cvollra1/Documents/TeamKTextTwist/FileIO/SettingsFileHandler.cpp
+	"SettingsFileHandler.h"
+
+1620008751 /home/cvollra1/Documents/TeamKTextTwist/FileIO/SettingsFileHandler.h
+	<fstream>
 
