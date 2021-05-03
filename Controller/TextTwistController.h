@@ -24,6 +24,7 @@ public:
     void resumeGame();
     void twist();
     string* getLetters();
+    set<string>* getUsedWords();
     string submit(string* letters);
     int getScore();
     void reset();

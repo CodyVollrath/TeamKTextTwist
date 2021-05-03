@@ -7,6 +7,8 @@
 #include <FL/Enumerations.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Input.H>
+#include <FL/Fl_Scroll.H>
+#include <FL/fl_types.h>
 
 #include "SettingsWindow.h"
 #include <string>
@@ -44,9 +46,25 @@ class TextTwistWindow : public Fl_Window
         static const int LETTERS_X_POS = 95;
         static const int LETTERS_Y_POS = 250;
 
-        static const int TIME_LABEL_X_POS = 250;
-        static const int TIME_LABEL_Y_POS = 25;
-        static const int TIME_LABEL_SIDE_LENGTH = 25;
+        static const int TIME_LABEL_X_POS = 220;
+        static const int TIME_LABEL_Y_POS = 100;
+        static const int TIME_LABEL_SIDE_LENGTH = 100;
+        static const int TIME_LABEL_SIDE_HEIGHT = 25;
+
+        static const int SCORE_LABEL_X_POS = 170;
+        static const int SCORE_LABEL_Y_POS = 125;
+        static const int SCORE_LABEL_SIDE_LENGTH = 200;
+        static const int SCORE_LABEL_SIDE_HEIGHT = 25;
+
+        static const int RESPONSE_LABEL_X_POS = 120;
+        static const int RESPONSE_LABEL_Y_POS = 200;
+        static const int RESPONSE_LABEL_SIDE_LENGTH = 300;
+        static const int RESPONSE_LABEL_SIDE_HEIGHT = 25;
+
+        static const int USED_SCROLL_X_POS = 170;
+        static const int USED_SCROLL_Y_POS = 10;
+        static const int USED_SCROLL_SIDE_LENGTH = 200;
+        static const int USED_SCROLL_SIDE_HEIGHT = 75;
 
         static const int SUBMIT_BUTTON_X_POS = 220;
         static const int SUBMIT_BUTTON_Y_POS = 325;
@@ -69,6 +87,8 @@ class TextTwistWindow : public Fl_Window
         Fl_Box* timerLabel;
         Fl_Box* scoreLabel;
         Fl_Box* responseLabel;
+        Fl_Scroll* usedWords;
+
 
         stack<Fl_Button*>* letterButtonsUsed;
         stack<Fl_Input*>* letterFieldsUsed;
@@ -81,6 +101,7 @@ class TextTwistWindow : public Fl_Window
         void submit();
         string* getSelectedLetters();
         void updateScore();
+        void updateUsedWords();
         void resetGame();
         void resetBoard();
         void updateTimer(chrono::milliseconds remainingTime);

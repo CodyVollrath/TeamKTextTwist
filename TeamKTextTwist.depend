@@ -36,13 +36,15 @@
 1619892600 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/main.cpp
 	"TextTwistWindow.h"
 
-1619990414 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
+1620017178 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
 	<FL/Enumerations.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Input.H>
+	<FL/Fl_Scroll.H>
+	<FL/fl_types.h>
 	"SettingsWindow.h"
 	<string>
 	<iostream>
@@ -52,15 +54,16 @@
 	<iomanip>
 	"TextTwistController.h"
 
-1619989061 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.cpp
+1620013220 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.cpp
 	"TextTwistController.h"
 
-1619989219 /home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.h
+1620012997 /home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.h
 	<string>
 	"TextTwister.h"
 	"Timer.h"
+	"Settings.h"
 
-1619990421 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
+1620015520 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
 1619998959 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
@@ -134,7 +137,7 @@
 	<algorithm>
 	"DictionaryLoader.h"
 
-1619933485 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwister.h
+1620012935 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwister.h
 	<iostream>
 	<vector>
 	<string>
@@ -142,7 +145,7 @@
 	<set>
 	"TextTwistDictionary.h"
 
-1619933680 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwister.cpp
+1620012828 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/TextTwister.cpp
 	"TextTwister.h"
 
 1619898840 058640c8e2906bb1be550fb6fd19a797185cf
@@ -170,7 +173,7 @@
 1619912007 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/OkCancelWindow.cpp
 	"OkCancelWindow.h"
 
-1619987925 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/SettingsWindow.cpp
+1619999164 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/SettingsWindow.cpp
 	"SettingsWindow.h"
 
 1619981503 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.cpp
@@ -190,7 +193,7 @@
 	<chrono>
 	<string>
 
-1619977934 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Timer.cpp
+1619999164 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Timer.cpp
 	"Timer.h"
 
 1619977934 8cd97d1bfcb5417ef918ef0c0ab071cb09ac9

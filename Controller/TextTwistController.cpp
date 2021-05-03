@@ -62,6 +62,11 @@ int TextTwistController::getScore()
     return this->twister->getScore();
 }
 
+set<string>* TextTwistController::getUsedWords()
+{
+    return this->twister->getUsedWords();
+}
+
 void TextTwistController::bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller) {
     this->timer->setCallback(callback, caller);
 }

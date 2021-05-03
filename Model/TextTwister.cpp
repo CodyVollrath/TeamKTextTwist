@@ -70,6 +70,11 @@ string* TextTwister::getLetters()
     return this->letters;
 }
 
+set<string>* TextTwister::getUsedWords()
+{
+    return this->usedWords;
+}
+
 string TextTwister::submit(string* letters) {
     string word;
     for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
@@ -94,6 +99,8 @@ string TextTwister::submit(string* letters) {
     }
     return response;
 }
+
+
 
 int TextTwister::getScore()
 {
