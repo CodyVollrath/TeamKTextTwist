@@ -6,8 +6,7 @@ TextTwistController::TextTwistController()
 {
     this->twister = new TextTwister();
     this->timer = new Timer(100);
-    //TODO Load settings from file
-    this->settings = new Settings(1, 0, false);
+    this->settings = new Settings();
     this->applySettings();
 }
 TextTwistController::~TextTwistController()
@@ -71,19 +70,45 @@ void TextTwistController::bindTimer(void(*callback)(void*,chrono::milliseconds,b
     this->timer->setCallback(callback, caller);
 }
 
-void TextTwistController::changeSettings(Settings* settings) {
-    this->settings->setTimeInMinutes(settings->getTimeInMinutes());
-    this->settings->setSortOption(settings->getSortOption());
-    this->settings->setReusableFlag(settings->getReusableFlag());
+void TextTwistController::changeSettings(Settings* newSettings) {
+    this->settings->setTimeInMinutes(newSettings->getTimeInMinutes());
+    this->settings->setSortOption(newSettings->getSortOption());
+    this->settings->setReusableFlag(newSettings->getReusableFlag());
     this->applySettings();
 }
 
 void TextTwistController::applySettings()
 {
-    //Put time in minutes into timer
+    this->setDuration(this->settings->getTimeInMinutes());
     //Put score sort in for the scoreboard object
     //Change state for allowCharacterReuse
     cout << this->settings->getTimeInMinutes() << "" << this->settings->getSortOption() << "" << this->settings->getReusableFlag()<< endl;
 }
 
+char* TextTwistController::getTime() const
+{
+    int minutes = this->settings->getTimeInMinutes();
+    chrono::milliseconds remainingTime = chrono::milliseconds(minutes * 60 * 1000);
+    return this->getTime(remainingTime);
+}
+
+char* TextTwistController::getTime(chrono::milliseconds remainingTime) const
+{
+    chrono::seconds secs = chrono::duration_cast<chrono::seconds>(remainingTime);
+    chrono::milliseconds ms = remainingTime - chrono::duration_cast<chrono::milliseconds>(secs);
+
+    chrono::minutes mins = chrono::duration_cast<chrono::minutes>(secs);
+    secs -= chrono::duration_cast<chrono::seconds>(mins);
+
+    chrono::hours hour = chrono::duration_cast<chrono::hours>(mins);
+    mins -= chrono::duration_cast<chrono::minutes>(hour);
+
+    stringstream ss;
+    ss <<  setw(1) << setfill('0') << mins.count();
+    ss << ":";
+    ss <<  setw(2) << setfill('0') << secs.count();
+    ss << ":";
+    ss <<  setw(3) << setfill('0') << ms.count();
+    return const_cast<char*>(ss.str().c_str());
+}
 }

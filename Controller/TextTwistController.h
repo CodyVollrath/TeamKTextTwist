@@ -2,6 +2,9 @@
 #define TEXT_TWIST_CONTROLLER_H
 
 #include <string>
+#include <chrono>
+#include <sstream>
+#include <iomanip>
 using namespace std;
 
 #include "TextTwister.h"
@@ -32,6 +35,8 @@ public:
     void setDuration(int duration);
     void bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller);
     void changeSettings(Settings* settings);
+    char* getTime() const;
+    char* getTime(chrono::milliseconds remainingTime) const;
 
 private:
     TextTwister* twister;

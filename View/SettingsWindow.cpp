@@ -32,6 +32,7 @@ void SettingsWindow::okHandler()
     int sortOption = this->highScoreSort->value();
     bool isReusable = this->allowReuse->value();
     this->settings = new Settings(timeInMinutes, sortOption, isReusable);
+    this->settings->saveSettings();
     this->hide();
 }
 
