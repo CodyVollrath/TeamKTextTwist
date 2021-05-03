@@ -23,14 +23,11 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->scoreLabel = new Fl_Box(this->SCORE_LABEL_X_POS, this->SCORE_LABEL_Y_POS, this->SCORE_LABEL_SIDE_LENGTH, this->SCORE_LABEL_SIDE_HEIGHT, "Score: 0");
     this->responseLabel = new Fl_Box(this->RESPONSE_LABEL_X_POS, this->RESPONSE_LABEL_Y_POS, this->RESPONSE_LABEL_SIDE_LENGTH, this->RESPONSE_LABEL_SIDE_HEIGHT, "Response here!");
 
-
     this->timerLabel->align(FL_ALIGN_CENTER);
     this->scoreLabel->align(FL_ALIGN_CENTER);
     this->responseLabel->align(FL_ALIGN_CENTER);
-    this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH + 100, this->TIME_LABEL_SIDE_LENGTH, "00:00:00");
+
     this->updateTimer();
-    this->scoreLabel = new Fl_Box(this->TIME_LABEL_X_POS - 50, this->TIME_LABEL_Y_POS + 50, 150, 50, "Score: 0");
-    this->responseLabel = new Fl_Box(this->TIME_LABEL_X_POS - 200, this->TIME_LABEL_Y_POS + 165, 300, 50, "Response here!");
 
     this->undoButton->callback(this->cbUndo, this);
     this->twistButton->callback(this->cbTwist, this);

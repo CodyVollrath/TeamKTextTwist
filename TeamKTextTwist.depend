@@ -36,7 +36,7 @@
 1619892600 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/main.cpp
 	"TextTwistWindow.h"
 
-1620017178 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
+1620017747 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -54,16 +54,19 @@
 	<iomanip>
 	"TextTwistController.h"
 
-1620013220 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.cpp
+1620017747 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.cpp
 	"TextTwistController.h"
 
-1620012997 /home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.h
+1620017747 /home/csuser/Desktop/pc_2/TeamKTextTwist/Controller/TextTwistController.h
 	<string>
+	<chrono>
+	<sstream>
+	<iomanip>
 	"TextTwister.h"
 	"Timer.h"
 	"Settings.h"
 
-1620015520 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
+1620017879 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
 1620011203 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
@@ -176,7 +179,7 @@
 1619912007 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/OkCancelWindow.cpp
 	"OkCancelWindow.h"
 
-1619999164 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/SettingsWindow.cpp
+1620017747 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/SettingsWindow.cpp
 	"SettingsWindow.h"
 
 1619981503 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwister.cpp
@@ -212,10 +215,12 @@
 1619983151 source:/home/cvollra1/Documents/TeamKTextTwist/Model/Timer.cpp
 	"Timer.h"
 
-1619987925 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Settings.h
+1620017747 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Settings.h
 	"ResourceData.h"
+	<string>
+	"SettingsFileHandler.h"
 
-1619987925 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Settings.cpp
+1620017747 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Settings.cpp
 	"Settings.h"
 
 1619987925 26efd33a0fd1d8da11f7050303a692594c2be
@@ -224,5 +229,8 @@
 	"SettingsFileHandler.h"
 
 1620008751 /home/cvollra1/Documents/TeamKTextTwist/FileIO/SettingsFileHandler.h
+	<fstream>
+
+1620017747 /home/csuser/Desktop/pc_2/TeamKTextTwist/FileIO/SettingsFileHandler.h
 	<fstream>
 
