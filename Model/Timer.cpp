@@ -19,7 +19,8 @@ Timer::~Timer()
 
 }
 
-void Timer::setCallback(void(*callback)(Timer*, void*), void* data){
+void Timer::setCallback(void(*callback)(Timer*, void*), void* data)
+{
     this->callback = callback;
     this->data = data;
 }
@@ -31,7 +32,8 @@ void Timer::setDuration(int duration)
 
 void Timer::updater(Timer* timer)
 {
-    if (timer->threadActive) {
+    if (timer->threadActive)
+    {
         return;
     }
     timer->threadActive = true;
@@ -44,10 +46,12 @@ void Timer::updater(Timer* timer)
 
         if (!timer->running) break;
 
-        if (timer->remainingTime <= 0) {
+        if (timer->remainingTime <= 0)
+        {
             timer->running = false;
         }
-        if (timer->callback) {
+        if (timer->callback)
+        {
             timer->callback(timer, timer->data);
         }
     }
@@ -59,7 +63,8 @@ bool Timer::getRunning()
     return this->running;
 }
 
-int Timer::getRemainingTime() {
+int Timer::getRemainingTime()
+{
     return this->remainingTime;
 }
 

@@ -4,6 +4,7 @@ namespace controller
 
 TextTwistController::TextTwistController()
 {
+    this->answers = 0;
     this->twister = new TextTwister();
     this->timer = new Timer(100);
     this->settings = new Settings();
@@ -16,13 +17,17 @@ TextTwistController::~TextTwistController()
     delete this->twister;
     delete this->timer;
     delete this->settings;
-    delete this->scoreboard ;
+    delete this->scoreboard;
+    delete this->answers;
 }
 
 void TextTwistController::startGame()
 {
-    this->timer->start();
+    delete this->answers;
+    this->answers = this->twister->getAnswers(this->settings->getReusableFlag());
+
     this->twister->start();
+    this->timer->start();
 }
 
 void TextTwistController::pauseGame()
@@ -40,7 +45,8 @@ void TextTwistController::twist()
     this->twister->twist();
 }
 
-ScoreBoard* TextTwistController::getScoreBoard(){
+ScoreBoard* TextTwistController::getScoreBoard()
+{
     return this->scoreboard;
 }
 
@@ -49,8 +55,14 @@ string* TextTwistController::getLetters()
     return this->twister->getLetters();
 }
 
-Settings* TextTwistController::getSettings() {
+Settings* TextTwistController::getSettings()
+{
     return this->settings;
+}
+
+unordered_set<string>* TextTwistController::getAnswers()
+{
+    return this->answers;
 }
 
 void TextTwistController::setDuration(Score::TIMER_DURATION duration)
@@ -59,11 +71,13 @@ void TextTwistController::setDuration(Score::TIMER_DURATION duration)
 }
 
 
-string TextTwistController::submit(string letters) {
+string TextTwistController::submit(string letters)
+{
     return this->twister->submit(letters);
 }
 
-void TextTwistController::addScore(string name) {
+void TextTwistController::addScore(string name)
+{
     Score* submitScore = new Score(name, this->twister->getScore(), this->settings->getDuration());
     this->scoreboard->insert(submitScore);
     this->scoreboard->saveScoreBoardToFile();
@@ -79,12 +93,13 @@ Score::TIMER_DURATION TextTwistController::getDuration()
     return this->settings->getDuration();
 }
 
-set<string>* TextTwistController::getUsedWords()
+unordered_set<string>* TextTwistController::getUsedWords()
 {
     return this->twister->getUsedWords();
 }
 
-void TextTwistController::bindTimer(void(*callback)(Timer*, void*), void* data) {
+void TextTwistController::bindTimer(void(*callback)(Timer*, void*), void* data)
+{
     this->timer->setCallback(callback, data);
 }
 
@@ -92,7 +107,6 @@ void TextTwistController::applySettings()
 {
     this->setDuration(this->settings->getDuration());
     this->scoreboard->setOrder(this->settings->getSortOption());
-    //Change state for allowCharacterReuse
 }
 
 char* TextTwistController::formatTime(int milliseconds) const

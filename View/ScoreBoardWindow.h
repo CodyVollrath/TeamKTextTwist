@@ -1,4 +1,3 @@
-
 #ifndef SCOREBOARD_WINDOW_H
 #define SCOREBOARD_WINDOW_H
 
@@ -19,31 +18,31 @@ namespace view
 {
 class ScoreBoardWindow : public OKCancelWindow
 {
-    public:
-        ScoreBoardWindow(ScoreBoard* scoreboard);
-        ScoreBoardWindow(ScoreBoard* scoreboard, int score, Score::TIMER_DURATION duration);
-        virtual ~ScoreBoardWindow();
+public:
+    ScoreBoardWindow(ScoreBoard* scoreboard);
+    ScoreBoardWindow(ScoreBoard* scoreboard, int score, Score::TIMER_DURATION duration);
+    virtual ~ScoreBoardWindow();
 
-        void okHandler();
-        void cancelHandler();
-        void showNameEntry();
-        string getNameEntry();
+    void okHandler();
+    void cancelHandler();
+    void showNameEntry();
+    string getNameEntry();
 
-    private:
-        static const int WINDOW_WIDTH = 500;
-        static const int WINDOW_HEIGHT = 250;
-        static const int X_POS = 155;
-        static const int Y_POS = 35;
-        static const int Y_DIFF = 45;
-        static const int WIDGET_WIDTH = 100;
-        static const int WIDGET_HEIGHT = 20;
-        void initializeScores();
-        Fl_Scroll* scoresScroll;
-        Fl_Input* nameEntry;
-        Fl_Button* resetButton;
-        string submitName;
-        ScoreBoard* scoreboard;
-        static void cbReset(Fl_Widget* widget, void* data);
+private:
+    static const int WINDOW_WIDTH = 500;
+    static const int WINDOW_HEIGHT = 250;
+    static const int X_POS = 155;
+    static const int Y_POS = 35;
+    static const int Y_DIFF = 45;
+    static const int WIDGET_WIDTH = 100;
+    static const int WIDGET_HEIGHT = 20;
+    void initializeScores();
+    Fl_Scroll* scoresScroll;
+    Fl_Input* nameEntry;
+    Fl_Button* resetButton;
+    string submitName;
+    ScoreBoard* scoreboard;
+    static void cbReset(Fl_Widget* widget, void* data);
 };
 }
 

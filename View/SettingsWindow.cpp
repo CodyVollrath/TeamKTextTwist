@@ -1,4 +1,4 @@
- #include "SettingsWindow.h"
+#include "SettingsWindow.h"
 namespace view
 {
 SettingsWindow::SettingsWindow(Settings* settings) : OKCancelWindow(this->WINDOW_WIDTH, this->WINDOW_HEIGHT, "Settings")
@@ -67,7 +67,8 @@ void SettingsWindow::initializeSortOptions()
     this->highScoreSort->value(this->settings->getSortOption());
 }
 
-void SettingsWindow::initializeReusableOption(){
+void SettingsWindow::initializeReusableOption()
+{
     bool allowReuse = this->settings->getReusableFlag();
     this->allowReuse->value(allowReuse);
 }

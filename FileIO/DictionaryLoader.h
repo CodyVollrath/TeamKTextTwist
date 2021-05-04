@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <set>
+#include <unordered_set>
 #include <algorithm>
 using namespace std;
 
@@ -12,14 +12,34 @@ namespace fileio
 {
 class DictionaryLoader
 {
-    public:
-        DictionaryLoader();
-        virtual ~DictionaryLoader();
-        set<string>* getDictionary(const string& filename) const;
+public:
+    //
+    // Constructs a TextTwistController object
+    //
+    // @precondition none
+    // @postcondition getAnswers() == nullptr;
+    //                getSettings() != nullptr
+    //                getScoreBoard() != nullptr;
+    //
+    DictionaryLoader();
+        //
+    // Destructs the TextTwistController object
+    //
+    // @precondition none
+    // @postcondition none
+    //
+    virtual ~DictionaryLoader();
+        //
+    // Destructs the TextTwistController object
+    //
+    // @precondition none
+    // @postcondition none
+    //
+    unordered_set<string>* getDictionary(const string& filename) const;
 
-    protected:
+protected:
 
-    private:
+private:
 
 };
 }

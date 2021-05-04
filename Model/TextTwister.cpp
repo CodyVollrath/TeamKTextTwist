@@ -8,7 +8,7 @@ const int TextTwister::LETTER_FREQUENCIES[] = {6, 2, 2, 3, 11, 2, 2, 5, 6, 1, 1,
 TextTwister::TextTwister()
 {
     int counter = 0;
-    for (int i = 0; i < 26; i++)
+    for (int i = 0; i < TextTwistDictionary::NUMBER_OF_LETTERS; i++)
     {
         counter += TextTwister::LETTER_FREQUENCIES[i];
         this->letterBrackets[i] = counter;
@@ -16,7 +16,7 @@ TextTwister::TextTwister()
     this->maxBracket = counter;
     this->dictionary = new TextTwistDictionary();
     this->score = 0;
-    this->usedWords = new set<string>();
+    this->usedWords = new unordered_set<string>();
 }
 TextTwister::~TextTwister()
 {
@@ -26,7 +26,7 @@ TextTwister::~TextTwister()
 
 int TextTwister::getLetterIndex(int value)
 {
-    for (int i = 0; i < 26; i++)
+    for (int i = 0; i < TextTwistDictionary::NUMBER_OF_LETTERS; i++)
     {
         if (value < this->letterBrackets[i])
         {
@@ -52,7 +52,9 @@ void TextTwister::start()
     }
     this->score = 0;
     delete this->usedWords;
-    this->usedWords = new set<string>();
+    this->usedWords = new unordered_set<string>();
+
+
 }
 
 void TextTwister::twist()
@@ -65,22 +67,36 @@ string* TextTwister::getLetters()
     return this->letters;
 }
 
-set<string>* TextTwister::getUsedWords()
+unordered_set<string>* TextTwister::getUsedWords()
 {
     return this->usedWords;
 }
 
-string TextTwister::submit(string letters) {
+unordered_set<string>* TextTwister::getAnswers(bool allowReuse)
+{
+    string letters;
+    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
+    {
+        letters += this->letters[i];
+    }
+    return this->dictionary->getAnagrams(letters, allowReuse);
+}
+
+string TextTwister::submit(string letters)
+{
     string word = letters;
     bool used = find(this->usedWords->begin(), this->usedWords->end(), word) != this->usedWords->end();
     bool inDictionary = this->dictionary->contains(word);
 
     string response = "You already used that word!";
-    if (inDictionary && !used) {
+    if (inDictionary && !used)
+    {
         this->score += TextTwister::calculateScore(word);
         this->usedWords->insert(word);
         response = "Correct! That word exists!";
-    } else if (!inDictionary) {
+    }
+    else if (!inDictionary)
+    {
         this->score -= 10;
         response = "Wrong! That word does not exist!";
     }
@@ -94,7 +110,8 @@ int TextTwister::getScore()
     return this->score;
 }
 
-int TextTwister::calculateScore(string& word) {
+int TextTwister::calculateScore(string& word)
+{
     int letterCount = word.length();
     return (letterCount * letterCount * 10);
 }

@@ -1,4 +1,3 @@
-
 #ifndef SETTINGSWINDOW_H
 #define SETTINGSWINDOW_H
 #include "OkCancelWindow.h"
@@ -17,34 +16,28 @@ namespace view
 {
 class SettingsWindow : public OKCancelWindow
 {
-    public:
-        SettingsWindow(Settings* settings);
-        virtual ~SettingsWindow();
+public:
+    SettingsWindow(Settings* settings);
+    virtual ~SettingsWindow();
+    void okHandler();
+    void cancelHandler();
+    Settings* getSettings() const;
 
-        Fl_Choice* timerSettings;
-        Fl_Choice* highScoreSort;
-        Fl_Check_Button* allowReuse;
-
-        void okHandler();
-        void cancelHandler();
-        Settings* getSettings() const;
-
-
-
-    protected:
-
-    private:
-        static const int WINDOW_WIDTH = 500;
-        static const int WINDOW_HEIGHT = 250;
-        static const int X_POS = 155;
-        static const int Y_POS = 35;
-        static const int Y_DIFF = 45;
-        static const int WIDGET_WIDTH = 100;
-        static const int WIDGET_HEIGHT = 20;
-        void initializeTimeOptions();
-        void initializeSortOptions();
-        void initializeReusableOption();
-        Settings* settings;
+private:
+    Fl_Choice* timerSettings;
+    Fl_Choice* highScoreSort;
+    Fl_Check_Button* allowReuse;
+    static const int WINDOW_WIDTH = 500;
+    static const int WINDOW_HEIGHT = 250;
+    static const int X_POS = 155;
+    static const int Y_POS = 35;
+    static const int Y_DIFF = 45;
+    static const int WIDGET_WIDTH = 100;
+    static const int WIDGET_HEIGHT = 20;
+    void initializeTimeOptions();
+    void initializeSortOptions();
+    void initializeReusableOption();
+    Settings* settings;
 };
 }
 

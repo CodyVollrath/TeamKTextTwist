@@ -1,4 +1,3 @@
-
 #ifndef SCOREBOARD_H
 #define SCOREBOARD_H
 #include "ResourceData.h"
@@ -17,24 +16,24 @@ namespace model
 {
 class ScoreBoard
 {
-    public:
-        enum SORT_ORDER {SCORE, SCORE_AND_TIME};
+public:
+    enum SORT_ORDER {SCORE, SCORE_AND_TIME};
 
-        ScoreBoard();
-        virtual ~ScoreBoard();
-        void insert(string name, int score, Score::TIMER_DURATION duration);
-        void insert(Score* newScore);
-        void reset();
-        void setOrder(SORT_ORDER order);
-        vector<Score*>* getScores();
-        bool empty() const;
-        void loadScoreBoardFromFile();
-        void saveScoreBoardToFile();
-    private:
-        vector<Score*>* scores;
-        SORT_ORDER order;
-        void sort();
-        const string SCOREBOARD_FILE = "scoreboard.csv";
+    ScoreBoard();
+    virtual ~ScoreBoard();
+    void insert(string name, int score, Score::TIMER_DURATION duration);
+    void insert(Score* newScore);
+    void reset();
+    void setOrder(SORT_ORDER order);
+    vector<Score*>* getScores();
+    bool empty() const;
+    void loadScoreBoardFromFile();
+    void saveScoreBoardToFile();
+private:
+    vector<Score*>* scores;
+    SORT_ORDER order;
+    void sort();
+    const string SCOREBOARD_FILE = "scoreboard.csv";
 
 };
 }
