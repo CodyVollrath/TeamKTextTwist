@@ -31,16 +31,16 @@ public:
     set<string>* getUsedWords();
     string submit(string* letters);
     int getScore();
-    void reset();
 
     void setDuration(Score::TIMER_DURATION duration);
-    void bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller);
-        void applySettings();
+    void bindTimer(void(*callback)(Timer*, void*), void* data);
+    void applySettings();
     char* getTime() const;
-    char* getTime(chrono::milliseconds remainingTime) const;
+    char* formatTime(int milliseconds) const;
     Settings* getSettings();
     ScoreBoard* getScoreBoard();
     Score::TIMER_DURATION getDuration();
+    void addScore(string name);
 
 private:
     TextTwister* twister;

@@ -25,15 +25,16 @@ SettingsWindow::~SettingsWindow()
 
 void SettingsWindow::okHandler()
 {
-    Score::TIMER_DURATION duration = Score::TIMER_DURATION(this->timerSettings->value());
+    int timerValue = this->timerSettings->value();
+    Score::TIMER_DURATION duration = Score::TIMER_DURATION(timerValue);
     ScoreBoard::SORT_ORDER sortOption = this->highScoreSort->value() ? ScoreBoard::SORT_ORDER::SCORE_AND_TIME : ScoreBoard::SORT_ORDER::SCORE ;
     bool isReusable = this->allowReuse->value();
 
     this->settings->setDuration(duration);
     this->settings->setSortOption(sortOption);
     this->settings->setReusableFlag(isReusable);
-
     this->settings->saveSettings();
+
     this->hide();
 }
 
@@ -60,6 +61,7 @@ void SettingsWindow::initializeSortOptions()
 {
     this->highScoreSort->add("Overall Score");
     this->highScoreSort->add("Score & Time");
+    int scoreOrder = this->settings->getSortOption();
     this->highScoreSort->value(0);
 }
 }

@@ -21,7 +21,7 @@ TextTwistController::~TextTwistController()
 void TextTwistController::startGame()
 {
     this->timer->start();
-    this->twister->generate();
+    this->twister->start();
 }
 
 void TextTwistController::pauseGame()
@@ -39,10 +39,6 @@ void TextTwistController::twist()
     this->twister->twist();
 }
 
-void TextTwistController::reset() {
-    this->twister->reset();
-}
-
 ScoreBoard* TextTwistController::getScoreBoard(){
     return this->scoreboard;
 }
@@ -58,12 +54,17 @@ Settings* TextTwistController::getSettings() {
 
 void TextTwistController::setDuration(Score::TIMER_DURATION duration)
 {
-    this->timer->setDuration(duration*60*1000);
+    this->timer->setDuration((duration + 1) * 60 * 1000);
 }
 
 
 string TextTwistController::submit(string* letters) {
     return this->twister->submit(letters);
+}
+
+void TextTwistController::addScore(string name) {
+    Score* submitScore = new Score(name, this->twister->getScore(), this->settings->getDuration());
+    this->scoreboard->insert(submitScore);
 }
 
 int TextTwistController::getScore()
@@ -81,28 +82,20 @@ set<string>* TextTwistController::getUsedWords()
     return this->twister->getUsedWords();
 }
 
-void TextTwistController::bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller) {
-    this->timer->setCallback(callback, caller);
+void TextTwistController::bindTimer(void(*callback)(Timer*, void*), void* data) {
+    this->timer->setCallback(callback, data);
 }
 
 void TextTwistController::applySettings()
 {
     this->setDuration(this->settings->getDuration());
     this->scoreboard->setOrder(this->settings->getSortOption());
-    //Put score sort in for the scoreboard object
     //Change state for allowCharacterReuse
-    cout << this->settings->getDuration() << "" << this->settings->getSortOption() << "" << this->settings->getReusableFlag()<< endl;
 }
 
-char* TextTwistController::getTime() const
+char* TextTwistController::formatTime(int milliseconds) const
 {
-    int minutes = this->settings->getDuration();
-    chrono::milliseconds remainingTime = chrono::milliseconds(minutes * 60 * 1000);
-    return this->getTime(remainingTime);
-}
-
-char* TextTwistController::getTime(chrono::milliseconds remainingTime) const
-{
+    chrono::milliseconds remainingTime = chrono::milliseconds(milliseconds);
     chrono::seconds secs = chrono::duration_cast<chrono::seconds>(remainingTime);
     chrono::milliseconds ms = remainingTime - chrono::duration_cast<chrono::milliseconds>(secs);
 
@@ -117,7 +110,9 @@ char* TextTwistController::getTime(chrono::milliseconds remainingTime) const
     ss << ":";
     ss <<  setw(2) << setfill('0') << secs.count();
     ss << ":";
-    ss <<  setw(3) << setfill('0') << ms.count();
+    ss <<  setw(2) << setfill('0') << ms.count() / 10;
     return const_cast<char*>(ss.str().c_str());
 }
+
+
 }

@@ -44,17 +44,13 @@ char TextTwister::getRandomLetter()
     return randomCharacter;
 }
 
-void TextTwister::generate()
+void TextTwister::start()
 {
     for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
     {
         char letter = getRandomLetter();
         this->letters[i] = string(1, letter);
     }
-}
-
-void TextTwister::reset()
-{
     this->score = 0;
     delete this->usedWords;
     this->usedWords = new set<string>();

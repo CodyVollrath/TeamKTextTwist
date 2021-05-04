@@ -38,7 +38,7 @@ bool Settings::getReusableFlag() const
     return this->isResuable;
 }
 
-void Settings::setDuration(Score::TIMER_DURATION timeInMinutes)
+void Settings::setDuration(Score::TIMER_DURATION duration)
 {
     this->duration = duration;
 }

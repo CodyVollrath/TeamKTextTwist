@@ -22,13 +22,12 @@ class TextTwister
 
         TextTwister();
         virtual ~TextTwister();
-        void generate();
+        void start();
         void twist();
         string* getLetters();
         set<string>* getUsedWords();
         string submit(string* letters);
         int getScore();
-        void reset();
 
     private:
         TextTwistDictionary* dictionary;

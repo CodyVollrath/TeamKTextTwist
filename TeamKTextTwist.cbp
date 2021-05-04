@@ -33,6 +33,8 @@
 		<Unit filename="FileIO/DictionaryLoader.h" />
 		<Unit filename="FileIO/SettingsFileHandler.cpp" />
 		<Unit filename="FileIO/SettingsFileHandler.h" />
+		<Unit filename="Model/Score.cpp" />
+		<Unit filename="Model/Score.h" />
 		<Unit filename="Model/ScoreBoard.cpp" />
 		<Unit filename="Model/ScoreBoard.h" />
 		<Unit filename="Model/Settings.cpp" />

@@ -4,28 +4,11 @@
 namespace view {
 
     ScoreBoardWindow::ScoreBoardWindow(ScoreBoard* scoreboard) : OKCancelWindow(this->WINDOW_WIDTH, this->WINDOW_HEIGHT, "Scoreboard") {
-        this->submitScore = 0;
-        this->nameEntry = 0;
+        this->submitName = "";
         this->scoreboard = scoreboard;
         begin();
 
         this->scoresScroll = new Fl_Scroll(50,50,this->WINDOW_WIDTH - 100, 100,"");
-        this->initializeScores();
-        this->scoresScroll->end();
-
-        this->okButton->clear_visible();
-        this->cancelButton->clear_visible();
-        end();
-    }
-
-    ScoreBoardWindow::ScoreBoardWindow(ScoreBoard* scoreboard, int score, Score::TIMER_DURATION duration) : OKCancelWindow(this->WINDOW_WIDTH, this->WINDOW_HEIGHT, "Scoreboard") {
-
-        this->submitScore = new Score("", score, duration);
-        this->scoreboard = scoreboard;
-        begin();
-
-
-        this->scoresScroll = new Fl_Scroll(50,20,200, 100,"");
         this->initializeScores();
         this->scoresScroll->end();
 
@@ -34,6 +17,9 @@ namespace view {
         this->setOKLocation(this->WINDOW_HEIGHT - 100, this->WINDOW_HEIGHT - 50);
         this->setCancelLocation(this->WINDOW_HEIGHT, this->WINDOW_HEIGHT - 50);
 
+        this->okButton->clear_visible();
+        this->cancelButton->clear_visible();
+        this->nameEntry->clear_visible();
         end();
     }
 
@@ -43,17 +29,23 @@ namespace view {
     }
 
     void ScoreBoardWindow::okHandler(){
-        if (this->submitScore) {
-            string name = this->nameEntry->value();
-            this->submitScore->setName(name);
-            this->scoreboard->insert(this->submitScore);
-        }
         this->hide();
     }
+
     void ScoreBoardWindow::cancelHandler(){
-        delete this->submitScore;
         this->hide();
     }
+
+    void ScoreBoardWindow::showNameEntry()
+     {
+        this->nameEntry->set_visible();
+        this->okButton->set_visible();
+        this->cancelButton->set_visible();
+     }
+
+     string ScoreBoardWindow::getNameEntry() {
+        return this->nameEntry->value();
+     }
 
     void ScoreBoardWindow::initializeScores(){
         vector<Score*>* scores = this->scoreboard->getScores();
@@ -64,7 +56,6 @@ namespace view {
             ss <<  "Name: "<< score->getName() << " : Score: " << score->getScore() << " : Duration: " << (score->getDuration() + 1) << " mins";
             scoreBox->copy_label(ss.str().c_str());
             accumulator += 25;
-            cout << scoreBox->label() << endl;
         }
     }
 }

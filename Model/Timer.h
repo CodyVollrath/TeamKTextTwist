@@ -16,12 +16,13 @@ class Timer
         Timer(int updateInterval);
         virtual ~Timer();
         void setDuration(int duration);
-        void setCallback(void(*callback)(void*,chrono::milliseconds,bool), void* caller);
+        void setCallback(void(*callback)(Timer*, void*), void*);
         void start();
         void stop();
         void resume();
         void pause();
         bool getRunning();
+        int getRemainingTime();
 
     private:
         bool running;
@@ -29,8 +30,8 @@ class Timer
         int duration;
         int updateInterval;
         bool threadActive;
-        void* caller;
-        void(*callback)(void*,chrono::milliseconds,bool);
+        void* data;
+        void(*callback)(Timer*, void*);
         static void updater(Timer* timer);
 
 };

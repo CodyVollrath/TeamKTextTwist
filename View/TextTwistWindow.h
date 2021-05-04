@@ -99,16 +99,18 @@ class TextTwistWindow : public Fl_Window
         void establishCallBacks();
         void placeLetterToNextEmptyField(const char* letter);
         void submit();
+        void lockBoard();
         string* getSelectedLetters();
         void updateScore();
         void updateUsedWords();
-        void resetGame();
+        void startGame();
+        void endGame();
         void resetBoard();
-        void updateTimer();
         void pauseGame();
         void resumeGame();
 
-        void updateTimer(chrono::milliseconds remainingTime);
+        void updateTimer();
+        void updateTimer(int remainingTime);
 
         static void cbSendLetterToField(Fl_Widget* widget, void* data);
         static void cbUndo(Fl_Widget* widget, void* data);
@@ -118,7 +120,7 @@ class TextTwistWindow : public Fl_Window
         static void cbSubmit(Fl_Widget* widget, void* data);
         static void cbDisplaySettings(Fl_Widget* widget, void* data);
         static void cbDisplayScoreBoard(Fl_Widget* widget, void* data);
-        static void cbUpdateTimer(void* data, chrono::milliseconds elapsedTime, bool timerRunning);
+        static void cbUpdateTimer(Timer* timer, void* data);
 };
 }
 #endif // TEXT_TWIST_WINDOW_H

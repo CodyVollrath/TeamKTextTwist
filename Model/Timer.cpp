@@ -7,7 +7,7 @@ namespace model
 Timer::Timer(int updateInterval)
 {
     this->callback = 0;
-    this->caller = 0;
+    this->data = 0;
     this->updateInterval = updateInterval;
     this->duration = 60000;
     this->running = false;
@@ -19,9 +19,9 @@ Timer::~Timer()
 
 }
 
-void Timer::setCallback(void(*callback)(void*,chrono::milliseconds,bool), void* caller){
+void Timer::setCallback(void(*callback)(Timer*, void*), void* data){
     this->callback = callback;
-    this->caller = caller;
+    this->data = data;
 }
 
 void Timer::setDuration(int duration)
@@ -48,7 +48,7 @@ void Timer::updater(Timer* timer)
             timer->running = false;
         }
         if (timer->callback) {
-            timer->callback(timer->caller, chrono::milliseconds(timer->remainingTime), timer->running);
+            timer->callback(timer, timer->data);
         }
     }
     timer->threadActive = false;
@@ -57,6 +57,10 @@ void Timer::updater(Timer* timer)
 bool Timer::getRunning()
 {
     return this->running;
+}
+
+int Timer::getRemainingTime() {
+    return this->remainingTime;
 }
 
 void Timer::start()

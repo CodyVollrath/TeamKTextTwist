@@ -26,6 +26,8 @@ class ScoreBoardWindow : public OKCancelWindow
 
         void okHandler();
         void cancelHandler();
+        void showNameEntry();
+        string getNameEntry();
 
     private:
         static const int WINDOW_WIDTH = 500;
@@ -38,7 +40,7 @@ class ScoreBoardWindow : public OKCancelWindow
         void initializeScores();
         Fl_Scroll* scoresScroll;
         Fl_Input* nameEntry;
-        Score* submitScore;
+        string submitName;
         ScoreBoard* scoreboard;
 };
 }
