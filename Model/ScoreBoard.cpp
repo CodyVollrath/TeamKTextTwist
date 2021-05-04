@@ -75,7 +75,7 @@ namespace model
                 string name = itemData.at(0);
                 int score = stoi(itemData.at(1));
                 int duration = stoi(itemData.at(2));
-                this->insert(new Score(name, score, duration));
+                this->insert(new Score(name, score, durationsplitString));
                 start = end + delimiter.size();
                 end = scoreboardData.find(delimiter, start);
             }
