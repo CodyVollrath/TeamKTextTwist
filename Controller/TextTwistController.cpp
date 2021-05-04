@@ -8,6 +8,7 @@ TextTwistController::TextTwistController()
     this->timer = new Timer(100);
     this->settings = new Settings();
     this->scoreboard = new ScoreBoard();
+    this->scoreboard->loadScoreBoardFromFile();
     this->applySettings();
 }
 TextTwistController::~TextTwistController()
@@ -65,6 +66,7 @@ string TextTwistController::submit(string letters) {
 void TextTwistController::addScore(string name) {
     Score* submitScore = new Score(name, this->twister->getScore(), this->settings->getDuration());
     this->scoreboard->insert(submitScore);
+    this->scoreboard->saveScoreBoardToFile();
 }
 
 int TextTwistController::getScore()

@@ -4,7 +4,7 @@ namespace model
 
 Settings::Settings()
 {
-    SettingsFileHandler handler;
+    PersistenceFileHandler handler;
     string values = handler.getFileContents(this->SETTINGS_FILE);
     this->duration = Score::TIMER_DURATION(stoi(values.substr(0,1)));
     this->sortOption = stoi(values.substr(2,3)) ? ScoreBoard::SORT_ORDER::SCORE_AND_TIME : ScoreBoard::SORT_ORDER::SCORE;
@@ -56,7 +56,7 @@ void Settings::setReusableFlag(bool isReusable)
 void Settings::saveSettings()
 {
     string line = to_string(this->duration) + "," + to_string(this->sortOption) + "," + to_string(this->isResuable);
-    SettingsFileHandler handler;
+    PersistenceFileHandler handler;
     handler.saveToFile(this->SETTINGS_FILE, line);
 }
 

@@ -1,18 +1,19 @@
 #ifndef SETTINGSFILEHANDLER_H
 #define SETTINGSFILEHANDLER_H
+
 #include <fstream>
 using namespace std;
 
 namespace fileio
 {
-class SettingsFileHandler
+class PersistenceFileHandler
 {
     public:
-        SettingsFileHandler();
-        virtual ~SettingsFileHandler();
+        PersistenceFileHandler();
+        virtual ~PersistenceFileHandler();
         string getFileContents(const string& filename) const;
         void saveToFile(const string& filename, const string& contents);
-
+        void appendToFile(const string& filename, const string& contents);
     protected:
 
     private:

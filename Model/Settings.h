@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-#include "SettingsFileHandler.h"
+#include "PersistenceFileHandler.h"
 using namespace fileio;
 
 #include "ScoreBoard.h"

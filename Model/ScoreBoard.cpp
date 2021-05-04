@@ -1,5 +1,6 @@
 #include "ScoreBoard.h"
-
+#include <iostream>
+using namespace std;
 namespace model
 {
         ScoreBoard::ScoreBoard(){
@@ -56,5 +57,37 @@ namespace model
         }
         vector<Score*>* ScoreBoard::getScores(){
             return this->scores;
+        }
+        bool ScoreBoard::empty() const
+        {
+            return this->scores->empty();
+        }
+        void ScoreBoard::loadScoreBoardFromFile()
+        {
+            PersistenceFileHandler handler;
+            string scoreboardData = handler.getFileContents(this->SCOREBOARD_FILE);
+            int start = 0;
+            string delimiter = "\n";
+            int end = scoreboardData.find(delimiter);
+            while (end != -1) {
+                string scoreItem = scoreboardData.substr(start, end - start);
+                vector<string> itemData = splitString(scoreItem, ",");
+                string name = itemData.at(0);
+                int score = stoi(itemData.at(1));
+                int duration = stoi(itemData.at(2));
+                this->insert(new Score(name, score, duration));
+                start = end + delimiter.size();
+                end = scoreboardData.find(delimiter, start);
+            }
+
+        }
+        void ScoreBoard::saveScoreBoardToFile()
+        {
+            PersistenceFileHandler handler;
+            string data = "";
+            for (Score* score : *this->scores) {
+               data += score->getName() + "," +to_string(score->getScore()) + "," + to_string(score->getDuration()) + "\n";
+            }
+            handler.appendToFile(this->SCOREBOARD_FILE, data);
         }
 }
