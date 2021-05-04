@@ -11,13 +11,15 @@ DictionaryLoader::~DictionaryLoader()
 
 }
 
-set<string>* DictionaryLoader::getDictionary(const string& filename) const
+unordered_set<string>* DictionaryLoader::getDictionary(const string& filename) const
 {
-    set<string>* dictionary = new set<string>();
+    unordered_set<string>* dictionary = new unordered_set<string>();
     string line;
     ifstream file(filename);
-    if (file.is_open()) {
-        while (getline(file, line)) {
+    if (file.is_open())
+    {
+        while (getline(file, line))
+        {
             line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
             dictionary->insert(line);
         }

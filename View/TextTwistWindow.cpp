@@ -18,6 +18,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->settingsButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Settings");
     this->scoreBoardButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS + this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "High Scores");
     this->clearButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS + 2 * this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Clear");
+    this->exitButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, 325, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Exit");
 
 
     this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH, this->TIME_LABEL_SIDE_HEIGHT, "00:00:00");
@@ -37,6 +38,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->submitButton->callback(this->cbSubmit, this);
     this->settingsButton->callback(this->cbDisplaySettings, this);
     this->scoreBoardButton->callback(this->cbDisplayScoreBoard, this);
+    this->exitButton->callback(this->cbExit, this);
     this->solveButton->callback(this->cbSolve, this);
 
     this->letterButtonsUsed = new stack<Fl_Button*>();
@@ -77,6 +79,7 @@ TextTwistWindow::~TextTwistWindow()
     delete this->responseLabel;
     delete this->scoreLabel;
     delete this->settingsButton;
+    delete this->exitButton;
     delete this->usedWords;
 
     delete this->controller;
@@ -129,7 +132,8 @@ void TextTwistWindow::lockBoard()
     this->submitButton->deactivate();
 }
 
-void TextTwistWindow::startGame() {
+void TextTwistWindow::startGame()
+{
     this->didGameStart = true;
     this->controller->startGame();
     this->resetBoard();
@@ -138,29 +142,34 @@ void TextTwistWindow::startGame() {
     this->solveButton->activate();
 }
 
-void TextTwistWindow::endGame() {
+void TextTwistWindow::endGame()
+{
     this->didGameStart = false;
     ScoreBoardWindow scoreboardWindow(this->controller->getScoreBoard());
     scoreboardWindow.set_modal();
     scoreboardWindow.showNameEntry();
     scoreboardWindow.show();
 
-    while (scoreboardWindow.shown()) {
+    while (scoreboardWindow.shown())
+    {
         Fl::wait();
     }
 
-    if (scoreboardWindow.getWindowResult() == OKCancelWindow::WindowResult::OK) {
+    if (scoreboardWindow.getWindowResult() == OKCancelWindow::WindowResult::OK)
+    {
         string scoreName = scoreboardWindow.getNameEntry();
         this->controller->addScore(scoreName);
     }
     this->lockBoard();
 }
 
-void TextTwistWindow::pauseGame() {
+void TextTwistWindow::pauseGame()
+{
     this->controller->pauseGame();
 }
 
-void TextTwistWindow::resumeGame() {
+void TextTwistWindow::resumeGame()
+{
     this->controller->resumeGame();
 }
 
@@ -213,7 +222,8 @@ void TextTwistWindow::cbSendLetterToField(Fl_Widget* widget, void* data)
     TextTwistWindow* window = (TextTwistWindow*)data;
     Fl_Button* button = (Fl_Button*) widget;
     window->placeLetterToNextEmptyField(button->label());
-    if (!window->controller->areLettersReusable()) {
+    if (!window->controller->areLettersReusable())
+    {
         button->deactivate();
     }
 
@@ -227,7 +237,8 @@ void TextTwistWindow::placeLetterToNextEmptyField(const char* letter)
     string addedLetter = letter;
     this->lettersField->value(value.c_str());
     this->lettersUsed->push(addedLetter.c_str());
-    if (this->lettersUsed->size() >= 3) {
+    if (this->lettersUsed->size() >= 3)
+    {
         this->submitButton->activate();
     }
 }
@@ -246,7 +257,8 @@ void TextTwistWindow::cbUndo(Fl_Widget* widget, void* data)
         window->letterButtonsUsed->pop();
         window->lettersUsed->pop();
     }
-    if (window->lettersUsed->size() < 3) {
+    if (window->lettersUsed->size() < 3)
+    {
         window->submitButton->deactivate();
     }
 }
@@ -255,7 +267,8 @@ void TextTwistWindow::cbTwist(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
     window->controller->twist();
-    if (window->didGameStart) {
+    if (window->didGameStart)
+    {
         window->resetBoard();
     }
 
@@ -270,12 +283,14 @@ void TextTwistWindow::cbGenerate(Fl_Widget* widget, void* data)
 void TextTwistWindow::cbClear(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
-    if (window->didGameStart) {
+    if (window->didGameStart)
+    {
         window->resetBoard();
     }
 }
 
-void TextTwistWindow::cbSubmit(Fl_Widget* widget, void* data) {
+void TextTwistWindow::cbSubmit(Fl_Widget* widget, void* data)
+{
     TextTwistWindow* window = (TextTwistWindow*)data;
     window->submit();
 }
@@ -283,33 +298,39 @@ void TextTwistWindow::cbSubmit(Fl_Widget* widget, void* data) {
 void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
-   if (window->didGameStart) {
+    if (window->didGameStart)
+    {
         window->pauseGame();
     }
     SettingsWindow settingsWindow(window->controller->getSettings());
     settingsWindow.set_modal();
     settingsWindow.show();
 
-    while (settingsWindow.shown()) {
+    while (settingsWindow.shown())
+    {
         Fl::wait();
     }
 
-    if (settingsWindow.getWindowResult() == OKCancelWindow::WindowResult::OK) {
+    if (settingsWindow.getWindowResult() == OKCancelWindow::WindowResult::OK)
+    {
         window->controller->applySettings();
-        if (!window->didGameStart) {
+        if (!window->didGameStart)
+        {
             window->updateTimer();
         }
     }
 
-    if (window->didGameStart) {
-       window->resumeGame();
+    if (window->didGameStart)
+    {
+        window->resumeGame();
     }
 }
 
 void TextTwistWindow::cbDisplayScoreBoard(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
-    if (window->didGameStart) {
+    if (window->didGameStart)
+    {
         window->pauseGame();
     }
 
@@ -317,33 +338,44 @@ void TextTwistWindow::cbDisplayScoreBoard(Fl_Widget* widget, void* data)
     scoreboardWindow.set_modal();
     scoreboardWindow.show();
 
-    while (scoreboardWindow.shown()) {
+    while (scoreboardWindow.shown())
+    {
         Fl::wait();
     }
 
-    if (window->didGameStart) {
-       window->resumeGame();
+    if (window->didGameStart)
+    {
+        window->resumeGame();
     }
 }
 
-void TextTwistWindow::updateTimer() {
+void TextTwistWindow::updateTimer()
+{
     int remainingTime = Score::durationToMilliseconds(this->controller->getDuration());
     this->timerLabel->copy_label(this->controller->formatTime(remainingTime));
 }
 
-void TextTwistWindow::updateTimer(int remainingTime) {
+void TextTwistWindow::updateTimer(int remainingTime)
+{
     this->timerLabel->copy_label(this->controller->formatTime(remainingTime));
 }
 
-void TextTwistWindow::cbUpdateTimer(Timer* timer, void* data) {
+void TextTwistWindow::cbUpdateTimer(Timer* timer, void* data)
+{
     TextTwistWindow* window = (TextTwistWindow*)data;
     Fl::lock();
     window->updateTimer(timer->getRemainingTime());
-    if (!timer->getRunning()) {
+    if (!timer->getRunning())
+    {
         window->endGame();
     }
     Fl::unlock();
     Fl::awake();
+}
+
+
+void TextTwistWindow::cbExit(Fl_Widget* widget, void* data) {
+    exit(0);
 }
 
 void TextTwistWindow::cbSolve(Fl_Widget* widget, void* data)
@@ -353,7 +385,7 @@ void TextTwistWindow::cbSolve(Fl_Widget* widget, void* data)
         window->pauseGame();
     }
     string word = window->letters;
-    set<string>* solutions = window->controller->displayAllPossibleWords(word);
+    unordered_set<string>* solutions = window->controller->displayAllPossibleWords(word);
     SolutionsWindow solutionsWindow(solutions);
     solutionsWindow.set_modal();
     solutionsWindow.show();
@@ -367,5 +399,6 @@ void TextTwistWindow::cbSolve(Fl_Widget* widget, void* data)
 
 
 }
+
 }
 

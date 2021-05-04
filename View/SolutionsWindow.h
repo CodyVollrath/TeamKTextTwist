@@ -5,7 +5,7 @@
 #include <Fl/Fl_Box.H>
 
 
-#include <set>
+#include <unordered_set>
 #include <string>
 using namespace std;
 
@@ -14,9 +14,9 @@ namespace view
 class SolutionsWindow : public OKCancelWindow
 {
     public:
-        SolutionsWindow(set<string>* solutions);
+        SolutionsWindow(unordered_set<string>* solutions);
         virtual ~SolutionsWindow();
-        void addSolutions(set<string>* solutions);
+        void addSolutions(unordered_set<string>* solutions);
         void okHandler();
         void cancelHandler();
 

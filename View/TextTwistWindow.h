@@ -91,6 +91,7 @@ class TextTwistWindow : public Fl_Window
         Fl_Button* solveButton;
         Fl_Button* settingsButton;
         Fl_Button* scoreBoardButton;
+        Fl_Button* exitButton;
 
         Fl_Box* timerLabel;
         Fl_Box* scoreLabel;
@@ -128,6 +129,7 @@ class TextTwistWindow : public Fl_Window
         static void cbDisplaySettings(Fl_Widget* widget, void* data);
         static void cbDisplayScoreBoard(Fl_Widget* widget, void* data);
         static void cbUpdateTimer(Timer* timer, void* data);
+        static void cbExit(Fl_Widget* widget, void* data);
         static void cbSolve(Fl_Widget* widget, void* data);
 
 };

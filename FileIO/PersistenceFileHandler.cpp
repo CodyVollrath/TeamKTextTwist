@@ -16,8 +16,10 @@ string PersistenceFileHandler::getFileContents(const string& filename) const
     string output;
     string line;
     ifstream file(filename);
-    if (file.is_open()) {
-        while (getline(file, line)) {
+    if (file.is_open())
+    {
+        while (getline(file, line))
+        {
             output += line + "\n";
         }
     }

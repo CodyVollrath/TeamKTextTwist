@@ -1,4 +1,3 @@
-
 #ifndef SCORE_H
 #define SCORE_H
 
@@ -13,7 +12,6 @@ namespace model
 */
 class Score
 {
-
     public:
         /**
         * TIMER_DURATION indicates the times available for the score to be evaluated
@@ -91,8 +89,6 @@ class Score
         string name;
         int score;
         TIMER_DURATION duration;
-
-
 };
 }
 

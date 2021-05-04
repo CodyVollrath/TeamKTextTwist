@@ -1,7 +1,7 @@
 #include "SolutionsWindow.h"
 namespace view
 {
-SolutionsWindow::SolutionsWindow(set<string>* solutions) : OKCancelWindow(this->WINDOW_WIDTH, this->WINDOW_HEIGHT, "Solutions")
+SolutionsWindow::SolutionsWindow(unordered_set<string>* solutions) : OKCancelWindow(this->WINDOW_WIDTH, this->WINDOW_HEIGHT, "Solutions")
 {
     begin();
     this->solutionsScroll = new Fl_Scroll(50,50,this->WINDOW_WIDTH - 100, 100,"");
@@ -18,13 +18,13 @@ SolutionsWindow::~SolutionsWindow()
     //dtor
 }
 
-void SolutionsWindow::addSolutions(set<string>* solutions)
+void SolutionsWindow::addSolutions(unordered_set<string>* solutions)
 {
 
     int accumulator = 0;
     this->solutionsScroll->clear();
     this->solutionsScroll->begin();
-    set<string>::iterator it = solutions->begin();
+    unordered_set<string>::iterator it = solutions->begin();
     while (it != solutions->end()) {
         Fl_Box* scoreBox = new Fl_Box(50,  50 + accumulator, this->WINDOW_WIDTH - 100, 25, "");
         string word = *it;

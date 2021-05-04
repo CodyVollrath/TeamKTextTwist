@@ -12,20 +12,21 @@ TextTwistDictionary::~TextTwistDictionary()
     delete this->dictionary;
 }
 
-bool TextTwistDictionary::contains(string& word) {
+bool TextTwistDictionary::contains(string& word)
+{
     return std::find(this->dictionary->begin(), this->dictionary->end(), word) != this->dictionary->end();
 }
 
-set<string>* TextTwistDictionary::getDictionary()
+unordered_set<string>* TextTwistDictionary::getDictionary()
 {
     return this->dictionary;
 }
 
-set<string>* TextTwistDictionary::getAnagrams(string& letters, bool allowReuse)
+unordered_set<string>* TextTwistDictionary::getAnagrams(string& letters, bool allowReuse)
 {
     int* letterFrequencies = this->getFrequencies(letters);
-    set<string>* anagrams = new set<string>();
-    set<string>::iterator it = this->dictionary->begin();
+    unordered_set<string>* anagrams = new unordered_set<string>();
+    unordered_set<string>::iterator it = this->dictionary->begin();
     while (it != this->dictionary->end())
     {
         string word = *it;
