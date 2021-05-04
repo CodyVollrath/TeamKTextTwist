@@ -34,7 +34,7 @@
 	"ScoreBoardWindow.h"
 	"SolutionsWindow.h"
 
-1620158005 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Resources/ResourceData.cpp
+1620159433 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Resources/ResourceData.cpp
 	"ResourceData.h"
 
 1620159491 /home/csuser/Desktop/pc_2/TeamKTextTwist/Resources/ResourceData.h
@@ -45,7 +45,7 @@
 1620149859 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/main.cpp
 	"TextTwistWindow.h"
 
-1620159107 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
+1620159864 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -280,7 +280,7 @@
 1620146838 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Score.cpp
 	"Score.h"
 
-1620159279 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/ScoreBoardWindow.h
+1620159879 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/ScoreBoardWindow.h
 	<Fl/Fl_Scroll.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Input.H>
@@ -341,7 +341,7 @@
 	<unordered_set>
 	<string>
 
-1620159118 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/SolutionsWindow.h
+1620159965 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/SolutionsWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Scroll.H>
 	<Fl/Fl_Box.H>

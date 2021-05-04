@@ -43,12 +43,48 @@ public:
     // @param duration the duration to be entered
     //
     ScoreBoardWindow(ScoreBoard* scoreboard, int score, Score::TIMER_DURATION duration);
+
+    //
+    // Destructor of the ScoreBoardWindow
+    //
+    // @precondition none
+    // @postcondition none
+    //
     virtual ~ScoreBoardWindow();
 
+    //
+    // Closes the window
+    //
+    // @precondition none
+    // @postcondition none
+    //
     void okHandler();
+
+    //
+    // Closes the window
+    //
+    // @precondition none
+    // @postcondition none
+    //
     void cancelHandler();
 
+    //
+    // Shows the name entry buttons on window
+    //
+    // @precondition none
+    // @postcondition name entry buttons visible
+    //
+    //
     void showNameEntry();
+
+    //
+    // Returns the name entry
+    //
+    // @precondition none
+    // @postcondition none
+    //
+    // @return the name entered on window
+    //
     string getNameEntry();
 
 private:

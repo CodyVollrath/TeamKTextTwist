@@ -18,10 +18,40 @@ namespace view
 class SolutionsWindow : public OKCancelWindow
 {
 public:
+    //
+    // Constructs a ScoreBoardWindow for displaying scores
+    //
+    // @precondition none
+    // @postcondition none
+    //
+    // @param width the width of the window
+    // @param height the height of the window
+    // @param title the title of the window
+    //
     SolutionsWindow(unordered_set<string>* solutions);
+
+    //
+    // Destructor of the SolutionsWindow
+    //
+    // @precondition none
+    // @postcondition none
+    //
     virtual ~SolutionsWindow();
-    void addSolutions(unordered_set<string>* solutions);
+
+    //
+    // Closes the window
+    //
+    // @precondition none
+    // @postcondition none
+    //
     void okHandler();
+
+    //
+    // Closes the window
+    //
+    // @precondition none
+    // @postcondition none
+    //
     void cancelHandler();
 
 protected:
@@ -30,6 +60,7 @@ private:
     static const int WINDOW_WIDTH = 500;
     static const int WINDOW_HEIGHT = 250;
     Fl_Scroll* solutionsScroll;
+    void addSolutions(unordered_set<string>* solutions);
 };
 }
 
