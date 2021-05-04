@@ -1,7 +1,7 @@
  #include "SettingsWindow.h"
 namespace view
 {
-SettingsWindow::SettingsWindow() : OKCancelWindow(this->WINDOW_WIDTH, this->WINDOW_HEIGHT, "Settings")
+SettingsWindow::SettingsWindow(Settings* settings) : OKCancelWindow(this->WINDOW_WIDTH, this->WINDOW_HEIGHT, "Settings")
 {
     begin();
     this->timerSettings = new Fl_Choice(this->X_POS, this->Y_POS, this->WIDGET_WIDTH, this->WIDGET_HEIGHT, "Timer:");
@@ -11,7 +11,7 @@ SettingsWindow::SettingsWindow() : OKCancelWindow(this->WINDOW_WIDTH, this->WIND
     this->allowReuse = new Fl_Check_Button(this->X_POS, this->Y_POS + 2 * this->Y_DIFF, this->WIDGET_WIDTH, this->WIDGET_HEIGHT, "Allow characters to be reused");
     this->setOKLocation(this->WINDOW_HEIGHT - 100, this->WINDOW_HEIGHT - 50);
     this->setCancelLocation(this->WINDOW_HEIGHT, this->WINDOW_HEIGHT - 50);
-    this->settings = 0;
+    this->settings = settings;
     end();
 
 }
@@ -25,23 +25,20 @@ SettingsWindow::~SettingsWindow()
 
 void SettingsWindow::okHandler()
 {
-    if (this->settings) {
-        delete this->settings;
-    }
-    int timeInMinutes = this->timerSettings->value() + 1;
-    int sortOption = this->highScoreSort->value();
+    Score::TIMER_DURATION duration = Score::TIMER_DURATION(this->timerSettings->value());
+    ScoreBoard::SORT_ORDER sortOption = this->highScoreSort->value() ? ScoreBoard::SORT_ORDER::SCORE_AND_TIME : ScoreBoard::SORT_ORDER::SCORE ;
     bool isReusable = this->allowReuse->value();
-    this->settings = new Settings(timeInMinutes, sortOption, isReusable);
+
+    this->settings->setDuration(duration);
+    this->settings->setSortOption(sortOption);
+    this->settings->setReusableFlag(isReusable);
+
     this->settings->saveSettings();
     this->hide();
 }
 
 void SettingsWindow::cancelHandler()
 {
-    if (this->settings) {
-        delete this->settings;
-    }
-    this->settings = 0;
     this->hide();
 }
 

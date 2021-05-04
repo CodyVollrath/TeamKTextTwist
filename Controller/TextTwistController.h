@@ -10,6 +10,7 @@ using namespace std;
 #include "TextTwister.h"
 #include "Timer.h"
 #include "Settings.h"
+#include "ScoreBoard.h"
 using namespace model;
 
 
@@ -32,17 +33,21 @@ public:
     int getScore();
     void reset();
 
-    void setDuration(int duration);
+    void setDuration(Score::TIMER_DURATION duration);
     void bindTimer(void(*callback)(void*,chrono::milliseconds,bool), void* caller);
-    void changeSettings(Settings* settings);
+        void applySettings();
     char* getTime() const;
     char* getTime(chrono::milliseconds remainingTime) const;
+    Settings* getSettings();
+    ScoreBoard* getScoreBoard();
+    Score::TIMER_DURATION getDuration();
 
 private:
     TextTwister* twister;
     Timer* timer;
     Settings* settings;
-    void applySettings();
+    ScoreBoard* scoreboard;
+
 
 };
 

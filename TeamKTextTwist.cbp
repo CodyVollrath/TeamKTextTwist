@@ -31,6 +31,10 @@
 		<Unit filename="Controller/TextTwistController.h" />
 		<Unit filename="FileIO/DictionaryLoader.cpp" />
 		<Unit filename="FileIO/DictionaryLoader.h" />
+		<Unit filename="FileIO/SettingsFileHandler.cpp" />
+		<Unit filename="FileIO/SettingsFileHandler.h" />
+		<Unit filename="Model/ScoreBoard.cpp" />
+		<Unit filename="Model/ScoreBoard.h" />
 		<Unit filename="Model/Settings.cpp" />
 		<Unit filename="Model/Settings.h" />
 		<Unit filename="Model/TextTwistDictionary.cpp" />
@@ -43,6 +47,8 @@
 		<Unit filename="Resources/ResourceData.h" />
 		<Unit filename="View/OkCancelWindow.cpp" />
 		<Unit filename="View/OkCancelWindow.h" />
+		<Unit filename="View/ScoreBoardWindow.cpp" />
+		<Unit filename="View/ScoreBoardWindow.h" />
 		<Unit filename="View/SettingsWindow.cpp" />
 		<Unit filename="View/SettingsWindow.h" />
 		<Unit filename="View/TextTwistWindow.cpp" />

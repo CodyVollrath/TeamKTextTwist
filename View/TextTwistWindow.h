@@ -10,10 +10,9 @@
 #include <FL/Fl_Scroll.H>
 #include <FL/fl_types.h>
 
-#include "SettingsWindow.h"
 #include <string>
 #include <iostream>
-#include <stack>
+#include <vector>
 #include <chrono>
 #include <sstream>
 #include <iomanip>
@@ -22,6 +21,8 @@ using namespace std;
 #include "TextTwistController.h"
 using namespace controller;
 
+#include "SettingsWindow.h"
+#include "ScoreBoardWindow.h"
 
 namespace view
 {
@@ -89,9 +90,8 @@ class TextTwistWindow : public Fl_Window
         Fl_Box* responseLabel;
         Fl_Scroll* usedWords;
 
-
-        stack<Fl_Button*>* letterButtonsUsed;
-        stack<Fl_Input*>* letterFieldsUsed;
+        vector<Fl_Button*>* letterButtonsUsed;
+        vector<Fl_Input*>* letterFieldsUsed;
 
         TextTwistController* controller;
 
@@ -105,6 +105,9 @@ class TextTwistWindow : public Fl_Window
         void resetGame();
         void resetBoard();
         void updateTimer();
+        void pauseGame();
+        void resumeGame();
+
         void updateTimer(chrono::milliseconds remainingTime);
 
         static void cbSendLetterToField(Fl_Widget* widget, void* data);
