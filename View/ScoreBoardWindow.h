@@ -16,15 +16,38 @@ using namespace model;
 
 namespace view
 {
+//
+// ScoreBoard window for displaying scores and entering new score entries
+//
 class ScoreBoardWindow : public OKCancelWindow
 {
 public:
+    //
+    // Constructs a ScoreBoardWindow for displaying scores
+    //
+    // @precondition none
+    // @postcondition getNameEntry() == ""
+    //
+    // @param scoreboard the scoreboard to be displayed
+    //
     ScoreBoardWindow(ScoreBoard* scoreboard);
+
+    //
+    // Constructs a ScoreBoardWindow for displaying scores and entering new score
+    //
+    // @precondition none
+    // @postcondition getNameEntry() == ""
+    //
+    // @param scoreboard the scoreboard to be displayed
+    // @param score the score to be entered
+    // @param duration the duration to be entered
+    //
     ScoreBoardWindow(ScoreBoard* scoreboard, int score, Score::TIMER_DURATION duration);
     virtual ~ScoreBoardWindow();
 
     void okHandler();
     void cancelHandler();
+
     void showNameEntry();
     string getNameEntry();
 

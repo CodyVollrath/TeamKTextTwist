@@ -7,8 +7,9 @@ SolutionsWindow::SolutionsWindow(unordered_set<string>* solutions) : OKCancelWin
     this->solutionsScroll = new Fl_Scroll(50,50,this->WINDOW_WIDTH - 100, 100,"");
     this->solutionsScroll->end();
     this->addSolutions(solutions);
-        this->setOKLocation(this->WINDOW_HEIGHT - 100, this->WINDOW_HEIGHT - 50);
-    this->setCancelLocation(this->WINDOW_HEIGHT, this->WINDOW_HEIGHT - 50);this->setOKLocation(this->WINDOW_HEIGHT - 100, this->WINDOW_HEIGHT - 50);
+    this->setOKLocation(this->WINDOW_HEIGHT - 100, this->WINDOW_HEIGHT - 50);
+    this->setCancelLocation(this->WINDOW_HEIGHT, this->WINDOW_HEIGHT - 50);
+    this->setOKLocation(this->WINDOW_HEIGHT - 100, this->WINDOW_HEIGHT - 50);
     this->setCancelLocation(this->WINDOW_HEIGHT, this->WINDOW_HEIGHT - 50);
     end();
 }
@@ -25,7 +26,8 @@ void SolutionsWindow::addSolutions(unordered_set<string>* solutions)
     this->solutionsScroll->clear();
     this->solutionsScroll->begin();
     unordered_set<string>::iterator it = solutions->begin();
-    while (it != solutions->end()) {
+    while (it != solutions->end())
+    {
         Fl_Box* scoreBox = new Fl_Box(50,  50 + accumulator, this->WINDOW_WIDTH - 100, 25, "");
         string word = *it;
         scoreBox->copy_label(word.c_str());
@@ -36,11 +38,13 @@ void SolutionsWindow::addSolutions(unordered_set<string>* solutions)
     this->solutionsScroll->redraw();
 }
 
-void SolutionsWindow::okHandler(){
+void SolutionsWindow::okHandler()
+{
     this->hide();
 }
 
-void SolutionsWindow::cancelHandler(){
+void SolutionsWindow::cancelHandler()
+{
     this->hide();
 }
 }

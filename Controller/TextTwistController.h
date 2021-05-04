@@ -17,7 +17,9 @@ using namespace model;
 
 namespace controller
 {
-
+//
+// TextTwist game controller for MVC pattern
+//
 class TextTwistController
 {
 

@@ -14,6 +14,7 @@ ScoreBoard::~ScoreBoard()
     {
         delete score;
     }
+    delete this->scores;
 }
 void ScoreBoard::insert(string name, int score, Score::TIMER_DURATION duration)
 {

@@ -50,12 +50,12 @@ class TextTwistDictionary
         */
         unordered_set<string>* getAnagrams(string& letters, bool allowReuse);
 
-    private:
-        const string DICT_NAME = "dictionary.txt";
-        int* getFrequencies(string& letters);
-        bool isAnagram(int* letterFrequencies, string& word);
-        bool isAnagramWithReuse(int* letterFrequencies, string& word);
-        unordered_set<string>* dictionary;
+private:
+    const string DICT_NAME = "dictionary.txt";
+    static int* getLetterFrequencies(string& letters);
+    static bool isAnagram(int* letterFrequencies, string& word);
+    static bool isAnagramWithReuse(int* letterFrequencies, string& word);
+    unordered_set<string>* dictionary;
 };
 }
 
