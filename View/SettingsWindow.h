@@ -18,7 +18,7 @@ namespace view
 class SettingsWindow : public OKCancelWindow
 {
     public:
-        SettingsWindow();
+        SettingsWindow(Settings* settings);
         virtual ~SettingsWindow();
 
         Fl_Choice* timerSettings;

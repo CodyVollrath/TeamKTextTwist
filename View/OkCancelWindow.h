@@ -17,10 +17,11 @@ class OKCancelWindow : public Fl_Window
 public:
     enum WindowResult {OK, CANCEL, NONE};
 
-private:
+protected:
     Fl_Button* okButton;
     Fl_Button* cancelButton;
 
+private:
     WindowResult buttonInvoked;
 
 public:

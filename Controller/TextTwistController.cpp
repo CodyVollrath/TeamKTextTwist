@@ -7,6 +7,7 @@ TextTwistController::TextTwistController()
     this->twister = new TextTwister();
     this->timer = new Timer(100);
     this->settings = new Settings();
+    this->scoreboard = new ScoreBoard();
     this->applySettings();
 }
 TextTwistController::~TextTwistController()
@@ -14,6 +15,7 @@ TextTwistController::~TextTwistController()
     delete this->twister;
     delete this->timer;
     delete this->settings;
+    delete this->scoreboard ;
 }
 
 void TextTwistController::startGame()
@@ -41,12 +43,20 @@ void TextTwistController::reset() {
     this->twister->reset();
 }
 
+ScoreBoard* TextTwistController::getScoreBoard(){
+    return this->scoreboard;
+}
+
 string* TextTwistController::getLetters()
 {
     return this->twister->getLetters();
 }
 
-void TextTwistController::setDuration(int duration)
+Settings* TextTwistController::getSettings() {
+    return this->settings;
+}
+
+void TextTwistController::setDuration(Score::TIMER_DURATION duration)
 {
     this->timer->setDuration(duration*60*1000);
 }
@@ -61,6 +71,11 @@ int TextTwistController::getScore()
     return this->twister->getScore();
 }
 
+Score::TIMER_DURATION TextTwistController::getDuration()
+{
+    return this->settings->getDuration();
+}
+
 set<string>* TextTwistController::getUsedWords()
 {
     return this->twister->getUsedWords();
@@ -70,24 +85,18 @@ void TextTwistController::bindTimer(void(*callback)(void*,chrono::milliseconds,b
     this->timer->setCallback(callback, caller);
 }
 
-void TextTwistController::changeSettings(Settings* newSettings) {
-    this->settings->setTimeInMinutes(newSettings->getTimeInMinutes());
-    this->settings->setSortOption(newSettings->getSortOption());
-    this->settings->setReusableFlag(newSettings->getReusableFlag());
-    this->applySettings();
-}
-
 void TextTwistController::applySettings()
 {
-    this->setDuration(this->settings->getTimeInMinutes());
+    this->setDuration(this->settings->getDuration());
+    this->scoreboard->setOrder(this->settings->getSortOption());
     //Put score sort in for the scoreboard object
     //Change state for allowCharacterReuse
-    cout << this->settings->getTimeInMinutes() << "" << this->settings->getSortOption() << "" << this->settings->getReusableFlag()<< endl;
+    cout << this->settings->getDuration() << "" << this->settings->getSortOption() << "" << this->settings->getReusableFlag()<< endl;
 }
 
 char* TextTwistController::getTime() const
 {
-    int minutes = this->settings->getTimeInMinutes();
+    int minutes = this->settings->getDuration();
     chrono::milliseconds remainingTime = chrono::milliseconds(minutes * 60 * 1000);
     return this->getTime(remainingTime);
 }

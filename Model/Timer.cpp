@@ -62,9 +62,7 @@ bool Timer::getRunning()
 void Timer::start()
 {
     this->remainingTime = this->duration;
-    this->running = true;
-    thread update(updater, this);
-    update.detach();
+    this->resume();
 
 }
 void Timer::stop()
@@ -76,6 +74,7 @@ void Timer::resume()
 {
     this->running = true;
     thread update(updater, this);
+    update.detach();
 }
 void Timer::pause()
 {

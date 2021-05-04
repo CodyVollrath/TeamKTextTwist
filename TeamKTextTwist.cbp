@@ -18,6 +18,7 @@
 					<Add directory="Controller" />
 					<Add directory="FileIO" />
 					<Add directory="Model" />
+					<Add directory="./" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -31,6 +32,8 @@
 		<Unit filename="Controller/TextTwistController.h" />
 		<Unit filename="FileIO/DictionaryLoader.cpp" />
 		<Unit filename="FileIO/DictionaryLoader.h" />
+		<Unit filename="FileIO/SettingsFileHandler.cpp" />
+		<Unit filename="FileIO/SettingsFileHandler.h" />
 		<Unit filename="Model/Settings.cpp" />
 		<Unit filename="Model/Settings.h" />
 		<Unit filename="Model/TextTwistDictionary.cpp" />
@@ -49,6 +52,7 @@
 		<Unit filename="View/TextTwistWindow.h" />
 		<Unit filename="dictionary.txt" />
 		<Unit filename="main.cpp" />
+		<Unit filename="settings.csv" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

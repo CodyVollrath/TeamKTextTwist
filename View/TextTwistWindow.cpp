@@ -35,7 +35,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->clearButton->callback(this->cbClear, this);
     this->submitButton->callback(this->cbSubmit, this);
     this->settingsButton->callback(this->cbDisplaySettings, this);
-
+    this->scoreBoardButton->callback(this->cbDisplayScoreBoard, this);
 
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->lettersUsed = new stack<const char*>();
@@ -51,12 +51,14 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 
 TextTwistWindow::~TextTwistWindow()
 {
-
-    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
+    while (!this->letterButtonsUsed->empty())
     {
-        delete this->letterButtons[i];
+        delete this->letterButtonsUsed->top();
+        this->letterButtonsUsed->pop();
     }
+    delete this->letterButtonsUsed;
     delete this->lettersField;
+
     delete this->undoButton;
     delete this->twistButton;
     delete this->generateButton;
@@ -66,6 +68,7 @@ TextTwistWindow::~TextTwistWindow()
     delete this->responseLabel;
     delete this->scoreLabel;
     delete this->settingsButton;
+    delete this->usedWords;
 
     delete this->controller;
     delete this->letterButtonsUsed;
@@ -101,6 +104,7 @@ void TextTwistWindow::resetBoard()
     delete this->lettersUsed;
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->lettersUsed = new stack<const char*>();
+
     this->didGameStart = true;
     this->submitButton->deactivate();
 }
@@ -108,6 +112,14 @@ void TextTwistWindow::resetBoard()
 void TextTwistWindow::resetGame() {
     this->controller->reset();
     this->updateScore();
+}
+
+void TextTwistWindow::pauseGame() {
+    this->controller->pauseGame();
+}
+
+void TextTwistWindow::resumeGame() {
+    this->controller->resumeGame();
 }
 
 
@@ -131,9 +143,8 @@ void TextTwistWindow::updateUsedWords()
     this->usedWords->clear();
     this->usedWords->begin();
     int accumulator = 0;
-    for (set<string>::iterator iter = this->controller->getUsedWords()->begin(); iter != this->controller->getUsedWords()->end(); ++iter)
+    for (string word : *this->controller->getUsedWords())
     {
-        string word = *iter;
         Fl_Box* wordBox = new Fl_Box(this->USED_SCROLL_X_POS, this->USED_SCROLL_Y_POS + accumulator, this->USED_SCROLL_SIDE_LENGTH, 25, "");
         wordBox->copy_label(word.c_str());
         accumulator += 25;
@@ -227,8 +238,12 @@ void TextTwistWindow::cbSubmit(Fl_Widget* widget, void* data) {
 }
 void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
 {
+
     TextTwistWindow* window = (TextTwistWindow*)data;
-    SettingsWindow settingsWindow;
+    if (window->didGameStart) {
+        window->pauseGame();
+    }
+    SettingsWindow settingsWindow(window->controller->getSettings());
     settingsWindow.set_modal();
     settingsWindow.show();
 
@@ -237,19 +252,35 @@ void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
     }
 
     if (settingsWindow.getWindowResult() == OKCancelWindow::WindowResult::OK) {
-        Settings* settings = settingsWindow.getSettings();
-        window->controller->changeSettings(settings);
+        window->controller->applySettings();
 
         if (!window->didGameStart) {
             window->updateTimer();
         }
+    }
+    if (window->didGameStart) {
+       window->resumeGame();
     }
 }
 
 void TextTwistWindow::cbDisplayScoreBoard(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
-    //TODO Show scoreboard and transfer data from main board between windows
+    if (window->didGameStart) {
+        window->pauseGame();
+    }
+
+    ScoreBoardWindow scoreboardWindow(window->controller->getScoreBoard());
+    scoreboardWindow.set_modal();
+    scoreboardWindow.show();
+
+    while (scoreboardWindow.shown()) {
+        Fl::wait();
+    }
+
+    if (window->didGameStart) {
+       window->resumeGame();
+    }
 }
 
 void TextTwistWindow::updateTimer() {
@@ -267,7 +298,15 @@ void TextTwistWindow::cbUpdateTimer(void* data, chrono::milliseconds remainingTi
     Fl::lock();
     window->updateTimer(remainingTime);
     if (!timerRunning) {
-        // Show win!
+        window->didGameStart = false;
+        Settings* settings = window->controller->getSettings();
+        ScoreBoardWindow scoreboardWindow(window->controller->getScoreBoard(), window->controller->getScore(), settings->getDuration());
+        scoreboardWindow.set_modal();
+        scoreboardWindow.show();
+
+        while (scoreboardWindow.shown()) {
+            Fl::wait();
+        }
     }
     Fl::unlock();
     Fl::awake();
