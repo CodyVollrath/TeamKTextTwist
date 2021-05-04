@@ -5,11 +5,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/**
+* Splits the string
+* @param data the string to be split
+* @param delimiter the item to split by
+* @return a list of strings delimited by the delimiter
+*/
 const vector<string> splitString(const string& data, const string& delimiter);
 
-const bool checkAnagram(string& leftWord, string& rightWord);
-
-const int* getFrequencies(string&, int numberOfLetters);
-const bool isAnagram(const int* letterFrequencies, string& word, int numberOfLetters);
-const bool isAnagramWithReuse(const int* letterFrequencies, string& word, int numberOfLetters);
 #endif // RESOURCEDATA_H
