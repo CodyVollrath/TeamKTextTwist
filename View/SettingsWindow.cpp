@@ -61,7 +61,6 @@ void SettingsWindow::initializeSortOptions()
 {
     this->highScoreSort->add("Overall Score");
     this->highScoreSort->add("Score & Time");
-    int scoreOrder = this->settings->getSortOption();
     this->highScoreSort->value(0);
 }
 }

@@ -61,10 +61,13 @@ TextTwistWindow::~TextTwistWindow()
 
     delete this->undoButton;
     delete this->twistButton;
+
     delete this->generateButton;
     delete this->submitButton;
+
     delete this->timerLabel;
     delete this->clearButton;
+
     delete this->responseLabel;
     delete this->scoreLabel;
     delete this->settingsButton;
@@ -273,7 +276,7 @@ void TextTwistWindow::cbSubmit(Fl_Widget* widget, void* data) {
 void TextTwistWindow::cbDisplaySettings(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
-    if (window->didGameStart) {
+   if (window->didGameStart) {
         window->pauseGame();
     }
     SettingsWindow settingsWindow(window->controller->getSettings());
