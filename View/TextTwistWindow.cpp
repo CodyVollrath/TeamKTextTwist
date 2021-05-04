@@ -203,7 +203,10 @@ void TextTwistWindow::cbSendLetterToField(Fl_Widget* widget, void* data)
     TextTwistWindow* window = (TextTwistWindow*)data;
     Fl_Button* button = (Fl_Button*) widget;
     window->placeLetterToNextEmptyField(button->label());
-    button->deactivate();
+    if (!window->controller->areLettersReusable()) {
+        button->deactivate();
+    }
+
     window->letterButtonsUsed->push(button);
 }
 

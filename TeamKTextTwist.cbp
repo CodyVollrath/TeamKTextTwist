@@ -50,6 +50,7 @@
 		<Unit filename="Resources/ResourceData.h" />
 		<Unit filename="View/OkCancelWindow.cpp" />
 		<Unit filename="View/OkCancelWindow.h" />
+		<Unit filename="View/ScoreBoardWindow.cpp" />
 		<Unit filename="View/SettingsWindow.cpp" />
 		<Unit filename="View/SettingsWindow.h" />
 		<Unit filename="View/TextTwistWindow.cpp" />
