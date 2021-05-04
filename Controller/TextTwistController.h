@@ -29,7 +29,7 @@ public:
     void twist();
     string* getLetters();
     set<string>* getUsedWords();
-    string submit(string* letters);
+    string submit(string letters);
     int getScore();
 
     void setDuration(Score::TIMER_DURATION duration);
@@ -37,6 +37,8 @@ public:
     void applySettings();
     char* getTime() const;
     char* formatTime(int milliseconds) const;
+    char* getTime(chrono::milliseconds remainingTime) const;
+    bool areLettersReusable() const;
     Settings* getSettings();
     ScoreBoard* getScoreBoard();
     Score::TIMER_DURATION getDuration();

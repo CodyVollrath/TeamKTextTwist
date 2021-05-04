@@ -18,6 +18,7 @@
 					<Add directory="Controller" />
 					<Add directory="FileIO" />
 					<Add directory="Model" />
+					<Add directory="./" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -49,14 +50,13 @@
 		<Unit filename="Resources/ResourceData.h" />
 		<Unit filename="View/OkCancelWindow.cpp" />
 		<Unit filename="View/OkCancelWindow.h" />
-		<Unit filename="View/ScoreBoardWindow.cpp" />
-		<Unit filename="View/ScoreBoardWindow.h" />
 		<Unit filename="View/SettingsWindow.cpp" />
 		<Unit filename="View/SettingsWindow.h" />
 		<Unit filename="View/TextTwistWindow.cpp" />
 		<Unit filename="View/TextTwistWindow.h" />
 		<Unit filename="dictionary.txt" />
 		<Unit filename="main.cpp" />
+		<Unit filename="settings.csv" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

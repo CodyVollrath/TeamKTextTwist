@@ -16,6 +16,7 @@
 #include <chrono>
 #include <sstream>
 #include <iomanip>
+#include <stack>
 using namespace std;
 
 #include "TextTwistController.h"
@@ -75,7 +76,7 @@ class TextTwistWindow : public Fl_Window
 
 
         Fl_Button* letterButtons[TextTwister::MAX_LETTER_LENGTH];
-        Fl_Input* letterFields[TextTwister::MAX_LETTER_LENGTH];
+        Fl_Input* lettersField;
 
         Fl_Button* undoButton;
         Fl_Button* clearButton;
@@ -90,8 +91,8 @@ class TextTwistWindow : public Fl_Window
         Fl_Box* responseLabel;
         Fl_Scroll* usedWords;
 
-        vector<Fl_Button*>* letterButtonsUsed;
-        vector<Fl_Input*>* letterFieldsUsed;
+        stack<Fl_Button*>* letterButtonsUsed;
+        stack<const char*>* lettersUsed;
 
         TextTwistController* controller;
 
@@ -100,7 +101,7 @@ class TextTwistWindow : public Fl_Window
         void placeLetterToNextEmptyField(const char* letter);
         void submit();
         void lockBoard();
-        string* getSelectedLetters();
+        string getSelectedLetters();
         void updateScore();
         void updateUsedWords();
         void startGame();

@@ -26,7 +26,7 @@ class TextTwister
         void twist();
         string* getLetters();
         set<string>* getUsedWords();
-        string submit(string* letters);
+        string submit(string letters);
         int getScore();
 
     private:
