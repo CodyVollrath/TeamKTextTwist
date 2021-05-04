@@ -184,7 +184,7 @@
 	<unordered_set>
 	"TextTwistDictionary.h"
 
-1620147858 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/SettingsWindow.h
+1620160318 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/SettingsWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Choice.H>
 	<Fl/Fl_Input.H>
@@ -192,7 +192,7 @@
 	<iostream>
 	"Settings.h"
 
-1620085449 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/OkCancelWindow.h
+1620160318 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/OkCancelWindow.h
 	<Fl/Fl_Window.H>
 	<Fl/Fl_Button.H>
 
@@ -280,7 +280,7 @@
 1620146838 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Score.cpp
 	"Score.h"
 
-1620159879 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/ScoreBoardWindow.h
+1620160243 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/ScoreBoardWindow.h
 	<Fl/Fl_Scroll.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Input.H>
@@ -341,7 +341,7 @@
 	<unordered_set>
 	<string>
 
-1620159965 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/SolutionsWindow.h
+1620160219 /home/csuser/Desktop/pc_2/TeamKTextTwist/View/SolutionsWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Scroll.H>
 	<Fl/Fl_Box.H>

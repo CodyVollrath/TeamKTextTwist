@@ -65,7 +65,7 @@ void ScoreBoardWindow::initializeScores()
     this->scoresScroll->begin();
     for (Score* score : *scores)
     {
-        Fl_Box* scoreBox = new Fl_Box(50Closes the window,  50 + accumulator, this->WINDOW_WIDTH - 100, 25, "");
+        Fl_Box* scoreBox = new Fl_Box(50,  50 + accumulator, this->WINDOW_WIDTH - 100, 25, "");
         stringstream ss;
         int durationInMinutes = (score->getDuration() + 1);
         ss <<  "Name: "<< score->getName() << " : Score: " << score->getScore() << " : Duration: " << durationInMinutes << " mins";
