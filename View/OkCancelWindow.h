@@ -25,19 +25,65 @@ private:
     WindowResult buttonInvoked;
 
 public:
+    /**
+    * Creates an ok cancel window
+    * @param width the width of the window
+    * @param height the height of the window
+    * @param title the title of the window
+    */
     OKCancelWindow(int width, int height, const char* title);
+
+    /**
+    * Destroys the cancel window
+    */
     virtual ~OKCancelWindow();
 
+    /**
+    * Sets the location of the OK button
+    * @param x the x cord
+    * @param y the y cord
+    */
     void setOKLocation(int x, int y);
+
+    /**
+    * Sets the location of the Cancel button
+    * @param x the x cord
+    * @param y the y cord
+    */
     void setCancelLocation(int x, int y);
 
+    /**
+    * the call back for the OK button
+    */
     static void cbOk(Fl_Widget* widget, void* data);
+
+    /**
+    * The handler for OK
+    */
     virtual void okHandler() = 0;
 
+    /**
+    * The call back for the cancel button
+    */
     static void cbCancel(Fl_Widget* widget, void* data);
+
+    /**
+    The handler for Cancel
+    */
     virtual void cancelHandler() = 0;
 
+    /**
+    * Sets the window result
+    * @param result the result of the window
+    * @post getWindowResult() == result
+    * @return the window result
+    */
     OKCancelWindow::WindowResult setWindowResult(OKCancelWindow::WindowResult result);
+
+    /**
+    * Gets the window result
+    * @param result the result of the window
+    */
     OKCancelWindow::WindowResult getWindowResult();
 };
 
