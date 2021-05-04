@@ -2,7 +2,7 @@
 1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/main.cpp
 	"TextTwistWindow.h"
 
-1620158546 source:/home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.cpp
+1620159861 source:/home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.cpp
 	"ResourceData.h"
 
 1620158610 /home/cvollra1/Documents/TeamKTextTwist/Resources/ResourceData.h
@@ -10,10 +10,10 @@
 	<string>
 	<bits/stdc++.h>
 
-1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
+1620160800 source:/home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1620156459 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
+1620160663 /home/cvollra1/Documents/TeamKTextTwist/View/TextTwistWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Button.H>
@@ -83,7 +83,7 @@
 1620157379 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/View/TextTwistWindow.cpp
 	"TextTwistWindow.h"
 
-1620156459 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
+1620159861 /home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.h
 	<string>
 	<chrono>
 	<sstream>
@@ -97,7 +97,7 @@
 1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/Controller/TextTwistController.cpp
 	"TextTwistController.h"
 
-1620156459 /home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.h
+1620159861 /home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.h
 	<iostream>
 	<fstream>
 	<string>
@@ -107,12 +107,12 @@
 1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/FileIO/DictionaryLoader.cpp
 	"DictionaryLoader.h"
 
-1620158021 /home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.h
+1620159861 /home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.h
 	<algorithm>
 	<unordered_set>
 	"DictionaryLoader.h"
 
-1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.cpp
+1620159861 source:/home/cvollra1/Documents/TeamKTextTwist/Model/TextTwistDictionary.cpp
 	"TextTwistDictionary.h"
 
 1619977934 D
@@ -233,7 +233,7 @@
 	<chrono>
 	<string>
 
-1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/Model/Timer.cpp
+1620159861 source:/home/cvollra1/Documents/TeamKTextTwist/Model/Timer.cpp
 	"Timer.h"
 
 1620159414 /home/csuser/Desktop/pc_2/TeamKTextTwist/Model/Settings.h
@@ -300,7 +300,7 @@
 1620156556 /home/cvollra1/Documents/TeamKTextTwist/Model/Score.h
 	<string>
 
-1620156459 /home/cvollra1/Documents/TeamKTextTwist/View/ScoreBoardWindow.h
+1620160663 /home/cvollra1/Documents/TeamKTextTwist/View/ScoreBoardWindow.h
 	<Fl/Fl_Scroll.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Input.H>
@@ -309,7 +309,7 @@
 	"OkCancelWindow.h"
 	"ScoreBoard.h"
 
-1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/Model/ScoreBoard.cpp
+1620159861 source:/home/cvollra1/Documents/TeamKTextTwist/Model/ScoreBoard.cpp
 	"ScoreBoard.h"
 	<iostream>
 
@@ -319,7 +319,7 @@
 1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/View/ScoreBoardWindow.cpp
 	"ScoreBoardWindow.h"
 
-1620156459 /home/cvollra1/Documents/TeamKTextTwist/FileIO/PersistenceFileHandler.h
+1620159861 /home/cvollra1/Documents/TeamKTextTwist/FileIO/PersistenceFileHandler.h
 	<fstream>
 
 1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/FileIO/PersistenceFileHandler.cpp
@@ -331,10 +331,10 @@
 1620146838 source:/home/csuser/Desktop/pc_2/TeamKTextTwist/FileIO/PersistenceFileHandler.cpp
 	"PersistenceFileHandler.h"
 
-1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/View/SolutionsWindow.cpp
+1620159861 source:/home/cvollra1/Documents/TeamKTextTwist/View/SolutionsWindow.cpp
 	"SolutionsWindow.h"
 
-1620156459 /home/cvollra1/Documents/TeamKTextTwist/View/SolutionsWindow.h
+1620160663 /home/cvollra1/Documents/TeamKTextTwist/View/SolutionsWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Scroll.H>
 	<Fl/Fl_Box.H>

@@ -399,7 +399,7 @@ void TextTwistWindow::cbSolve(Fl_Widget* widget, void* data)
 
     if (window->didGameStart)
     {
-        window->resumeGame();
+        window->startGame();
     }
 
 
