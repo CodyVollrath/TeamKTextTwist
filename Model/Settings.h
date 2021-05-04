@@ -16,8 +16,6 @@ class Settings
 {
     public:
 
-
-
         /**
         * Constructs settings object: Empty Constructor loads from a file
         * @pre the file it is loading from must exist and be validly formatted as a csv

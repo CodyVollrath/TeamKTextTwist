@@ -30,6 +30,7 @@ namespace model
                 delete score;
             }
             this->scores->clear();
+            this->saveScoreBoardToFile();
         }
 
         bool scoreCompare(Score* a, Score* b) {
@@ -88,6 +89,6 @@ namespace model
             for (Score* score : *this->scores) {
                data += score->getName() + "," +to_string(score->getScore()) + "," + to_string(score->getDuration()) + "\n";
             }
-            handler.appendToFile(this->SCOREBOARD_FILE, data);
+            handler.saveToFile(this->SCOREBOARD_FILE, data);
         }
 }

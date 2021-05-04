@@ -43,6 +43,7 @@ class SettingsWindow : public OKCancelWindow
         static const int WIDGET_HEIGHT = 20;
         void initializeTimeOptions();
         void initializeSortOptions();
+        void initializeReusableOption();
         Settings* settings;
 };
 }

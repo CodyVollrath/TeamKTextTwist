@@ -34,4 +34,7 @@ namespace model {
         Score::TIMER_DURATION Score::getDuration(){
             return this->duration;
         }
+        int Score::durationToMilliseconds(TIMER_DURATION duration) {
+            return (duration + 1) * 60000;
+        }
 }

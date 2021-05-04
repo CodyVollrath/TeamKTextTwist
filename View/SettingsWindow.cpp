@@ -3,15 +3,18 @@ namespace view
 {
 SettingsWindow::SettingsWindow(Settings* settings) : OKCancelWindow(this->WINDOW_WIDTH, this->WINDOW_HEIGHT, "Settings")
 {
+    this->settings = settings;
     begin();
     this->timerSettings = new Fl_Choice(this->X_POS, this->Y_POS, this->WIDGET_WIDTH, this->WIDGET_HEIGHT, "Timer:");
     this->highScoreSort = new Fl_Choice(this->X_POS, this->Y_POS + this->Y_DIFF, this->WIDGET_WIDTH + 100, this->WIDGET_HEIGHT, "Score Sort:");
+    this->allowReuse = new Fl_Check_Button(this->X_POS, this->Y_POS + 2 * this->Y_DIFF, this->WIDGET_WIDTH, this->WIDGET_HEIGHT, "Allow characters to be reused");
+
     this->initializeTimeOptions();
     this->initializeSortOptions();
-    this->allowReuse = new Fl_Check_Button(this->X_POS, this->Y_POS + 2 * this->Y_DIFF, this->WIDGET_WIDTH, this->WIDGET_HEIGHT, "Allow characters to be reused");
+    this->initializeReusableOption();
+
     this->setOKLocation(this->WINDOW_HEIGHT - 100, this->WINDOW_HEIGHT - 50);
     this->setCancelLocation(this->WINDOW_HEIGHT, this->WINDOW_HEIGHT - 50);
-    this->settings = settings;
     end();
 
 }
@@ -54,14 +57,18 @@ void SettingsWindow::initializeTimeOptions()
     this->timerSettings->add("1 Minute");
     this->timerSettings->add("2 Minutes");
     this->timerSettings->add("3 Minutes");
-    this->timerSettings->value(0);
+    this->timerSettings->value(this->settings->getDuration());
 }
 
 void SettingsWindow::initializeSortOptions()
 {
     this->highScoreSort->add("Overall Score");
     this->highScoreSort->add("Score & Time");
-    int scoreOrder = this->settings->getSortOption();
-    this->highScoreSort->value(0);
+    this->highScoreSort->value(this->settings->getSortOption());
+}
+
+void SettingsWindow::initializeReusableOption(){
+    bool allowReuse = this->settings->getReusableFlag();
+    this->allowReuse->value(allowReuse);
 }
 }

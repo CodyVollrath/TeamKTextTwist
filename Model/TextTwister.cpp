@@ -37,7 +37,6 @@ int TextTwister::getLetterIndex(int value)
 
 char TextTwister::getRandomLetter()
 {
-    char selected_letter = 0;
     int randomValue = rand() % this->maxBracket;
     int letterIndex = this->getLetterIndex(randomValue);
     char randomCharacter = 'a' + letterIndex;
@@ -78,8 +77,7 @@ string TextTwister::submit(string letters) {
 
     string response = "You already used that word!";
     if (inDictionary && !used) {
-        int letterCount = word.length();
-        this->score += (letterCount * letterCount * 10);  // update score
+        this->score += TextTwister::calculateScore(word);
         this->usedWords->insert(word);
         response = "Correct! That word exists!";
     } else if (!inDictionary) {
@@ -94,6 +92,11 @@ string TextTwister::submit(string letters) {
 int TextTwister::getScore()
 {
     return this->score;
+}
+
+int TextTwister::calculateScore(string& word) {
+    int letterCount = word.length();
+    return (letterCount * letterCount * 10);
 }
 
 }

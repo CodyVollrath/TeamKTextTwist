@@ -55,7 +55,7 @@ Settings* TextTwistController::getSettings() {
 
 void TextTwistController::setDuration(Score::TIMER_DURATION duration)
 {
-    this->timer->setDuration((duration + 1) * 60 * 1000);
+    this->timer->setDuration(Score::durationToMilliseconds(duration));
 }
 
 

@@ -38,6 +38,9 @@ class TextTwistWindow : public Fl_Window
     protected:
 
     private:
+        static const int Y_POS_DEC = 100;
+        static const int SPACE_LENGTH = 5;
+
         static const int BUTTON_WIDTH = 100;
         static const int BUTTON_HIGHT = 30;
 

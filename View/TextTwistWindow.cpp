@@ -42,6 +42,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 
     this->initializeBoardElements();
     this->submitButton->deactivate();
+    this->lettersField->deactivate();
     this->controller->bindTimer(this->cbUpdateTimer, this);
 
     this->usedWords = new Fl_Scroll(this->USED_SCROLL_X_POS, this->USED_SCROLL_Y_POS, this->USED_SCROLL_SIDE_LENGTH, this->USED_SCROLL_SIDE_HEIGHT,"");
@@ -53,8 +54,9 @@ TextTwistWindow::~TextTwistWindow()
 {
     while (!this->letterButtonsUsed->empty())
     {
-        delete this->letterButtonsUsed->top();
+        Fl_Button* button = this->letterButtonsUsed->top();
         this->letterButtonsUsed->pop();
+        delete button;
     }
     delete this->letterButtonsUsed;
     delete this->lettersField;
@@ -71,23 +73,21 @@ TextTwistWindow::~TextTwistWindow()
     delete this->usedWords;
 
     delete this->controller;
-    delete this->letterButtonsUsed;
     delete this->lettersUsed;
 }
 
 void TextTwistWindow::initializeBoardElements()
 {
     int accumulator = 0;
-    const int Y_POS_DEC = 100;
-    const int SPACE_LENGTH = 5;
+
     for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
     {
         this->letterButtons[i] =  new Fl_Button(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS,this->SIDE_LENGTH_OF_LETTER_BUTTON, this->SIDE_LENGTH_OF_LETTER_BUTTON, "");
         this->letterButtons[i]->callback(this->cbSendLetterToField, this);
         this->letterButtons[i]->deactivate();
-        accumulator += this->SIDE_LENGTH_OF_LETTER_BUTTON + SPACE_LENGTH;
+        accumulator += this->SIDE_LENGTH_OF_LETTER_BUTTON + TextTwistWindow::SPACE_LENGTH;
     }
-    this->lettersField = new Fl_Input(this->LETTERS_X_POS, this->LETTERS_Y_POS - Y_POS_DEC, 350, 30, "");
+    this->lettersField = new Fl_Input(this->LETTERS_X_POS, this->LETTERS_Y_POS - TextTwistWindow::Y_POS_DEC, 350, 30, "");
 }
 
 void TextTwistWindow::resetBoard()
@@ -166,7 +166,6 @@ void TextTwistWindow::updateScore()
 {
     int score = this->controller->getScore();
     string formattedScore = "Score: " + to_string(score);
-    cout << formattedScore << endl;
     this->scoreLabel->copy_label(formattedScore.c_str());
 }
 
@@ -177,10 +176,11 @@ void TextTwistWindow::updateUsedWords()
     int accumulator = 0;
     for (string word : *this->controller->getUsedWords())
     {
+        int wordScore = TextTwister::calculateScore(word);
+        word =  word + " : " + to_string(wordScore);
         Fl_Box* wordBox = new Fl_Box(this->USED_SCROLL_X_POS, this->USED_SCROLL_Y_POS + accumulator, this->USED_SCROLL_SIDE_LENGTH, 25, "");
         wordBox->copy_label(word.c_str());
         accumulator += 25;
-        cout << wordBox->label() << endl;
     }
     this->usedWords->end();
     this->usedWords->redraw();
@@ -317,7 +317,7 @@ void TextTwistWindow::cbDisplayScoreBoard(Fl_Widget* widget, void* data)
 }
 
 void TextTwistWindow::updateTimer() {
-    int remainingTime = (this->controller->getDuration() + 1) * 60 * 1000;
+    int remainingTime = Score::durationToMilliseconds(this->controller->getDuration());
     this->timerLabel->copy_label(this->controller->formatTime(remainingTime));
 }
 

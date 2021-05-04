@@ -40,8 +40,10 @@ class ScoreBoardWindow : public OKCancelWindow
         void initializeScores();
         Fl_Scroll* scoresScroll;
         Fl_Input* nameEntry;
+        Fl_Button* resetButton;
         string submitName;
         ScoreBoard* scoreboard;
+        static void cbReset(Fl_Widget* widget, void* data);
 };
 }
 

@@ -28,6 +28,7 @@ class TextTwister
         set<string>* getUsedWords();
         string submit(string letters);
         int getScore();
+        static int calculateScore(string& word);
 
     private:
         TextTwistDictionary* dictionary;
