@@ -171,7 +171,7 @@ public:
     // @postcondition none
     //
     // @return the current letters possible answers
-    unordered_set<string>* getAnswers();
+    unordered_set<string>* displayAllPossibleWords(string& word);
 
     // Gets the used words
     //
@@ -197,6 +197,8 @@ public:
     //
     // @return the current score
     int getScore();
+
+
 
 private:
     TextTwister* twister;

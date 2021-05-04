@@ -1,6 +1,6 @@
 #ifndef TEXTTWISTER_H
 #define TEXTTWISTER_H
-
+#include "ResourceData.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -15,32 +15,32 @@ namespace model
 class TextTwister
 {
 
-public:
 
-    static const int LETTER_FREQUENCIES[];
-    static const int MAX_LETTER_LENGTH = 7;
-    static int calculateScore(string& word);
+    public:
 
-    TextTwister();
-    virtual ~TextTwister();
-    void start();
-    void twist();
-    string* getLetters();
-    unordered_set<string>* getUsedWords();
-    unordered_set<string>* getAnswers(bool allowReuse);
-    string submit(string letters);
-    int getScore();
+        static const int LETTER_FREQUENCIES[];
+        static const int MAX_LETTER_LENGTH = 7;
 
+        TextTwister();
+        virtual ~TextTwister();
+        void start();
+        void twist();
+        string* getLetters();
+        unordered_set<string>* getUsedWords();
+        string submit(string letters);
+        int getScore();
+        static int calculateScore(string& word);
+        unordered_set<string>* getSolutions(string& word, bool allowReuse);
 
-private:
-    TextTwistDictionary* dictionary;
-    string letters[MAX_LETTER_LENGTH];
-    int letterBrackets[TextTwistDictionary::NUMBER_OF_LETTERS];
-    int maxBracket;
-    char getRandomLetter();
-    int getLetterIndex(int value);
-    int score;
-    unordered_set<string>* usedWords;
+    private:
+        TextTwistDictionary* dictionary;
+        string letters[MAX_LETTER_LENGTH];
+        int letterBrackets[26];
+        int maxBracket;
+        char getRandomLetter();
+        int getLetterIndex(int value);
+        int score;
+        unordered_set<string>* usedWords;
 
 };
 

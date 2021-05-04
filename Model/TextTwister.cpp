@@ -72,16 +72,6 @@ unordered_set<string>* TextTwister::getUsedWords()
     return this->usedWords;
 }
 
-unordered_set<string>* TextTwister::getAnswers(bool allowReuse)
-{
-    string letters;
-    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
-    {
-        letters += this->letters[i];
-    }
-    return this->dictionary->getAnagrams(letters, allowReuse);
-}
-
 string TextTwister::submit(string letters)
 {
     string word = letters;
@@ -116,5 +106,9 @@ int TextTwister::calculateScore(string& word)
     return (letterCount * letterCount * 10);
 }
 
+unordered_set<string>* TextTwister::getSolutions(string& word, bool allowReuse)
+{
+    return this->dictionary->getAnagrams(word, allowReuse);
+}
 }
 

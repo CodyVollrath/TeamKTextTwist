@@ -4,7 +4,6 @@ namespace controller
 
 TextTwistController::TextTwistController()
 {
-    this->answers = 0;
     this->twister = new TextTwister();
     this->timer = new Timer(100);
     this->settings = new Settings();
@@ -18,14 +17,10 @@ TextTwistController::~TextTwistController()
     delete this->timer;
     delete this->settings;
     delete this->scoreboard;
-    delete this->answers;
 }
 
 void TextTwistController::startGame()
 {
-    delete this->answers;
-    this->answers = this->twister->getAnswers(this->settings->getReusableFlag());
-
     this->twister->start();
     this->timer->start();
 }
@@ -58,11 +53,6 @@ string* TextTwistController::getLetters()
 Settings* TextTwistController::getSettings()
 {
     return this->settings;
-}
-
-unordered_set<string>* TextTwistController::getAnswers()
-{
-    return this->answers;
 }
 
 void TextTwistController::setDuration(Score::TIMER_DURATION duration)
@@ -133,5 +123,10 @@ char* TextTwistController::formatTime(int milliseconds) const
 bool TextTwistController::areLettersReusable() const
 {
     return this->settings->getReusableFlag();
+}
+
+unordered_set<string>* TextTwistController::displayAllPossibleWords(string& word)
+{
+    return this->twister->getSolutions(word, this->settings->getReusableFlag());
 }
 }

@@ -12,18 +12,21 @@ namespace model
 {
 class TextTwistDictionary
 {
-public:
-    TextTwistDictionary();
-    TextTwistDictionary(unordered_set<string>* dictionary);
-    virtual ~TextTwistDictionary();
-    unordered_set<string>* getDictionary();
-    bool contains(string& word);
-    unordered_set<string>* getAnagrams(string& letters, bool allowReuse);
-    static const int NUMBER_OF_LETTERS = 26;
 
-private:
-    const string DICT_NAME = "dictionary.txt";
-    unordered_set<string>* dictionary;
+    public:
+        static const int NUMBER_OF_LETTERS = 26;
+        TextTwistDictionary();
+        virtual ~TextTwistDictionary();
+        unordered_set<string>* getDictionary();
+        bool contains(string& word);
+        unordered_set<string>* getAnagrams(string& letters, bool allowReuse);
+
+    private:
+        const string DICT_NAME = "dictionary.txt";
+        int* getFrequencies(string& letters);
+        bool isAnagram(int* letterFrequencies, string& word);
+        bool isAnagramWithReuse(int* letterFrequencies, string& word);
+        unordered_set<string>* dictionary;
 };
 }
 
