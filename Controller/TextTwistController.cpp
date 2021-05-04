@@ -52,7 +52,7 @@ void TextTwistController::setDuration(int duration)
 }
 
 
-string TextTwistController::submit(string* letters) {
+string TextTwistController::submit(string letters) {
     return this->twister->submit(letters);
 }
 
@@ -110,5 +110,10 @@ char* TextTwistController::getTime(chrono::milliseconds remainingTime) const
     ss << ":";
     ss <<  setw(3) << setfill('0') << ms.count();
     return const_cast<char*>(ss.str().c_str());
+}
+
+bool TextTwistController::areLettersReusable() const
+{
+    return this->settings->getReusableFlag();
 }
 }

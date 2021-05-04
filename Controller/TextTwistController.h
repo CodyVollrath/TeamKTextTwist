@@ -28,7 +28,7 @@ public:
     void twist();
     string* getLetters();
     set<string>* getUsedWords();
-    string submit(string* letters);
+    string submit(string letters);
     int getScore();
     void reset();
 
@@ -37,6 +37,7 @@ public:
     void changeSettings(Settings* settings);
     char* getTime() const;
     char* getTime(chrono::milliseconds remainingTime) const;
+    bool areLettersReusable() const;
 
 private:
     TextTwister* twister;

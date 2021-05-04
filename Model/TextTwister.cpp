@@ -75,15 +75,8 @@ set<string>* TextTwister::getUsedWords()
     return this->usedWords;
 }
 
-string TextTwister::submit(string* letters) {
-    string word;
-    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
-    {
-        string letter = letters[i];
-        if (!letter.empty()) {
-            word += letter;
-        }
-    }
+string TextTwister::submit(string letters) {
+    string word = letters;
     bool used = find(this->usedWords->begin(), this->usedWords->end(), word) != this->usedWords->end();
     bool inDictionary = this->dictionary->contains(word);
 

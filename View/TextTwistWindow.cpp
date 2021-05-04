@@ -38,7 +38,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
 
 
     this->letterButtonsUsed = new stack<Fl_Button*>();
-    this->letterFieldsUsed = new stack<Fl_Input*>();
+    this->lettersUsed = new stack<const char*>();
 
     this->initializeBoardElements();
     this->submitButton->deactivate();
@@ -55,8 +55,8 @@ TextTwistWindow::~TextTwistWindow()
     for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
     {
         delete this->letterButtons[i];
-        delete this->letterFields[i];
     }
+    delete this->lettersField;
     delete this->undoButton;
     delete this->twistButton;
     delete this->generateButton;
@@ -69,7 +69,7 @@ TextTwistWindow::~TextTwistWindow()
 
     delete this->controller;
     delete this->letterButtonsUsed;
-    delete this->letterFieldsUsed;
+    delete this->lettersUsed;
 }
 
 void TextTwistWindow::initializeBoardElements()
@@ -81,11 +81,10 @@ void TextTwistWindow::initializeBoardElements()
     {
         this->letterButtons[i] =  new Fl_Button(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS,this->SIDE_LENGTH_OF_LETTER_BUTTON, this->SIDE_LENGTH_OF_LETTER_BUTTON, "");
         this->letterButtons[i]->callback(this->cbSendLetterToField, this);
-        this->letterFields[i] = new Fl_Input(this->LETTERS_X_POS + accumulator, this->LETTERS_Y_POS - Y_POS_DEC, this->SIDE_LENGTH_OF_LETTER_BUTTON, this->SIDE_LENGTH_OF_LETTER_BUTTON, "");
-        this->letterFields[i]->deactivate();
         this->letterButtons[i]->deactivate();
         accumulator += this->SIDE_LENGTH_OF_LETTER_BUTTON + SPACE_LENGTH;
     }
+    this->lettersField = new Fl_Input(this->LETTERS_X_POS, this->LETTERS_Y_POS - Y_POS_DEC, 350, 30, "");
 }
 
 void TextTwistWindow::resetBoard()
@@ -96,12 +95,12 @@ void TextTwistWindow::resetBoard()
         Fl_Button* button = this->letterButtons[i];
         button->label(letters[i].c_str());
         button->activate();
-        this->letterFields[i]->value("");
     }
+    this->lettersField->value("");
     delete this->letterButtonsUsed;
-    delete this->letterFieldsUsed;
+    delete this->lettersUsed;
     this->letterButtonsUsed = new stack<Fl_Button*>();
-    this->letterFieldsUsed = new stack<Fl_Input*>();
+    this->lettersUsed = new stack<const char*>();
     this->didGameStart = true;
     this->submitButton->deactivate();
 }
@@ -112,14 +111,10 @@ void TextTwistWindow::resetGame() {
 }
 
 
-string* TextTwistWindow::getSelectedLetters()
+string TextTwistWindow::getSelectedLetters()
 {
-    string* letters = new string[TextTwister::MAX_LETTER_LENGTH];
-    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
-    {
-        Fl_Input* field = this->letterFields[i];
-        letters[i] = field->value();
-    }
+    string letters = this->lettersField->value();
+    //Get the letters used
     return letters;
 }
 
@@ -151,10 +146,9 @@ void TextTwistWindow::updateUsedWords()
 
 void TextTwistWindow::submit()
 {
-    string* letters = this->getSelectedLetters();
+    string letters = this->getSelectedLetters();
     string response = this->controller->submit(letters);
     this->responseLabel->copy_label(response.c_str());
-    delete[] letters;
     this->resetBoard();
     this->updateScore();
     this->updateUsedWords();
@@ -172,20 +166,12 @@ void TextTwistWindow::cbSendLetterToField(Fl_Widget* widget, void* data)
 
 void TextTwistWindow::placeLetterToNextEmptyField(const char* letter)
 {
-
-
-    for (int i = 0; i < TextTwister::MAX_LETTER_LENGTH; i++)
-    {
-        string value = this->letterFields[i]->value();
-        if (value == "")
-        {
-            this->letterFields[i]->value(letter);
-            this->letterFieldsUsed->push(this->letterFields[i]);
-            break;
-        }
-    }
-
-    if (this->letterFieldsUsed->size() >= 3) {
+    string value = this->lettersField->value();
+    value += letter;
+    string addedLetter = letter;
+    this->lettersField->value(value.c_str());
+    this->lettersUsed->push(addedLetter.c_str());
+    if (this->lettersUsed->size() >= 3) {
         this->submitButton->activate();
     }
 }
@@ -193,16 +179,18 @@ void TextTwistWindow::placeLetterToNextEmptyField(const char* letter)
 void TextTwistWindow::cbUndo(Fl_Widget* widget, void* data)
 {
     TextTwistWindow* window = (TextTwistWindow*)data;
-    if (!(window->letterButtonsUsed->empty() || window->letterFieldsUsed->empty()))
+    if (!(window->letterButtonsUsed->empty() || window->lettersUsed->empty()))
     {
         Fl_Button* button = window->letterButtonsUsed->top();
-        Fl_Input* field = window->letterFieldsUsed->top();
+        const char* field = window->lettersUsed->top();
         button->activate();
-        field->value("");
+        string oldValue = window->lettersField->value();
+        string newValue = oldValue.substr(0, oldValue.size()-1);
+        window->lettersField->value(newValue.c_str());
         window->letterButtonsUsed->pop();
-        window->letterFieldsUsed->pop();
+        window->lettersUsed->pop();
     }
-    if (window->letterFieldsUsed->size() < 3) {
+    if (window->lettersUsed->size() < 3) {
         window->submitButton->deactivate();
     }
 }

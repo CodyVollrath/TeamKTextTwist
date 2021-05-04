@@ -74,7 +74,7 @@ class TextTwistWindow : public Fl_Window
 
 
         Fl_Button* letterButtons[TextTwister::MAX_LETTER_LENGTH];
-        Fl_Input* letterFields[TextTwister::MAX_LETTER_LENGTH];
+        Fl_Input* lettersField;
 
         Fl_Button* undoButton;
         Fl_Button* clearButton;
@@ -91,7 +91,7 @@ class TextTwistWindow : public Fl_Window
 
 
         stack<Fl_Button*>* letterButtonsUsed;
-        stack<Fl_Input*>* letterFieldsUsed;
+        stack<const char*>* lettersUsed;
 
         TextTwistController* controller;
 
@@ -99,7 +99,7 @@ class TextTwistWindow : public Fl_Window
         void establishCallBacks();
         void placeLetterToNextEmptyField(const char* letter);
         void submit();
-        string* getSelectedLetters();
+        string getSelectedLetters();
         void updateScore();
         void updateUsedWords();
         void resetGame();
