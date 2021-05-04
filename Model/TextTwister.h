@@ -16,31 +16,31 @@ class TextTwister
 {
 
 
-    public:
+public:
 
-        static const int LETTER_FREQUENCIES[];
-        static const int MAX_LETTER_LENGTH = 7;
+    static const int LETTER_FREQUENCIES[];
+    static const int MAX_LETTER_LENGTH = 7;
 
-        TextTwister();
-        virtual ~TextTwister();
-        void start();
-        void twist();
-        string* getLetters();
-        unordered_set<string>* getUsedWords();
-        string submit(string letters);
-        int getScore();
-        static int calculateScore(string& word);
-        unordered_set<string>* getSolutions(string& word, bool allowReuse);
+    TextTwister();
+    virtual ~TextTwister();
+    void start();
+    void twist();
+    string* getLetters();
+    unordered_set<string>* getUsedWords();
+    string submit(string letters);
+    int getScore();
+    static int calculateScore(string& word);
+    unordered_set<string>* getSolutions(string& word, bool allowReuse);
 
-    private:
-        TextTwistDictionary* dictionary;
-        string letters[MAX_LETTER_LENGTH];
-        int letterBrackets[26];
-        int maxBracket;
-        char getRandomLetter();
-        int getLetterIndex(int value);
-        int score;
-        unordered_set<string>* usedWords;
+private:
+    TextTwistDictionary* dictionary;
+    string letters[MAX_LETTER_LENGTH];
+    int letterBrackets[26];
+    int maxBracket;
+    char getRandomLetter();
+    int getLetterIndex(int value);
+    int score;
+    unordered_set<string>* usedWords;
 
 };
 

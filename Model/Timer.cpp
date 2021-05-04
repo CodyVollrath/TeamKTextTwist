@@ -16,7 +16,7 @@ Timer::Timer(int updateInterval)
 }
 Timer::~Timer()
 {
-
+    this->threadActive = false;
 }
 
 void Timer::setCallback(void(*callback)(Timer*, void*), void* data)

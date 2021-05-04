@@ -10,36 +10,38 @@ using namespace std;
 
 namespace fileio
 {
+
+//
+// Dictionary loader for reading dictionary file contents
+//
 class DictionaryLoader
 {
 public:
     //
-    // Constructs a TextTwistController object
+    // Constructs a DictionaryLoader object
     //
     // @precondition none
-    // @postcondition getAnswers() == nullptr;
-    //                getSettings() != nullptr
-    //                getScoreBoard() != nullptr;
+    // @postcondition none
     //
     DictionaryLoader();
-        //
-    // Destructs the TextTwistController object
+
+    //
+    // Destructs the DictionaryLoader object
     //
     // @precondition none
     // @postcondition none
     //
     virtual ~DictionaryLoader();
-        //
-    // Destructs the TextTwistController object
+
+    //
+    // Creates a new has set of dictionary words from the given file
     //
     // @precondition none
     // @postcondition none
     //
+    // @param filename the URI of the dictionary file
+    // @return the dictionary in a hash set
     unordered_set<string>* getDictionary(const string& filename) const;
-
-protected:
-
-private:
 
 };
 }

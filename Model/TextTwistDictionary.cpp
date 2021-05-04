@@ -22,26 +22,7 @@ unordered_set<string>* TextTwistDictionary::getDictionary()
     return this->dictionary;
 }
 
-unordered_set<string>* TextTwistDictionary::getAnagrams(string& letters, bool allowReuse)
-{
-    int* letterFrequencies = this->getFrequencies(letters);
-    unordered_set<string>* anagrams = new unordered_set<string>();
-    unordered_set<string>::iterator it = this->dictionary->begin();
-    while (it != this->dictionary->end())
-    {
-        string word = *it;
-        bool isWordAnagram = (allowReuse && this->isAnagramWithReuse(letterFrequencies, word)) || this->isAnagram(letterFrequencies, word);
-        if (isWordAnagram)
-        {
-            anagrams->insert(word);
-        }
-        it++;
-    }
-    delete[] letterFrequencies;
-    return anagrams;
-}
-
-int* TextTwistDictionary::getFrequencies(string& letters)
+int* TextTwistDictionary::getLetterFrequencies(string& letters)
 {
     int* letterFrequencies = new int[TextTwistDictionary::NUMBER_OF_LETTERS] {0};
     for (char letter : letters)
@@ -52,9 +33,28 @@ int* TextTwistDictionary::getFrequencies(string& letters)
     return letterFrequencies;
 }
 
+unordered_set<string>* TextTwistDictionary::getAnagrams(string& letters, bool allowReuse)
+{
+    int* letterFrequencies = getLetterFrequencies(letters);
+    unordered_set<string>* anagrams = new unordered_set<string>();
+    unordered_set<string>::iterator it = this->dictionary->begin();
+    while (it != this->dictionary->end())
+    {
+        string word = *it;
+        bool isWordAnagram = (allowReuse && TextTwistDictionary::isAnagramWithReuse(letterFrequencies, word)) || TextTwistDictionary::isAnagram(letterFrequencies, word);
+        if (isWordAnagram)
+        {
+            anagrams->insert(word);
+        }
+        it++;
+    }
+    delete[] letterFrequencies;
+    return anagrams;
+}
+
 bool TextTwistDictionary::isAnagram(int* letterFrequencies, string& word)
 {
-    int* wordFrequencies = getFrequencies(word);
+    int* wordFrequencies = TextTwistDictionary::getLetterFrequencies(word);
 
     int numberOfMatchedLetters = 0;
     for (int i = 0; i < TextTwistDictionary::NUMBER_OF_LETTERS; i++ )
@@ -70,7 +70,7 @@ bool TextTwistDictionary::isAnagram(int* letterFrequencies, string& word)
 
 bool TextTwistDictionary::isAnagramWithReuse(int* letterFrequencies, string& word)
 {
-    int* wordFrequencies = getFrequencies(word);
+    int* wordFrequencies = TextTwistDictionary::getLetterFrequencies(word);
 
     int numberOfUniqueInWord = 0;
     int numberOfMatchedUniqueInWord = 0;
