@@ -11,21 +11,25 @@ using namespace std;
 
 namespace view
 {
+//
+// SolutionsWindow window for displaying game solution
+//
+
 class SolutionsWindow : public OKCancelWindow
 {
-    public:
-        SolutionsWindow(unordered_set<string>* solutions);
-        virtual ~SolutionsWindow();
-        void addSolutions(unordered_set<string>* solutions);
-        void okHandler();
-        void cancelHandler();
+public:
+    SolutionsWindow(unordered_set<string>* solutions);
+    virtual ~SolutionsWindow();
+    void addSolutions(unordered_set<string>* solutions);
+    void okHandler();
+    void cancelHandler();
 
-    protected:
+protected:
 
-    private:
-        static const int WINDOW_WIDTH = 500;
-        static const int WINDOW_HEIGHT = 250;
-        Fl_Scroll* solutionsScroll;
+private:
+    static const int WINDOW_WIDTH = 500;
+    static const int WINDOW_HEIGHT = 250;
+    Fl_Scroll* solutionsScroll;
 };
 }
 

@@ -51,8 +51,11 @@
 		<Unit filename="View/OkCancelWindow.cpp" />
 		<Unit filename="View/OkCancelWindow.h" />
 		<Unit filename="View/ScoreBoardWindow.cpp" />
+		<Unit filename="View/ScoreBoardWindow.h" />
 		<Unit filename="View/SettingsWindow.cpp" />
 		<Unit filename="View/SettingsWindow.h" />
+		<Unit filename="View/SolutionsWindow.cpp" />
+		<Unit filename="View/SolutionsWindow.h" />
 		<Unit filename="View/TextTwistWindow.cpp" />
 		<Unit filename="View/TextTwistWindow.h" />
 		<Unit filename="dictionary.txt" />
