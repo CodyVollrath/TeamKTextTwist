@@ -88,6 +88,7 @@ private:
     Fl_Button* submitButton;
     Fl_Button* settingsButton;
     Fl_Button* scoreBoardButton;
+    Fl_Button* exitButton;
 
     Fl_Box* timerLabel;
     Fl_Box* scoreLabel;
@@ -124,7 +125,9 @@ private:
     static void cbSubmit(Fl_Widget* widget, void* data);
     static void cbDisplaySettings(Fl_Widget* widget, void* data);
     static void cbDisplayScoreBoard(Fl_Widget* widget, void* data);
+    static void cbExit(Fl_Widget* widget, void* data);
     static void cbUpdateTimer(Timer* timer, void* data);
+
 };
 }
 #endif // TEXT_TWIST_WINDOW_H

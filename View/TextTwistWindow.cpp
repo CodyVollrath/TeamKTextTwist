@@ -17,6 +17,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->settingsButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Settings");
     this->scoreBoardButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS + this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "High Scores");
     this->clearButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, this->LEFT_BUTTON_POS + 2 * this->Y_POS_DIF, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Clear");
+    this->exitButton = new Fl_Button(this->SETTINGS_BUTTON_X_POS, 325, this->BUTTON_WIDTH, this->BUTTON_HIGHT, "Exit");
 
 
     this->timerLabel = new Fl_Box(this->TIME_LABEL_X_POS, this->TIME_LABEL_Y_POS, this->TIME_LABEL_SIDE_LENGTH, this->TIME_LABEL_SIDE_HEIGHT, "00:00:00");
@@ -36,6 +37,7 @@ TextTwistWindow::TextTwistWindow(int width, int height, const char* title) : Fl_
     this->submitButton->callback(this->cbSubmit, this);
     this->settingsButton->callback(this->cbDisplaySettings, this);
     this->scoreBoardButton->callback(this->cbDisplayScoreBoard, this);
+    this->exitButton->callback(this->cbExit, this);
 
     this->letterButtonsUsed = new stack<Fl_Button*>();
     this->lettersUsed = new stack<const char*>();
@@ -73,6 +75,7 @@ TextTwistWindow::~TextTwistWindow()
     delete this->responseLabel;
     delete this->scoreLabel;
     delete this->settingsButton;
+    delete this->exitButton;
     delete this->usedWords;
 
     delete this->controller;
@@ -361,6 +364,10 @@ void TextTwistWindow::cbUpdateTimer(Timer* timer, void* data)
     }
     Fl::unlock();
     Fl::awake();
+}
+
+void TextTwistWindow::cbExit(Fl_Widget* widget, void* data) {
+    exit(0);
 }
 
 }
