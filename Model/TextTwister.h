@@ -1,6 +1,6 @@
 #ifndef TEXTTWISTER_H
 #define TEXTTWISTER_H
-
+#include "ResourceData.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -29,6 +29,7 @@ class TextTwister
         string submit(string letters);
         int getScore();
         static int calculateScore(string& word);
+        set<string>* getSolutions(string& word, bool allowReuse);
 
     private:
         TextTwistDictionary* dictionary;

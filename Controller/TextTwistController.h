@@ -43,6 +43,7 @@ public:
     ScoreBoard* getScoreBoard();
     Score::TIMER_DURATION getDuration();
     void addScore(string name);
+    set<string>* displayAllPossibleWords(string& word);
 
 private:
     TextTwister* twister;

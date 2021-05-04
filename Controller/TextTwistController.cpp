@@ -120,4 +120,9 @@ bool TextTwistController::areLettersReusable() const
 {
     return this->settings->getReusableFlag();
 }
+
+set<string>* TextTwistController::displayAllPossibleWords(string& word)
+{
+    return this->twister->getSolutions(word, this->settings->getReusableFlag());
+}
 }

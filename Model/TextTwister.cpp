@@ -94,10 +94,15 @@ int TextTwister::getScore()
     return this->score;
 }
 
-int TextTwister::calculateScore(string& word) {
+int TextTwister::calculateScore(string& word)
+{
     int letterCount = word.length();
     return (letterCount * letterCount * 10);
 }
 
+set<string>* TextTwister::getSolutions(string& word, bool allowReuse)
+{
+    return this->dictionary->getAnagrams(word, allowReuse);
+}
 }
 

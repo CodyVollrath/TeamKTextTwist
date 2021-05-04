@@ -24,6 +24,7 @@ using namespace controller;
 
 #include "SettingsWindow.h"
 #include "ScoreBoardWindow.h"
+#include "SolutionsWindow.h"
 
 namespace view
 {
@@ -71,11 +72,12 @@ class TextTwistWindow : public Fl_Window
         static const int USED_SCROLL_SIDE_LENGTH = 200;
         static const int USED_SCROLL_SIDE_HEIGHT = 75;
 
-        static const int SUBMIT_BUTTON_X_POS = 220;
+        static const int SUBMIT_BUTTON_X_POS = 170;
         static const int SUBMIT_BUTTON_Y_POS = 325;
         static const int SETTINGS_BUTTON_X_POS = 400;
 
         bool didGameStart = false;
+        string letters;
 
 
         Fl_Button* letterButtons[TextTwister::MAX_LETTER_LENGTH];
@@ -86,6 +88,7 @@ class TextTwistWindow : public Fl_Window
         Fl_Button* twistButton;
         Fl_Button* generateButton;
         Fl_Button* submitButton;
+        Fl_Button* solveButton;
         Fl_Button* settingsButton;
         Fl_Button* scoreBoardButton;
 
@@ -125,6 +128,8 @@ class TextTwistWindow : public Fl_Window
         static void cbDisplaySettings(Fl_Widget* widget, void* data);
         static void cbDisplayScoreBoard(Fl_Widget* widget, void* data);
         static void cbUpdateTimer(Timer* timer, void* data);
+        static void cbSolve(Fl_Widget* widget, void* data);
+
 };
 }
 #endif // TEXT_TWIST_WINDOW_H
