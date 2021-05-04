@@ -14,13 +14,39 @@ using namespace model;
 
 namespace view
 {
+/**
+* Shows the settings window
+* @author Cody Vollrath
+*/
 class SettingsWindow : public OKCancelWindow
 {
 public:
+    /**
+    * Creates the settings window
+    * @param settings the settings
+    * @post getSettings() == settings
+    */
     SettingsWindow(Settings* settings);
+
+    /**
+    * Delete the settings window
+    */
     virtual ~SettingsWindow();
+
+    /**
+    * Creates settings
+    */
     void okHandler();
+
+    /**
+    * Deletes settings
+    */
     void cancelHandler();
+
+    /**
+    * Gets the settings
+    * @return the settings
+    */
     Settings* getSettings() const;
 
 private:

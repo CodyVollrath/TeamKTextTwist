@@ -126,14 +126,14 @@
 1619902234 source:/home/cvollra1/Documents/TeamKTextTwist/View/OkCancelWindow.cpp
 	"OkCancelWindow.h"
 
-1620090886 /home/cvollra1/Documents/TeamKTextTwist/View/OkCancelWindow.h
+1620159448 /home/cvollra1/Documents/TeamKTextTwist/View/OkCancelWindow.h
 	<Fl/Fl_Window.H>
 	<Fl/Fl_Button.H>
 
 1620156459 source:/home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.cpp
 	"SettingsWindow.h"
 
-1620156459 /home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.h
+1620159790 /home/cvollra1/Documents/TeamKTextTwist/View/SettingsWindow.h
 	"OkCancelWindow.h"
 	<Fl/Fl_Choice.H>
 	<Fl/Fl_Input.H>
@@ -227,7 +227,7 @@
 
 1619977934 8cd97d1bfcb5417ef918ef0c0ab071cb09ac9
 
-1620158885 /home/cvollra1/Documents/TeamKTextTwist/Model/Timer.h
+1620158988 /home/cvollra1/Documents/TeamKTextTwist/Model/Timer.h
 	<iostream>
 	<thread>
 	<chrono>
